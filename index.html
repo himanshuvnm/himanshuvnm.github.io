@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Himanshu Singh — Research Portfolio</title>
+  <meta name="description" content="Research portfolio: mechanistic interpretability, sparse learning, neural operators, and mathematical ML." />
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel:#111827;
+      --panel2:#0f172a;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#60a5fa;
+      --accent2:#34d399;
+      --border:#1f2937;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1050px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(96,165,250,.25), transparent 55%),
+                  radial-gradient(900px 500px at 85% 0%, rgba(52,211,153,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:42px 18px 64px;}
+    header{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:22px;
+      align-items:start;
+      margin-bottom:28px;
+    }
+    @media (max-width:900px){
+      header{grid-template-columns:1fr}
+    }
+    .hero{
+      background: linear-gradient(180deg, rgba(17,24,39,.9), rgba(15,23,42,.7));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:26px 26px 22px;
+      box-shadow: var(--shadow);
+    }
+    .name{
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin:0 0 8px;
+    }
+    .tagline{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size: 15.5px;
+    }
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 18px}
+    .badge{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      padding:6px 10px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      color:#d1d5db;
+    }
+    .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .btn{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      border:1px solid var(--border);
+      background: rgba(96,165,250,.12);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .btn.secondary{
+      background: rgba(52,211,153,.12);
+    }
+    .btn.ghost{
+      background: transparent;
+    }
+    .btn:hover{border-color: rgba(96,165,250,.55); text-decoration:none}
+    .right{
+      background: rgba(17,24,39,.75);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: var(--shadow);
+    }
+    .right h3{margin:0 0 8px; font-size: 14px; color:#cbd5e1; letter-spacing:.3px; text-transform:uppercase}
+    .right p{margin:0 0 10px; color:var(--muted); font-size: 14px}
+    .list{margin:0; padding-left:18px; color: var(--muted); font-size: 14px}
+    section{margin-top:26px}
+    .section-title{
+      font-size: 14px;
+      letter-spacing:.35px;
+      text-transform: uppercase;
+      color:#cbd5e1;
+      margin: 0 0 10px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .card{
+      grid-column: span 6;
+      background: rgba(17,24,39,.78);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:18px 18px 16px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(500px 140px at 20% -10%, rgba(96,165,250,.22), transparent 50%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .card:nth-child(2):before{background: radial-gradient(520px 150px at 30% -10%, rgba(52,211,153,.18), transparent 55%);}
+    .card:nth-child(3):before{background: radial-gradient(520px 150px at 30% -10%, rgba(167,139,250,.16), transparent 55%);}
+    .card:nth-child(4):before{background: radial-gradient(520px 150px at 30% -10%, rgba(251,191,36,.14), transparent 55%);}
+    @media (max-width:900px){
+      .card{grid-column: span 12;}
+    }
+    .card h2{margin:0 0 6px; font-size: 18px; position:relative}
+    .meta{margin:0 0 10px; color:var(--muted); font-size: 13.5px; position:relative}
+    .bullets{
+      margin:0;
+      padding-left:18px;
+      color:#d1d5db;
+      font-size: 14px;
+      position:relative;
+    }
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; position:relative}
+    .chip{
+      font-size:12px;
+      padding:5px 8px;
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      color:#e5e7eb;
+    }
+    .links{display:flex; gap:12px; margin-top:14px; position:relative; flex-wrap:wrap}
+    .link{
+      font-weight:700;
+      font-size: 13.5px;
+    }
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width:900px){
+      .two-col{grid-template-columns:1fr}
+    }
+    .panel{
+      background: rgba(17,24,39,.75);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .panel h4{margin:0 0 8px; font-size: 16px}
+    .panel p{margin:0; color:var(--muted); font-size:14px}
+    footer{
+      margin-top:34px;
+      color:var(--muted);
+      font-size: 13px;
+      text-align:center;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      padding:2px 6px;
+      border-radius: 8px;
+      color:#e5e7eb;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="hero">
+        <h1 class="name">Himanshu Singh</h1>
+        <p class="tagline">
+          AI Researcher with a background in applied mathematics. I work on mechanistic interpretability,
+          sparse/efficient learning, and neural operators for scientific AI.
+        </p>
+
+        <div class="badges">
+          <span class="badge">Mechanistic Interpretability</span>
+          <span class="badge">Sparse Learning (ℓ₀/ℓ₁)</span>
+          <span class="badge">Neural Operators (FNO)</span>
+          <span class="badge">Mathematical ML</span>
+          <span class="badge">Foundation Models</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn" href="https://github.com/himanshuvnm" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn secondary" href="mailto:himanshuvnm@gmail.com">Email</a>
+          <a class="btn ghost" href="https://linkedin.com/in/himanshuvnm" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="right">
+        <h3>Current Focus</h3>
+        <p>
+          I’m interested in frontier AI work (OpenAI / Anthropic style): understanding model reasoning,
+          extracting circuits, and building efficient learning systems grounded in math.
+        </p>
+        <ul class="list">
+          <li>Transformer circuit tracing + activation patching</li>
+          <li>Efficient & sparse architectures</li>
+          <li>Operator learning for PDEs and dynamical systems</li>
+          <li>Rigor, reproducibility, and research-grade code</li>
+        </ul>
+      </div>
+    </header>
+
+    <section>
+      <h3 class="section-title">Selected Projects</h3>
+      <div class="grid">
+
+        <!-- Project 1 -->
+        <article class="card">
+          <h2>Mechanistic AI Interpretability</h2>
+          <p class="meta">Circuit tracing, activation patching, and causal interventions for transformer models.</p>
+          <ul class="bullets">
+            <li>Built layer/head patching pipelines to localize causal pathways in transformer reasoning.</li>
+            <li>Developed metrics for clean vs corrupted behavior and normalized recovery analysis.</li>
+            <li>Packaged experiments for reproducibility (configs, utilities, and clear results).</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">TransformerLens</span>
+            <span class="chip">Activation Patching</span>
+            <span class="chip">Causal Tracing</span>
+            <span class="chip">Evals</span>
+          </div>
+          <div class="links">
+            <a class="link" href="https://github.com/himanshuvnm/Mechanistic_Artificial_Intelligence_Interpretability" target="_blank" rel="noreferrer">Repository →</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <h2>Learning Fourier Neural Operators (FNO)</h2>
+          <p class="meta">Operator learning for PDE surrogate modeling (e.g., Burgers’ equation).</p>
+          <ul class="bullets">
+            <li>Implemented FNO training + evaluation pipelines with configurable experiments.</li>
+            <li>Benchmarked generalization across Reynolds regimes and grid resolutions.</li>
+            <li>Focused on reproducible scientific ML: datasets, seeds, and result reporting.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Neural Operators</span>
+            <span class="chip">PDEs</span>
+            <span class="chip">Scientific ML</span>
+            <span class="chip">PyTorch</span>
+          </div>
+          <div class="links">
+            <a class="link" href="https://github.com/himanshuvnm/Learning_Fourier_Neural_Operator" target="_blank" rel="noreferrer">Repository →</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card">
+          <h2>Sparse Neural Network</h2>
+          <p class="meta">Learned hard-mask sparsification using trainable mask parameters.</p>
+          <ul class="bullets">
+            <li>Implemented hard-threshold masking to learn sparse linear transformations.</li>
+            <li>Logged sparsity/accuracy tradeoffs and visualized sparse connectivity.</li>
+            <li>Packaged training/evaluation scripts with configs for repeatable runs.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">ℓ₀-style Sparsity</span>
+            <span class="chip">Pruning</span>
+            <span class="chip">Efficiency</span>
+            <span class="chip">Visualization</span>
+          </div>
+          <div class="links">
+            <a class="link" href="https://github.com/himanshuvnm/Sparse_Neural_Network" target="_blank" rel="noreferrer">Repository →</a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="card">
+          <h2>Kernel Methods & Dynamical Systems (GGRBF)</h2>
+          <p class="meta">Reproducing kernels, sparse representations, and learning in high-dimensional dynamics.</p>
+          <ul class="bullets">
+            <li>Developed RKHS-based models for nonlinear approximation and operator regression.</li>
+            <li>Explored sparsity constraints (ℓ₀/ℓ₁) for interpretable, data-efficient learning.</li>
+            <li>Connected theoretical insights (generalization / information constraints) to practical pipelines.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">RKHS</span>
+            <span class="chip">Sparsity</span>
+            <span class="chip">Optimization</span>
+            <span class="chip">Scientific ML</span>
+          </div>
+          <div class="links">
+            <a class="link" href="https://github.com/himanshuvnm" target="_blank" rel="noreferrer">GitHub Profile →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-title">What I’m looking for</h3>
+      <div class="two-col">
+        <div class="panel">
+          <h4>Frontier AI Research & Engineering</h4>
+          <p>
+            Roles focused on interpretability, reasoning, efficient learning, and scientific AI—bridging theory
+            and code with strong reproducibility. Particularly interested in environments aligned with OpenAI /
+            Anthropic-style research.
+          </p>
+        </div>
+        <div class="panel">
+          <h4>Preferred Collaboration Style</h4>
+          <p>
+            High-trust, research-driven teams where I can iterate quickly: run experiments, write clean code,
+            document results, and ship tools that enable others. I prioritize clarity, rigor, and measurable impact.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-title">Reproducibility</h3>
+      <div class="panel">
+        <p>
+          I aim for “clone-and-run” projects. Where applicable, repositories include: <span class="kbd">requirements.txt</span>,
+          configuration files, fixed seeds, and result plots. If you encounter any issue reproducing results, please reach out.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Himanshu Singh • Portfolio built for research roles in modern AI
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
