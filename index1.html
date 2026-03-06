@@ -4,202 +4,437 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Himanshu Singh — Research Portfolio</title>
-  <meta name="description" content="Research portfolio: mechanistic interpretability, sparse learning, neural operators, and mathematical ML." />
+  <meta name="description" content="Research portfolio: mechanistic interpretability, sparse learning, neural operators, scientific machine learning, and mathematical AI." />
   <style>
     :root{
-      --bg:#0b0f17;
-      --panel:#111827;
-      --panel2:#0f172a;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --accent:#60a5fa;
-      --accent2:#34d399;
-      --border:#1f2937;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 16px;
-      --max: 1050px;
+      --bg:#071019;
+      --bg2:#0b1420;
+      --panel:#0f1b2b;
+      --panel2:#121f30;
+      --panel3:#162536;
+      --text:#eef4ff;
+      --muted:#9fb0c7;
+      --accent:#66b3ff;
+      --accent2:#62e0c1;
+      --accent3:#e7c67a;
+      --border:#24364a;
+      --shadow: 0 18px 50px rgba(0,0,0,.38);
+      --radius: 18px;
+      --max: 1120px;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 700px at 20% -10%, rgba(96,165,250,.25), transparent 55%),
-                  radial-gradient(900px 500px at 85% 0%, rgba(52,211,153,.18), transparent 55%),
-                  var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1100px 600px at 10% -10%, rgba(102,179,255,.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 0%, rgba(98,224,193,.12), transparent 55%),
+        radial-gradient(800px 500px at 50% 100%, rgba(231,198,122,.06), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       color:var(--text);
-      line-height:1.5;
+      line-height:1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
+
     a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max); margin:0 auto; padding:42px 18px 64px;}
+    a:hover{text-decoration:none; opacity:.92}
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:42px 20px 70px;
+    }
+
     header{
       display:grid;
       grid-template-columns: 1.25fr .75fr;
       gap:22px;
       align-items:start;
-      margin-bottom:28px;
+      margin-bottom:26px;
     }
-    @media (max-width:900px){
+
+    @media (max-width: 920px){
       header{grid-template-columns:1fr}
     }
-    .hero{
-      background: linear-gradient(180deg, rgba(17,24,39,.9), rgba(15,23,42,.7));
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:26px 26px 22px;
-      box-shadow: var(--shadow);
+
+    .hero, .right, .panel, .card, .featured{
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
+
+    .hero{
+      background:
+        linear-gradient(180deg, rgba(18,31,48,.92), rgba(12,23,37,.86));
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:30px 28px 24px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(500px 180px at 15% 0%, rgba(102,179,255,.14), transparent 52%),
+        radial-gradient(400px 160px at 90% 10%, rgba(98,224,193,.09), transparent 55%);
+      pointer-events:none;
+    }
+
+    .hero-subtle{
+      position:relative;
+      font-size:12.5px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:#90c8ff;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
     .name{
-      font-size: 34px;
-      font-weight: 800;
-      letter-spacing: .2px;
+      position:relative;
+      font-size:38px;
+      line-height:1.08;
+      font-weight:800;
+      letter-spacing:.2px;
       margin:0 0 8px;
     }
+
     .tagline{
-      margin:0 0 14px;
-      color:var(--muted);
-      font-size: 15.5px;
+      position:relative;
+      margin:0;
+      color:#d7e6f7;
+      font-size:16px;
+      font-weight:600;
     }
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 18px}
+
+    .lead{
+      position:relative;
+      margin:14px 0 0;
+      color:var(--muted);
+      font-size:15.5px;
+      max-width:760px;
+    }
+
+    .badges{
+      position:relative;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:18px 0 18px;
+    }
+
     .badge{
       border:1px solid var(--border);
       background: rgba(255,255,255,.03);
-      padding:6px 10px;
-      border-radius: 999px;
-      font-size: 12.5px;
-      color:#d1d5db;
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:12.5px;
+      color:#d9e7f8;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
     }
-    .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+
+    .cta{
+      position:relative;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:8px;
+    }
+
     .btn{
       display:inline-flex;
       gap:8px;
       align-items:center;
       border:1px solid var(--border);
-      background: rgba(96,165,250,.12);
+      background: linear-gradient(180deg, rgba(102,179,255,.15), rgba(102,179,255,.08));
       color: var(--text);
-      padding:10px 12px;
-      border-radius: 12px;
-      font-weight: 600;
+      padding:11px 14px;
+      border-radius: 13px;
+      font-weight: 700;
       font-size: 14px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
     }
+
     .btn.secondary{
-      background: rgba(52,211,153,.12);
+      background: linear-gradient(180deg, rgba(98,224,193,.16), rgba(98,224,193,.08));
     }
+
     .btn.ghost{
-      background: transparent;
+      background: rgba(255,255,255,.02);
     }
-    .btn:hover{border-color: rgba(96,165,250,.55); text-decoration:none}
+
+    .btn:hover{
+      border-color: rgba(102,179,255,.45);
+      transform: translateY(-1px);
+      transition: .18s ease;
+    }
+
     .right{
-      background: rgba(17,24,39,.75);
+      background: linear-gradient(180deg, rgba(15,27,43,.88), rgba(15,27,43,.72));
       border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:22px;
+      border-radius:24px;
+      padding:24px 22px;
       box-shadow: var(--shadow);
     }
-    .right h3{margin:0 0 8px; font-size: 14px; color:#cbd5e1; letter-spacing:.3px; text-transform:uppercase}
-    .right p{margin:0 0 10px; color:var(--muted); font-size: 14px}
-    .list{margin:0; padding-left:18px; color: var(--muted); font-size: 14px}
-    section{margin-top:26px}
-    .section-title{
-      font-size: 14px;
-      letter-spacing:.35px;
-      text-transform: uppercase;
-      color:#cbd5e1;
-      margin: 0 0 10px;
+
+    .right h3, .section-title{
+      margin:0 0 10px;
+      font-size:13px;
+      color:#cad9ea;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:800;
     }
+
+    .right p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:14.5px
+    }
+
+    .list{
+      margin:0;
+      padding-left:18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section{margin-top:28px}
+
+    .featured{
+      background:
+        radial-gradient(700px 220px at 0% 0%, rgba(102,179,255,.13), transparent 55%),
+        radial-gradient(600px 220px at 100% 0%, rgba(98,224,193,.09), transparent 55%),
+        linear-gradient(180deg, rgba(15,27,43,.92), rgba(18,31,48,.82));
+      border:1px solid var(--border);
+      border-radius:26px;
+      padding:24px;
+      box-shadow: var(--shadow);
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:22px;
+      align-items:center;
+    }
+
+    @media (max-width: 920px){
+      .featured{grid-template-columns:1fr}
+    }
+
+    .featured-label{
+      display:inline-block;
+      padding:6px 11px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color:#bfe2ff;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-weight:700;
+    }
+
+    .featured h2{
+      margin:0 0 8px;
+      font-size:29px;
+      line-height:1.15;
+    }
+
+    .featured p{
+      color:var(--muted);
+      margin:0 0 12px;
+      font-size:15px;
+    }
+
+    .stat-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:16px 0;
+    }
+
+    .stat{
+      padding:8px 12px;
+      border-radius:12px;
+      background: rgba(255,255,255,.035);
+      border:1px solid var(--border);
+      font-size:13px;
+      color:#dfefff;
+    }
+
+    .featured-preview{
+      background: rgba(255,255,255,.025);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:12px;
+      box-shadow: var(--shadow);
+    }
+
+    .featured-preview img{
+      width:100%;
+      display:block;
+      border-radius:12px;
+    }
+
+    .mini-links, .links{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .mini-link, .link{
+      font-weight:700;
+      font-size:13.5px;
+      color:#b7d8ff;
+    }
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:14px;
+      gap:16px;
     }
+
     .card{
       grid-column: span 6;
-      background: rgba(17,24,39,.78);
+      background:
+        linear-gradient(180deg, rgba(15,27,43,.88), rgba(18,31,48,.76));
       border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:18px 18px 16px;
+      border-radius: 22px;
+      padding:20px 20px 18px;
       box-shadow: var(--shadow);
       position:relative;
       overflow:hidden;
     }
+
     .card:before{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(500px 140px at 20% -10%, rgba(96,165,250,.22), transparent 50%);
-      opacity:.9;
+      background: radial-gradient(480px 140px at 10% -10%, rgba(102,179,255,.14), transparent 52%);
       pointer-events:none;
     }
-    .card:nth-child(2):before{background: radial-gradient(520px 150px at 30% -10%, rgba(52,211,153,.18), transparent 55%);}
-    .card:nth-child(3):before{background: radial-gradient(520px 150px at 30% -10%, rgba(167,139,250,.16), transparent 55%);}
-    .card:nth-child(4):before{background: radial-gradient(520px 150px at 30% -10%, rgba(251,191,36,.14), transparent 55%);}
-    @media (max-width:900px){
+    .card:nth-child(2):before{background: radial-gradient(520px 140px at 15% -10%, rgba(98,224,193,.12), transparent 56%);}
+    .card:nth-child(3):before{background: radial-gradient(520px 140px at 15% -10%, rgba(167,139,250,.12), transparent 56%);}
+    .card:nth-child(4):before{background: radial-gradient(520px 140px at 15% -10%, rgba(231,198,122,.10), transparent 56%);}
+
+    @media (max-width:920px){
       .card{grid-column: span 12;}
     }
-    .card h2{margin:0 0 6px; font-size: 18px; position:relative}
-    .meta{margin:0 0 10px; color:var(--muted); font-size: 13.5px; position:relative}
+
+    .card h2{
+      margin:0 0 6px;
+      font-size:20px;
+      position:relative;
+      line-height:1.25;
+    }
+
+    .meta{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:13.8px;
+      position:relative;
+    }
+
     .bullets{
       margin:0;
       padding-left:18px;
-      color:#d1d5db;
-      font-size: 14px;
+      color:#dbe6f4;
+      font-size:14px;
       position:relative;
     }
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; position:relative}
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:12px;
+      position:relative;
+    }
+
     .chip{
       font-size:12px;
       padding:5px 8px;
       border-radius:999px;
       background: rgba(255,255,255,.04);
       border:1px solid var(--border);
-      color:#e5e7eb;
+      color:#edf4ff;
     }
-    .links{display:flex; gap:12px; margin-top:14px; position:relative; flex-wrap:wrap}
-    .link{
-      font-weight:700;
-      font-size: 13.5px;
-    }
+
     .two-col{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:14px;
+      gap:16px;
     }
-    @media (max-width:900px){
+
+    @media (max-width:920px){
       .two-col{grid-template-columns:1fr}
     }
+
     .panel{
-      background: rgba(17,24,39,.75);
+      background: linear-gradient(180deg, rgba(15,27,43,.84), rgba(18,31,48,.74));
       border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:18px;
+      border-radius: 20px;
+      padding:20px;
       box-shadow: var(--shadow);
     }
-    .panel h4{margin:0 0 8px; font-size: 16px}
-    .panel p{margin:0; color:var(--muted); font-size:14px}
-    footer{
-      margin-top:34px;
-      color:var(--muted);
-      font-size: 13px;
-      text-align:center;
+
+    .panel h4{
+      margin:0 0 8px;
+      font-size:16px;
+      color:#f2f7ff;
     }
+
+    .panel p{
+      margin:0;
+      color:var(--muted);
+      font-size:14.5px;
+    }
+
     .kbd{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       background: rgba(255,255,255,.04);
       border:1px solid var(--border);
       padding:2px 6px;
       border-radius: 8px;
-      color:#e5e7eb;
+      color:#eef4ff;
+    }
+
+    footer{
+      margin-top:38px;
+      color:var(--muted);
+      font-size: 13px;
+      text-align:center;
+      padding-top:10px;
+      border-top:1px solid rgba(255,255,255,.05);
+    }
+
+    .gold{
+      color: var(--accent3);
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
+
     <header>
       <div class="hero">
+        <div class="hero-subtle">Research Portfolio</div>
         <h1 class="name">Himanshu Singh</h1>
         <p class="tagline">
-          AI Researcher with a background in Pure and Applied Mathematics. I work on mechanistic interpretability,
-          sparse/efficient learning, and neural operators for scientific AI.
+          AI Researcher with a background in Pure and Applied Mathematics.
+        </p>
+        <p class="lead">
+          I work on mechanistic interpretability, sparse and efficient learning,
+          neural operators, and mathematically grounded AI systems for scientific
+          and structured domains.
         </p>
 
         <div class="badges">
@@ -208,10 +443,12 @@
           <span class="badge">Neural Operators (FNO)</span>
           <span class="badge">Mathematical ML</span>
           <span class="badge">Foundation Models</span>
+          <span class="badge">Scientific AI</span>
         </div>
 
         <div class="cta">
           <a class="btn" href="https://github.com/himanshuvnm" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn secondary" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER" target="_blank" rel="noreferrer">SciFM Poster</a>
           <a class="btn ghost" href="https://linkedin.com/in/himanshuvnm" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
@@ -219,11 +456,11 @@
       <div class="right">
         <h3>Current Focus</h3>
         <p>
-          I’m interested in understanding model reasoning, extracting circuits, and building efficient learning systems grounded in math.
+          I’m interested in understanding model reasoning, extracting circuits, and building efficient learning systems grounded in mathematics.
         </p>
         <ul class="list">
           <li>Transformer circuit tracing + activation patching</li>
-          <li>Efficient & sparse architectures</li>
+          <li>Efficient and sparse architectures</li>
           <li>Operator learning for PDEs and dynamical systems</li>
           <li>Rigor, reproducibility, and research-grade code</li>
         </ul>
@@ -231,17 +468,54 @@
     </header>
 
     <section>
+      <h3 class="section-title">Featured Research Artifact</h3>
+      <div class="featured">
+        <div>
+          <div class="featured-label">SciFM 2025 Poster</div>
+          <h2>GIFT-KASTL: Graph Foundation Models for Fracture Network Learning</h2>
+          <p>
+            A research poster on graph foundation models for scientific machine learning,
+            exploring how fracture networks and structured physical systems can be modeled
+            using graph-based learning architectures.
+          </p>
+          <p>
+            This project sits at the intersection of <span class="gold">graph AI</span>,
+            <span class="gold">scientific machine learning</span>, and <span class="gold">foundation-model thinking</span>
+            for structured scientific data.
+          </p>
+
+          <div class="stat-row">
+            <div class="stat">Graph Foundation Models</div>
+            <div class="stat">Scientific ML</div>
+            <div class="stat">Fracture Networks</div>
+            <div class="stat">Poster Artifact</div>
+          </div>
+
+          <div class="mini-links">
+            <a class="mini-link" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER" target="_blank" rel="noreferrer">Repository →</a>
+            <a class="mini-link" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER/blob/main/GIFT-KASTL_SciFM_POSTER.pdf" target="_blank" rel="noreferrer">Poster PDF →</a>
+          </div>
+        </div>
+
+        <div class="featured-preview">
+          <a href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER/blob/main/GIFT-KASTL_SciFM_POSTER.pdf" target="_blank" rel="noreferrer">
+            <img src="https://raw.githubusercontent.com/himanshuvnm/GIFT_KASTL_POSTER/main/preview.png" alt="SciFM 2025 GIFT-KASTL Poster Preview">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <h3 class="section-title">Selected Projects</h3>
       <div class="grid">
 
-        <!-- Project 1 -->
         <article class="card">
           <h2>Mechanistic AI Interpretability</h2>
           <p class="meta">Circuit tracing, activation patching, and causal interventions for transformer models.</p>
           <ul class="bullets">
             <li>Built layer/head patching pipelines to localize causal pathways in transformer reasoning.</li>
             <li>Developed metrics for clean vs corrupted behavior and normalized recovery analysis.</li>
-            <li>Packaged experiments for reproducibility (configs, utilities, and clear results).</li>
+            <li>Packaged experiments for reproducibility with configs, utilities, and interpretable outputs.</li>
           </ul>
           <div class="chips">
             <span class="chip">TransformerLens</span>
@@ -254,14 +528,13 @@
           </div>
         </article>
 
-        <!-- Project 2 -->
         <article class="card">
           <h2>Learning Fourier Neural Operators (FNO)</h2>
-          <p class="meta">Operator learning for PDE surrogate modeling (e.g., Burgers’ equation).</p>
+          <p class="meta">Operator learning for PDE surrogate modeling and scientific machine learning.</p>
           <ul class="bullets">
-            <li>Implemented FNO training + evaluation pipelines with configurable experiments.</li>
-            <li>Benchmarked generalization across Reynolds regimes and grid resolutions.</li>
-            <li>Focused on reproducible scientific ML: datasets, seeds, and result reporting.</li>
+            <li>Implemented FNO training and evaluation pipelines with configurable experiments.</li>
+            <li>Benchmarked generalization across physical regimes and resolution scales.</li>
+            <li>Focused on reproducible scientific ML with datasets, seeds, and result reporting.</li>
           </ul>
           <div class="chips">
             <span class="chip">Neural Operators</span>
@@ -274,14 +547,13 @@
           </div>
         </article>
 
-        <!-- Project 3 -->
         <article class="card">
           <h2>Sparse Neural Network</h2>
           <p class="meta">Learned hard-mask sparsification using trainable mask parameters.</p>
           <ul class="bullets">
             <li>Implemented hard-threshold masking to learn sparse linear transformations.</li>
-            <li>Logged sparsity/accuracy tradeoffs and visualized sparse connectivity.</li>
-            <li>Packaged training/evaluation scripts with configs for repeatable runs.</li>
+            <li>Logged sparsity–accuracy tradeoffs and visualized sparse connectivity patterns.</li>
+            <li>Packaged training and evaluation scripts with configs for repeatable runs.</li>
           </ul>
           <div class="chips">
             <span class="chip">ℓ₀-style Sparsity</span>
@@ -294,14 +566,13 @@
           </div>
         </article>
 
-        <!-- Project 4 -->
         <article class="card">
           <h2>Kernel Methods, Reduced-Order Models & Dynamical Systems</h2>
           <p class="meta">Reproducing kernels, sparse representations, and learning in high-dimensional dynamics.</p>
           <ul class="bullets">
             <li>Developed RKHS-based models for nonlinear approximation and operator regression.</li>
-            <li>Explored sparsity constraints (ℓ₀/ℓ₁) for interpretable, data-efficient learning.</li>
-            <li>Connected theoretical insights (generalization / information constraints) to practical pipelines.</li>
+            <li>Explored sparsity constraints for interpretable, data-efficient learning.</li>
+            <li>Connected theoretical insights from generalization and information constraints to practical pipelines.</li>
           </ul>
           <div class="chips">
             <span class="chip">RKHS</span>
@@ -318,19 +589,22 @@
     </section>
 
     <section>
-      <h3 class="section-title">What I’m looking for</h3>
+      <h3 class="section-title">What I’m Looking For</h3>
       <div class="two-col">
         <div class="panel">
           <h4>Frontier AI Research & Engineering</h4>
           <p>
-            Roles focused on interpretability, reasoning, efficient learning, and scientific AI—bridging theory.
+            Research and engineering roles focused on interpretability, reasoning,
+            efficient learning, and scientific AI—especially environments that value
+            deep technical work, reproducibility, and mathematically grounded modeling.
           </p>
         </div>
         <div class="panel">
           <h4>Preferred Collaboration Style</h4>
           <p>
-            High-trust, research-driven teams where I can iterate quickly: run experiments, write clean code,
-            document results, and ship tools that enable others. I prioritize clarity, rigor, and measurable impact.
+            High-trust, research-driven teams where I can iterate quickly: run experiments,
+            write clean code, document results, and ship tools that enable others.
+            I prioritize clarity, rigor, and measurable impact.
           </p>
         </div>
       </div>
@@ -340,14 +614,15 @@
       <h3 class="section-title">Reproducibility</h3>
       <div class="panel">
         <p>
-          I aim for “clone-and-run” projects; where applicable, repositories include: <span class="kbd">requirements.txt</span>,
-          configuration files, fixed seeds, and result plots. If you encounter any issue reproducing results, please reach out.
+          I aim for “clone-and-run” projects. Where applicable, repositories include
+          <span class="kbd">requirements.txt</span>, configuration files, fixed seeds,
+          and result plots. If you encounter any issue reproducing results, please reach out.
         </p>
       </div>
     </section>
 
     <footer>
-      © <span id="y"></span> Himanshu Singh • Portfolio built for research roles in modern AI
+      © <span id="y"></span> Himanshu Singh · Research Portfolio · Mechanistic Interpretability · Scientific ML · Efficient AI
     </footer>
   </div>
 
