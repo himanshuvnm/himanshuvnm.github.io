@@ -7,20 +7,21 @@
   <meta name="description" content="Research portfolio: mechanistic interpretability, sparse learning, neural operators, scientific machine learning, and mathematical AI." />
   <style>
     :root{
-      --bg:#071019;
-      --bg2:#0b1420;
-      --panel:#0f1b2b;
-      --panel2:#121f30;
-      --panel3:#162536;
+      --bg:#06111d;
+      --bg2:#0b1624;
+      --panel:#101c2c;
+      --panel2:#132133;
+      --panel3:#17283d;
       --text:#eef4ff;
-      --muted:#9fb0c7;
-      --accent:#66b3ff;
-      --accent2:#62e0c1;
-      --accent3:#e7c67a;
+      --muted:#9eb0c8;
+      --accent:#79b8ff;
+      --accent2:#72e5c5;
+      --accent3:#ebcd8d;
+      --accent4:#b7a6ff;
       --border:#24364a;
-      --shadow: 0 18px 50px rgba(0,0,0,.38);
-      --radius: 18px;
-      --max: 1120px;
+      --shadow:0 22px 60px rgba(0,0,0,.40);
+      --radius:20px;
+      --max:1160px;
     }
 
     *{box-sizing:border-box}
@@ -30,118 +31,104 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background:
-        radial-gradient(1100px 600px at 10% -10%, rgba(102,179,255,.18), transparent 55%),
-        radial-gradient(900px 500px at 90% 0%, rgba(98,224,193,.12), transparent 55%),
-        radial-gradient(800px 500px at 50% 100%, rgba(231,198,122,.06), transparent 55%),
+        radial-gradient(1100px 650px at 8% -10%, rgba(121,184,255,.16), transparent 55%),
+        radial-gradient(900px 520px at 100% 0%, rgba(114,229,197,.12), transparent 55%),
+        radial-gradient(900px 520px at 50% 100%, rgba(235,205,141,.06), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       color:var(--text);
-      line-height:1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      line-height:1.62;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
 
     a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:none; opacity:.92}
+    a:hover{text-decoration:none; opacity:.94}
 
     .wrap{
       max-width:var(--max);
       margin:0 auto;
-      padding:42px 20px 70px;
+      padding:44px 20px 72px;
     }
 
     header{
       display:grid;
-      grid-template-columns: 1.25fr .75fr;
+      grid-template-columns: 1.2fr .8fr;
       gap:22px;
       align-items:start;
-      margin-bottom:26px;
+      margin-bottom:28px;
     }
 
-    @media (max-width: 920px){
+    @media (max-width: 940px){
       header{grid-template-columns:1fr}
     }
 
-    .hero, .right, .panel, .card, .featured{
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+    .hero, .side, .poster-card, .card, .panel, .feature{
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .hero{
-      background:
-        linear-gradient(180deg, rgba(18,31,48,.92), rgba(12,23,37,.86));
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:30px 28px 24px;
-      box-shadow: var(--shadow);
       position:relative;
       overflow:hidden;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:34px 30px 28px;
       background:
-        radial-gradient(500px 180px at 15% 0%, rgba(102,179,255,.14), transparent 52%),
-        radial-gradient(400px 160px at 90% 10%, rgba(98,224,193,.09), transparent 55%);
-      pointer-events:none;
+        radial-gradient(520px 180px at 12% 0%, rgba(121,184,255,.12), transparent 52%),
+        radial-gradient(420px 180px at 92% 8%, rgba(114,229,197,.08), transparent 56%),
+        linear-gradient(180deg, rgba(18,31,48,.94), rgba(10,20,32,.88));
+      box-shadow:var(--shadow);
     }
 
     .hero-subtle{
-      position:relative;
-      font-size:12.5px;
-      letter-spacing:.22em;
+      font-size:12px;
+      letter-spacing:.24em;
       text-transform:uppercase;
-      color:#90c8ff;
-      font-weight:700;
-      margin-bottom:10px;
+      color:#9bd0ff;
+      font-weight:800;
+      margin-bottom:12px;
     }
 
     .name{
-      position:relative;
-      font-size:38px;
-      line-height:1.08;
+      margin:0 0 8px;
+      font-size:42px;
+      line-height:1.04;
       font-weight:800;
       letter-spacing:.2px;
-      margin:0 0 8px;
     }
 
     .tagline{
-      position:relative;
       margin:0;
       color:#d7e6f7;
       font-size:16px;
-      font-weight:600;
+      font-weight:650;
     }
 
     .lead{
-      position:relative;
-      margin:14px 0 0;
-      color:var(--muted);
-      font-size:15.5px;
+      margin:16px 0 0;
       max-width:760px;
+      color:var(--muted);
+      font-size:15.8px;
     }
 
     .badges{
-      position:relative;
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin:18px 0 18px;
+      margin:20px 0 18px;
     }
 
     .badge{
       border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
+      background:rgba(255,255,255,.035);
+      color:#dce9f8;
       padding:7px 11px;
       border-radius:999px;
       font-size:12.5px;
-      color:#d9e7f8;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
     }
 
     .cta{
-      position:relative;
       display:flex;
       flex-wrap:wrap;
       gap:10px;
@@ -150,106 +137,136 @@
 
     .btn{
       display:inline-flex;
-      gap:8px;
       align-items:center;
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(102,179,255,.15), rgba(102,179,255,.08));
-      color: var(--text);
+      gap:8px;
       padding:11px 14px;
-      border-radius: 13px;
-      font-weight: 700;
-      font-size: 14px;
+      border-radius:13px;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid var(--border);
+      color:var(--text);
+      background:linear-gradient(180deg, rgba(121,184,255,.16), rgba(121,184,255,.07));
       box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+      transition:.18s ease;
     }
 
     .btn.secondary{
-      background: linear-gradient(180deg, rgba(98,224,193,.16), rgba(98,224,193,.08));
+      background:linear-gradient(180deg, rgba(114,229,197,.16), rgba(114,229,197,.07));
     }
 
     .btn.ghost{
-      background: rgba(255,255,255,.02);
+      background:rgba(255,255,255,.02);
     }
 
     .btn:hover{
-      border-color: rgba(102,179,255,.45);
-      transform: translateY(-1px);
-      transition: .18s ease;
+      transform:translateY(-1px);
+      border-color:rgba(121,184,255,.45);
     }
 
-    .right{
-      background: linear-gradient(180deg, rgba(15,27,43,.88), rgba(15,27,43,.72));
+    .side{
       border:1px solid var(--border);
-      border-radius:24px;
+      border-radius:28px;
       padding:24px 22px;
-      box-shadow: var(--shadow);
+      background:
+        radial-gradient(350px 150px at 90% 0%, rgba(235,205,141,.08), transparent 58%),
+        linear-gradient(180deg, rgba(16,28,44,.92), rgba(14,25,38,.82));
+      box-shadow:var(--shadow);
     }
 
-    .right h3, .section-title{
+    .side h3, .section-title{
       margin:0 0 10px;
-      font-size:13px;
-      color:#cad9ea;
+      font-size:12.5px;
+      color:#cbd9ea;
       letter-spacing:.18em;
       text-transform:uppercase;
       font-weight:800;
     }
 
-    .right p{
+    .side p{
       margin:0 0 12px;
       color:var(--muted);
-      font-size:14.5px
+      font-size:14.5px;
     }
 
     .list{
       margin:0;
       padding-left:18px;
-      color: var(--muted);
-      font-size: 14px;
+      color:var(--muted);
+      font-size:14px;
     }
 
-    section{margin-top:28px}
+    section{margin-top:30px}
 
-    .featured{
-      background:
-        radial-gradient(700px 220px at 0% 0%, rgba(102,179,255,.13), transparent 55%),
-        radial-gradient(600px 220px at 100% 0%, rgba(98,224,193,.09), transparent 55%),
-        linear-gradient(180deg, rgba(15,27,43,.92), rgba(18,31,48,.82));
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:12px;
+    }
+
+    .section-copy{
+      color:var(--muted);
+      font-size:14px;
+      max-width:760px;
+      margin:0;
+    }
+
+    .posters{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+    }
+
+    .poster-card{
       border:1px solid var(--border);
       border-radius:26px;
-      padding:24px;
-      box-shadow: var(--shadow);
+      padding:22px;
+      background:
+        radial-gradient(620px 180px at 0% 0%, rgba(121,184,255,.10), transparent 55%),
+        radial-gradient(500px 180px at 100% 0%, rgba(114,229,197,.07), transparent 55%),
+        linear-gradient(180deg, rgba(16,28,44,.90), rgba(18,31,48,.80));
+      box-shadow:var(--shadow);
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:22px;
+      grid-template-columns: 1.02fr .98fr;
+      gap:20px;
       align-items:center;
     }
 
-    @media (max-width: 920px){
-      .featured{grid-template-columns:1fr}
+    .poster-card:nth-child(2){
+      background:
+        radial-gradient(620px 180px at 0% 0%, rgba(183,166,255,.10), transparent 55%),
+        radial-gradient(500px 180px at 100% 0%, rgba(235,205,141,.08), transparent 55%),
+        linear-gradient(180deg, rgba(16,28,44,.90), rgba(18,31,48,.80));
     }
 
-    .featured-label{
+    @media (max-width: 940px){
+      .poster-card{grid-template-columns:1fr}
+    }
+
+    .poster-label{
       display:inline-block;
       padding:6px 11px;
       border-radius:999px;
       border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color:#bfe2ff;
+      background:rgba(255,255,255,.035);
+      color:#c6e4ff;
       font-size:12px;
       letter-spacing:.08em;
       text-transform:uppercase;
+      font-weight:800;
       margin-bottom:12px;
-      font-weight:700;
     }
 
-    .featured h2{
+    .poster-card h2{
       margin:0 0 8px;
-      font-size:29px;
-      line-height:1.15;
+      font-size:30px;
+      line-height:1.12;
     }
 
-    .featured p{
-      color:var(--muted);
+    .poster-card p{
       margin:0 0 12px;
+      color:var(--muted);
       font-size:15px;
     }
 
@@ -263,21 +280,21 @@
     .stat{
       padding:8px 12px;
       border-radius:12px;
-      background: rgba(255,255,255,.035);
+      background:rgba(255,255,255,.035);
       border:1px solid var(--border);
+      color:#e2efff;
       font-size:13px;
-      color:#dfefff;
     }
 
-    .featured-preview{
-      background: rgba(255,255,255,.025);
+    .poster-preview{
       border:1px solid var(--border);
       border-radius:20px;
       padding:12px;
-      box-shadow: var(--shadow);
+      background:rgba(255,255,255,.025);
+      box-shadow:var(--shadow);
     }
 
-    .featured-preview img{
+    .poster-preview img{
       width:100%;
       display:block;
       border-radius:12px;
@@ -285,53 +302,53 @@
 
     .mini-links, .links{
       display:flex;
-      gap:12px;
       flex-wrap:wrap;
+      gap:12px;
       margin-top:14px;
     }
 
     .mini-link, .link{
+      color:#beddff;
       font-weight:700;
       font-size:13.5px;
-      color:#b7d8ff;
     }
 
     .grid{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns:repeat(12, 1fr);
       gap:16px;
     }
 
     .card{
-      grid-column: span 6;
-      background:
-        linear-gradient(180deg, rgba(15,27,43,.88), rgba(18,31,48,.76));
-      border:1px solid var(--border);
-      border-radius: 22px;
-      padding:20px 20px 18px;
-      box-shadow: var(--shadow);
+      grid-column:span 6;
       position:relative;
       overflow:hidden;
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:20px 20px 18px;
+      background:linear-gradient(180deg, rgba(16,28,44,.88), rgba(19,33,51,.76));
+      box-shadow:var(--shadow);
     }
 
     .card:before{
       content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(480px 140px at 10% -10%, rgba(102,179,255,.14), transparent 52%);
+      position:absolute;
+      inset:-2px;
+      background:radial-gradient(500px 140px at 8% -10%, rgba(121,184,255,.12), transparent 52%);
       pointer-events:none;
     }
-    .card:nth-child(2):before{background: radial-gradient(520px 140px at 15% -10%, rgba(98,224,193,.12), transparent 56%);}
-    .card:nth-child(3):before{background: radial-gradient(520px 140px at 15% -10%, rgba(167,139,250,.12), transparent 56%);}
-    .card:nth-child(4):before{background: radial-gradient(520px 140px at 15% -10%, rgba(231,198,122,.10), transparent 56%);}
 
-    @media (max-width:920px){
-      .card{grid-column: span 12;}
+    .card:nth-child(2):before{background:radial-gradient(520px 140px at 10% -10%, rgba(114,229,197,.11), transparent 55%)}
+    .card:nth-child(3):before{background:radial-gradient(520px 140px at 10% -10%, rgba(183,166,255,.11), transparent 55%)}
+    .card:nth-child(4):before{background:radial-gradient(520px 140px at 10% -10%, rgba(235,205,141,.10), transparent 55%)}
+
+    @media (max-width:940px){
+      .card{grid-column:span 12}
     }
 
     .card h2{
       margin:0 0 6px;
       font-size:20px;
-      position:relative;
       line-height:1.25;
     }
 
@@ -339,15 +356,13 @@
       margin:0 0 12px;
       color:var(--muted);
       font-size:13.8px;
-      position:relative;
     }
 
     .bullets{
       margin:0;
       padding-left:18px;
-      color:#dbe6f4;
+      color:#dde8f6;
       font-size:14px;
-      position:relative;
     }
 
     .chips{
@@ -355,40 +370,39 @@
       flex-wrap:wrap;
       gap:8px;
       margin-top:12px;
-      position:relative;
     }
 
     .chip{
       font-size:12px;
       padding:5px 8px;
       border-radius:999px;
-      background: rgba(255,255,255,.04);
+      background:rgba(255,255,255,.04);
       border:1px solid var(--border);
-      color:#edf4ff;
+      color:#eef4ff;
     }
 
     .two-col{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:16px;
     }
 
-    @media (max-width:920px){
+    @media (max-width:940px){
       .two-col{grid-template-columns:1fr}
     }
 
     .panel{
-      background: linear-gradient(180deg, rgba(15,27,43,.84), rgba(18,31,48,.74));
       border:1px solid var(--border);
-      border-radius: 20px;
+      border-radius:20px;
       padding:20px;
-      box-shadow: var(--shadow);
+      background:linear-gradient(180deg, rgba(16,28,44,.84), rgba(19,33,51,.74));
+      box-shadow:var(--shadow);
     }
 
     .panel h4{
       margin:0 0 8px;
       font-size:16px;
-      color:#f2f7ff;
+      color:#f1f7ff;
     }
 
     .panel p{
@@ -399,25 +413,23 @@
 
     .kbd{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      background: rgba(255,255,255,.04);
+      background:rgba(255,255,255,.04);
       border:1px solid var(--border);
       padding:2px 6px;
-      border-radius: 8px;
+      border-radius:8px;
       color:#eef4ff;
     }
 
     footer{
-      margin-top:38px;
-      color:var(--muted);
-      font-size: 13px;
-      text-align:center;
-      padding-top:10px;
+      margin-top:40px;
+      padding-top:12px;
       border-top:1px solid rgba(255,255,255,.05);
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
     }
 
-    .gold{
-      color: var(--accent3);
-    }
+    .gold{color:var(--accent3)}
   </style>
 </head>
 
@@ -448,12 +460,12 @@
 
         <div class="cta">
           <a class="btn" href="https://github.com/himanshuvnm" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn secondary" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER" target="_blank" rel="noreferrer">SciFM Poster</a>
+          <a class="btn secondary" href="#posters">Research Posters</a>
           <a class="btn ghost" href="https://linkedin.com/in/himanshuvnm" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
 
-      <div class="right">
+      <div class="side">
         <h3>Current Focus</h3>
         <p>
           I’m interested in understanding model reasoning, extracting circuits, and building efficient learning systems grounded in mathematics.
@@ -467,46 +479,104 @@
       </div>
     </header>
 
-    <section>
-      <h3 class="section-title">Featured Research Artifact</h3>
-      <div class="featured">
+    <section id="posters">
+      <div class="section-head">
         <div>
-          <div class="featured-label">SciFM 2025 Poster</div>
-          <h2>GIFT-KASTL: Graph Foundation Models for Fracture Network Learning</h2>
-          <p>
-            A research poster on graph foundation models for scientific machine learning,
-            exploring how fracture networks and structured physical systems can be modeled
-            using graph-based learning architectures.
+          <h3 class="section-title">Research Posters</h3>
+          <p class="section-copy">
+            Selected research posters, shown in chronological order, highlighting my work in
+            scientific machine learning, graph foundation models, and mathematically grounded AI.
           </p>
-          <p>
-            This project sits at the intersection of <span class="gold">graph AI</span>,
-            <span class="gold">scientific machine learning</span>, and <span class="gold">foundation-model thinking</span>
-            for structured scientific data.
-          </p>
+        </div>
+      </div>
 
-          <div class="stat-row">
-            <div class="stat">Graph Foundation Models</div>
-            <div class="stat">Scientific ML</div>
-            <div class="stat">Fracture Networks</div>
-            <div class="stat">Poster Artifact</div>
+      <div class="posters">
+
+        <!-- SIAM MDS 2024 -->
+        <div class="poster-card">
+          <div>
+            <div class="poster-label">2024 · SIAM MDS</div>
+            <h2>SIAM MDS 2024: Mathematical Machine Learning for Scientific Systems</h2>
+            <p>
+              A research poster presented at the SIAM Conference on Mathematics of Data Science,
+              centered on scientific machine learning, sparse learning, neural operators, and
+              mathematically grounded approaches to structured scientific data.
+            </p>
+            <p>
+              This poster reflects a broader research direction in <span class="gold">scientific AI</span>,
+              <span class="gold">efficient learning</span>, and <span class="gold">mathematical structure in modern machine learning</span>.
+            </p>
+
+            <div class="stat-row">
+              <div class="stat">SIAM MDS 2024</div>
+              <div class="stat">Scientific ML</div>
+              <div class="stat">Sparse Learning</div>
+              <div class="stat">Neural Operators</div>
+            </div>
+
+            <div class="mini-links">
+              <a class="mini-link" href="https://github.com/himanshuvnm/POSTER_SIAM_MDS_2024" target="_blank" rel="noreferrer">Repository →</a>
+              <a class="mini-link" href="https://github.com/himanshuvnm/POSTER_SIAM_MDS_2024/blob/main/SIAM_MDS_POSTER.pdf" target="_blank" rel="noreferrer">Poster PDF →</a>
+            </div>
           </div>
 
-          <div class="mini-links">
-            <a class="mini-link" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER" target="_blank" rel="noreferrer">Repository →</a>
-            <a class="mini-link" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER/blob/main/GIFT-KASTL_SciFM_POSTER.pdf" target="_blank" rel="noreferrer">Poster PDF →</a>
+          <div class="poster-preview">
+            <a href="https://github.com/himanshuvnm/POSTER_SIAM_MDS_2024/blob/main/SIAM_MDS_POSTER.pdf" target="_blank" rel="noreferrer">
+              <img src="https://raw.githubusercontent.com/himanshuvnm/POSTER_SIAM_MDS_2024/main/preview.png" alt="SIAM MDS 2024 Poster Preview">
+            </a>
           </div>
         </div>
 
-        <div class="featured-preview">
-          <a href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER/blob/main/GIFT-KASTL_SciFM_POSTER.pdf" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/himanshuvnm/GIFT_KASTL_POSTER/main/preview.png" alt="SciFM 2025 GIFT-KASTL Poster Preview">
-          </a>
+        <!-- SciFM 2025 -->
+        <div class="poster-card">
+          <div>
+            <div class="poster-label">2025 · SciFM</div>
+            <h2>GIFT-KASTL: Graph Foundation Models for Fracture Network Learning</h2>
+            <p>
+              A research poster on graph foundation models for scientific machine learning,
+              exploring how fracture networks and structured physical systems can be modeled
+              using graph-based learning architectures.
+            </p>
+            <p>
+              This project sits at the intersection of <span class="gold">graph AI</span>,
+              <span class="gold">scientific machine learning</span>, and <span class="gold">foundation-model thinking</span>
+              for structured scientific data.
+            </p>
+
+            <div class="stat-row">
+              <div class="stat">SciFM 2025</div>
+              <div class="stat">Graph Foundation Models</div>
+              <div class="stat">Fracture Networks</div>
+              <div class="stat">Poster Artifact</div>
+            </div>
+
+            <div class="mini-links">
+              <a class="mini-link" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER" target="_blank" rel="noreferrer">Repository →</a>
+              <a class="mini-link" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER/blob/main/GIFT-KASTL_SciFM_POSTER.pdf" target="_blank" rel="noreferrer">Poster PDF →</a>
+            </div>
+          </div>
+
+          <div class="poster-preview">
+            <a href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER/blob/main/GIFT-KASTL_SciFM_POSTER.pdf" target="_blank" rel="noreferrer">
+              <img src="https://raw.githubusercontent.com/himanshuvnm/GIFT_KASTL_POSTER/main/preview.png" alt="SciFM 2025 GIFT-KASTL Poster Preview">
+            </a>
+          </div>
         </div>
+
       </div>
     </section>
 
     <section>
-      <h3 class="section-title">Selected Projects</h3>
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Selected Projects</h3>
+          <p class="section-copy">
+            Representative technical projects spanning interpretability, operator learning,
+            sparse neural computation, and mathematical modeling for AI systems.
+          </p>
+        </div>
+      </div>
+
       <div class="grid">
 
         <article class="card">
@@ -589,7 +659,16 @@
     </section>
 
     <section>
-      <h3 class="section-title">What I’m Looking For</h3>
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">What I’m Looking For</h3>
+          <p class="section-copy">
+            Research and engineering environments where theory, experimentation,
+            and carefully built systems reinforce one another.
+          </p>
+        </div>
+      </div>
+
       <div class="two-col">
         <div class="panel">
           <h4>Frontier AI Research & Engineering</h4>
@@ -611,12 +690,20 @@
     </section>
 
     <section>
-      <h3 class="section-title">Reproducibility</h3>
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Reproducibility</h3>
+          <p class="section-copy">
+            I aim for repositories that are understandable, runnable, and useful to other researchers.
+          </p>
+        </div>
+      </div>
+
       <div class="panel">
         <p>
-          I aim for “clone-and-run” projects. Where applicable, repositories include
-          <span class="kbd">requirements.txt</span>, configuration files, fixed seeds,
-          and result plots. If you encounter any issue reproducing results, please reach out.
+          Where applicable, repositories include <span class="kbd">requirements.txt</span>,
+          configuration files, fixed seeds, and result plots. If you encounter any issue
+          reproducing results, please reach out.
         </p>
       </div>
     </section>
