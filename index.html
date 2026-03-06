@@ -4,24 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Himanshu Singh — Research Portfolio</title>
-  <meta name="description" content="Research portfolio: mechanistic interpretability, sparse learning, neural operators, scientific machine learning, and mathematical AI." />
+  <meta
+    name="description"
+    content="Research portfolio of Himanshu Singh: mechanistic interpretability, sparse learning, neural operators, graph foundation models, scientific machine learning, and mathematical AI."
+  />
   <style>
     :root{
-      --bg:#06111d;
-      --bg2:#0b1624;
+      --bg:#06101b;
+      --bg2:#0b1522;
       --panel:#101c2c;
       --panel2:#132133;
-      --panel3:#17283d;
-      --text:#eef4ff;
-      --muted:#9eb0c8;
-      --accent:#79b8ff;
-      --accent2:#72e5c5;
-      --accent3:#ebcd8d;
-      --accent4:#b7a6ff;
-      --border:#24364a;
-      --shadow:0 22px 60px rgba(0,0,0,.40);
-      --radius:20px;
-      --max:1160px;
+      --panel3:#18283d;
+      --text:#edf4ff;
+      --muted:#9eb1c8;
+      --accent:#7bbcff;
+      --accent2:#71e2c3;
+      --accent3:#ebcf91;
+      --accent4:#c0b4ff;
+      --border:#26384d;
+      --shadow:0 24px 70px rgba(0,0,0,.42);
+      --radius:22px;
+      --max:1180px;
     }
 
     *{box-sizing:border-box}
@@ -31,9 +34,9 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background:
-        radial-gradient(1100px 650px at 8% -10%, rgba(121,184,255,.16), transparent 55%),
-        radial-gradient(900px 520px at 100% 0%, rgba(114,229,197,.12), transparent 55%),
-        radial-gradient(900px 520px at 50% 100%, rgba(235,205,141,.06), transparent 55%),
+        radial-gradient(1100px 640px at 10% -10%, rgba(123,188,255,.16), transparent 55%),
+        radial-gradient(800px 500px at 100% 0%, rgba(113,226,195,.10), transparent 55%),
+        radial-gradient(850px 520px at 50% 100%, rgba(235,207,145,.06), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       color:var(--text);
       line-height:1.62;
@@ -41,28 +44,35 @@
       text-rendering:optimizeLegibility;
     }
 
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:none; opacity:.94}
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    a:hover{
+      opacity:.94;
+      text-decoration:none;
+    }
 
     .wrap{
       max-width:var(--max);
       margin:0 auto;
-      padding:44px 20px 72px;
+      padding:46px 20px 78px;
     }
 
     header{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.18fr 0.82fr;
       gap:22px;
       align-items:start;
-      margin-bottom:28px;
+      margin-bottom:30px;
     }
 
-    @media (max-width: 940px){
+    @media (max-width: 980px){
       header{grid-template-columns:1fr}
     }
 
-    .hero, .side, .poster-card, .card, .panel, .feature{
+    .hero, .side, .poster-card, .card, .panel, .feature-paper{
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
@@ -71,12 +81,12 @@
       position:relative;
       overflow:hidden;
       border:1px solid var(--border);
-      border-radius:28px;
-      padding:34px 30px 28px;
+      border-radius:30px;
+      padding:36px 30px 28px;
       background:
-        radial-gradient(520px 180px at 12% 0%, rgba(121,184,255,.12), transparent 52%),
-        radial-gradient(420px 180px at 92% 8%, rgba(114,229,197,.08), transparent 56%),
-        linear-gradient(180deg, rgba(18,31,48,.94), rgba(10,20,32,.88));
+        radial-gradient(560px 180px at 10% 0%, rgba(123,188,255,.13), transparent 52%),
+        radial-gradient(420px 180px at 94% 8%, rgba(113,226,195,.08), transparent 58%),
+        linear-gradient(180deg, rgba(18,31,48,.95), rgba(9,18,29,.88));
       box-shadow:var(--shadow);
     }
 
@@ -84,29 +94,29 @@
       font-size:12px;
       letter-spacing:.24em;
       text-transform:uppercase;
-      color:#9bd0ff;
+      color:#9cd2ff;
       font-weight:800;
       margin-bottom:12px;
     }
 
     .name{
       margin:0 0 8px;
-      font-size:42px;
-      line-height:1.04;
+      font-size:44px;
+      line-height:1.03;
       font-weight:800;
       letter-spacing:.2px;
     }
 
     .tagline{
       margin:0;
-      color:#d7e6f7;
+      color:#d8e7f9;
       font-size:16px;
       font-weight:650;
     }
 
     .lead{
       margin:16px 0 0;
-      max-width:760px;
+      max-width:780px;
       color:var(--muted);
       font-size:15.8px;
     }
@@ -145,13 +155,13 @@
       font-size:14px;
       border:1px solid var(--border);
       color:var(--text);
-      background:linear-gradient(180deg, rgba(121,184,255,.16), rgba(121,184,255,.07));
+      background:linear-gradient(180deg, rgba(123,188,255,.16), rgba(123,188,255,.07));
       box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
       transition:.18s ease;
     }
 
     .btn.secondary{
-      background:linear-gradient(180deg, rgba(114,229,197,.16), rgba(114,229,197,.07));
+      background:linear-gradient(180deg, rgba(113,226,195,.16), rgba(113,226,195,.07));
     }
 
     .btn.ghost{
@@ -160,16 +170,16 @@
 
     .btn:hover{
       transform:translateY(-1px);
-      border-color:rgba(121,184,255,.45);
+      border-color:rgba(123,188,255,.45);
     }
 
     .side{
       border:1px solid var(--border);
-      border-radius:28px;
+      border-radius:30px;
       padding:24px 22px;
       background:
-        radial-gradient(350px 150px at 90% 0%, rgba(235,205,141,.08), transparent 58%),
-        linear-gradient(180deg, rgba(16,28,44,.92), rgba(14,25,38,.82));
+        radial-gradient(360px 150px at 92% 0%, rgba(235,207,145,.07), transparent 58%),
+        linear-gradient(180deg, rgba(16,28,44,.92), rgba(13,24,38,.84));
       box-shadow:var(--shadow);
     }
 
@@ -195,7 +205,9 @@
       font-size:14px;
     }
 
-    section{margin-top:30px}
+    section{
+      margin-top:32px;
+    }
 
     .section-head{
       display:flex;
@@ -208,24 +220,24 @@
     .section-copy{
       color:var(--muted);
       font-size:14px;
-      max-width:760px;
+      max-width:780px;
       margin:0;
     }
 
     .posters{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns:1fr;
       gap:18px;
     }
 
     .poster-card{
       border:1px solid var(--border);
-      border-radius:26px;
+      border-radius:28px;
       padding:22px;
       background:
-        radial-gradient(620px 180px at 0% 0%, rgba(121,184,255,.10), transparent 55%),
-        radial-gradient(500px 180px at 100% 0%, rgba(114,229,197,.07), transparent 55%),
-        linear-gradient(180deg, rgba(16,28,44,.90), rgba(18,31,48,.80));
+        radial-gradient(620px 190px at 0% 0%, rgba(123,188,255,.10), transparent 55%),
+        radial-gradient(500px 180px at 100% 0%, rgba(113,226,195,.07), transparent 55%),
+        linear-gradient(180deg, rgba(16,28,44,.92), rgba(18,31,48,.82));
       box-shadow:var(--shadow);
       display:grid;
       grid-template-columns: 1.02fr .98fr;
@@ -235,12 +247,12 @@
 
     .poster-card:nth-child(2){
       background:
-        radial-gradient(620px 180px at 0% 0%, rgba(183,166,255,.10), transparent 55%),
-        radial-gradient(500px 180px at 100% 0%, rgba(235,205,141,.08), transparent 55%),
-        linear-gradient(180deg, rgba(16,28,44,.90), rgba(18,31,48,.80));
+        radial-gradient(620px 190px at 0% 0%, rgba(192,180,255,.10), transparent 55%),
+        radial-gradient(500px 180px at 100% 0%, rgba(235,207,145,.08), transparent 55%),
+        linear-gradient(180deg, rgba(16,28,44,.92), rgba(18,31,48,.82));
     }
 
-    @media (max-width: 940px){
+    @media (max-width: 980px){
       .poster-card{grid-template-columns:1fr}
     }
 
@@ -250,7 +262,7 @@
       border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.035);
-      color:#c6e4ff;
+      color:#c8e5ff;
       font-size:12px;
       letter-spacing:.08em;
       text-transform:uppercase;
@@ -300,17 +312,79 @@
       border-radius:12px;
     }
 
-    .mini-links, .links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:14px;
+    .feature-paper{
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:24px;
+      background:
+        radial-gradient(700px 200px at 0% 0%, rgba(235,207,145,.10), transparent 55%),
+        radial-gradient(500px 180px at 100% 0%, rgba(123,188,255,.08), transparent 55%),
+        linear-gradient(180deg, rgba(16,28,44,.92), rgba(18,31,48,.82));
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
     }
 
-    .mini-link, .link{
-      color:#beddff;
-      font-weight:700;
-      font-size:13.5px;
+    .feature-label{
+      display:inline-block;
+      padding:6px 11px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.035);
+      color:#f2ddb0;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .feature-paper h2{
+      margin:0 0 8px;
+      font-size:30px;
+      line-height:1.14;
+    }
+
+    .feature-paper p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .research-gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin-top:8px;
+    }
+
+    @media (max-width: 980px){
+      .research-gallery{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .gallery-item{
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      background:rgba(255,255,255,.025);
+      box-shadow:var(--shadow);
+    }
+
+    .gallery-item img{
+      display:block;
+      width:100%;
+      height:auto;
+      background:#0a0f18;
+    }
+
+    .gallery-caption{
+      padding:12px 12px 13px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
     }
 
     .grid{
@@ -334,15 +408,15 @@
       content:"";
       position:absolute;
       inset:-2px;
-      background:radial-gradient(500px 140px at 8% -10%, rgba(121,184,255,.12), transparent 52%);
+      background:radial-gradient(500px 140px at 8% -10%, rgba(123,188,255,.12), transparent 52%);
       pointer-events:none;
     }
 
-    .card:nth-child(2):before{background:radial-gradient(520px 140px at 10% -10%, rgba(114,229,197,.11), transparent 55%)}
-    .card:nth-child(3):before{background:radial-gradient(520px 140px at 10% -10%, rgba(183,166,255,.11), transparent 55%)}
-    .card:nth-child(4):before{background:radial-gradient(520px 140px at 10% -10%, rgba(235,205,141,.10), transparent 55%)}
+    .card:nth-child(2):before{background:radial-gradient(520px 140px at 10% -10%, rgba(113,226,195,.11), transparent 55%)}
+    .card:nth-child(3):before{background:radial-gradient(520px 140px at 10% -10%, rgba(192,180,255,.11), transparent 55%)}
+    .card:nth-child(4):before{background:radial-gradient(520px 140px at 10% -10%, rgba(235,207,145,.10), transparent 55%)}
 
-    @media (max-width:940px){
+    @media (max-width:980px){
       .card{grid-column:span 12}
     }
 
@@ -381,13 +455,26 @@
       color:#eef4ff;
     }
 
+    .mini-links, .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .mini-link, .link{
+      color:#beddff;
+      font-weight:700;
+      font-size:13.5px;
+    }
+
     .two-col{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:16px;
     }
 
-    @media (max-width:940px){
+    @media (max-width:980px){
       .two-col{grid-template-columns:1fr}
     }
 
@@ -445,16 +532,16 @@
         </p>
         <p class="lead">
           I work on mechanistic interpretability, sparse and efficient learning,
-          neural operators, and mathematically grounded AI systems for scientific
-          and structured domains.
+          neural operators, graph foundation models, and mathematically grounded
+          AI systems for scientific and structured domains.
         </p>
 
         <div class="badges">
           <span class="badge">Mechanistic Interpretability</span>
           <span class="badge">Sparse Learning (ℓ₀/ℓ₁)</span>
           <span class="badge">Neural Operators (FNO)</span>
+          <span class="badge">Graph Foundation Models</span>
           <span class="badge">Mathematical ML</span>
-          <span class="badge">Foundation Models</span>
           <span class="badge">Scientific AI</span>
         </div>
 
@@ -474,6 +561,7 @@
           <li>Transformer circuit tracing + activation patching</li>
           <li>Efficient and sparse architectures</li>
           <li>Operator learning for PDEs and dynamical systems</li>
+          <li>Kernel methods and mathematical representations</li>
           <li>Rigor, reproducibility, and research-grade code</li>
         </ul>
       </div>
@@ -484,15 +572,14 @@
         <div>
           <h3 class="section-title">Research Posters</h3>
           <p class="section-copy">
-            Selected research posters, shown in chronological order, highlighting my work in
-            scientific machine learning, graph foundation models, and mathematically grounded AI.
+            Selected research posters shown in chronological order, highlighting work in
+            scientific machine learning, mathematical AI, and graph-based learning for structured systems.
           </p>
         </div>
       </div>
 
       <div class="posters">
 
-        <!-- SIAM MDS 2024 -->
         <div class="poster-card">
           <div>
             <div class="poster-label">2024 · SIAM MDS</div>
@@ -522,12 +609,11 @@
 
           <div class="poster-preview">
             <a href="https://github.com/himanshuvnm/POSTER_SIAM_MDS_2024/blob/main/SIAM_MDS_POSTER.pdf" target="_blank" rel="noreferrer">
-              <img src="https://raw.githubusercontent.com/himanshuvnm/POSTER_SIAM_MDS_2024/main/preview_SIAM_MDS_POSTER.png" alt="SIAM MDS 2024 Poster Preview">
+              <img src="https://raw.githubusercontent.com/himanshuvnm/POSTER_SIAM_MDS_2024/main/preview.png" alt="SIAM MDS 2024 Poster Preview">
             </a>
           </div>
         </div>
 
-        <!-- SciFM 2025 -->
         <div class="poster-card">
           <div>
             <div class="poster-label">2025 · SciFM</div>
@@ -563,6 +649,83 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Featured Paper</h3>
+          <p class="section-copy">
+            A feature paper on the Generalized Gaussian Radial Basis Function (GGRBF), connecting reproducing kernel Hilbert space theory, orthonormal bases, and machine learning applications.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-paper">
+        <div>
+          <div class="feature-label">Feature Paper · Mathematics 2024</div>
+          <h2>Generalized Gaussian Radial Basis Function for Artificial Intelligence</h2>
+          <p>
+            This work develops the <span class="gold">Generalized Gaussian Radial Basis Function (GGRBF)</span>,
+            studies its reproducing kernel Hilbert space, and connects it to mathematical structures such as
+            orthonormal bases and Hermite-type eigen-observables.
+          </p>
+          <p>
+            The project bridges <span class="gold">kernel methods</span>, <span class="gold">RKHS theory</span>,
+            and <span class="gold">machine learning applications</span>, showing how a mathematically enriched
+            radial basis framework can support both theoretical analysis and practical modeling.
+          </p>
+
+          <div class="stat-row">
+            <div class="stat">Feature Paper</div>
+            <div class="stat">RKHS Theory</div>
+            <div class="stat">Kernel Methods</div>
+            <div class="stat">Hermite Structures</div>
+          </div>
+
+          <div class="mini-links">
+            <a class="mini-link" href="https://www.mdpi.com/2227-7390/12/6/829" target="_blank" rel="noreferrer">Paper →</a>
+            <a class="mini-link" href="https://github.com/himanshuvnm/Generalized-Gaussian-Radial-Basis-Function-in-Artificial-Intelligence-MATLAB" target="_blank" rel="noreferrer">Repository →</a>
+          </div>
+        </div>
+
+        <div class="research-gallery">
+
+          <div class="gallery-item">
+            <img
+              src="https://raw.githubusercontent.com/himanshuvnm/Generalized-Gaussian-Radial-Basis-Function-in-Artificial-Intelligence-MATLAB/main/GGRBF-Hermite_graph.png"
+              alt="Hermite polynomial eigen observables of GRBF"
+            />
+            <div class="gallery-caption">
+              <strong>Hermite polynomial eigen-observables of GRBF.</strong>
+              Classical Hermite structure associated with the Gaussian radial basis setting.
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://raw.githubusercontent.com/himanshuvnm/Generalized-Gaussian-Radial-Basis-Function-in-Artificial-Intelligence-MATLAB/main/GGRBF_Hermite_012.png"
+              alt="Generalized Hermite polynomial eigen observables of GGRBF"
+            />
+            <div class="gallery-caption">
+              <strong>Generalized Hermite eigen-observables of GGRBF.</strong>
+              Extension of Hermite-type structure induced by the generalized kernel.
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://raw.githubusercontent.com/himanshuvnm/Generalized-Gaussian-Radial-Basis-Function-in-Artificial-Intelligence-MATLAB/main/myfigure.png"
+              alt="Orthonormal basis of the RKHS of GGRBF in 1D"
+            />
+            <div class="gallery-caption">
+              <strong>Orthonormal basis of the RKHS of GGRBF in 1D.</strong>
+              A visual representation of the functional structure generated by the generalized kernel.
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -637,21 +800,21 @@
         </article>
 
         <article class="card">
-          <h2>Kernel Methods, Reduced-Order Models & Dynamical Systems</h2>
-          <p class="meta">Reproducing kernels, sparse representations, and learning in high-dimensional dynamics.</p>
+          <h2>Graph Foundation Models for Scientific Systems</h2>
+          <p class="meta">Graph learning and foundation-model ideas for fracture networks and structured physical systems.</p>
           <ul class="bullets">
-            <li>Developed RKHS-based models for nonlinear approximation and operator regression.</li>
-            <li>Explored sparsity constraints for interpretable, data-efficient learning.</li>
-            <li>Connected theoretical insights from generalization and information constraints to practical pipelines.</li>
+            <li>Explored graph-based learning pipelines for fracture-network representations.</li>
+            <li>Studied structured scientific datasets through graph foundation model perspectives.</li>
+            <li>Developed poster-based research artifacts for public scientific communication.</li>
           </ul>
           <div class="chips">
-            <span class="chip">RKHS</span>
-            <span class="chip">Sparsity</span>
-            <span class="chip">Optimization</span>
-            <span class="chip">Scientific ML</span>
+            <span class="chip">Graph AI</span>
+            <span class="chip">Scientific Systems</span>
+            <span class="chip">Foundation Models</span>
+            <span class="chip">Research Posters</span>
           </div>
           <div class="links">
-            <a class="link" href="https://github.com/himanshuvnm/Generalized-Gaussian-Radial-Basis-Function-in-Artificial-Intelligence-MATLAB" target="_blank" rel="noreferrer">Repository →</a>
+            <a class="link" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER" target="_blank" rel="noreferrer">Repository →</a>
           </div>
         </article>
 
