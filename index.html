@@ -8,6 +8,24 @@
     name="description"
     content="Research portfolio of Himanshu Singh: mechanistic interpretability, sparse learning, neural operators, graph foundation models, scientific machine learning, and mathematical AI."
   />
+
+  <!-- Search / social metadata -->
+  <meta name="keywords" content="Himanshu Singh, scientific machine learning, mechanistic interpretability, sparse learning, kernel methods, RKHS, neural operators, Fourier neural operator, Koopman operator, graph foundation models, mathematical machine learning, AI researcher, scientific AI">
+  <meta name="author" content="Himanshu Singh">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#06101b">
+
+  <meta property="og:title" content="Himanshu Singh — Research Portfolio">
+  <meta property="og:description" content="Research portfolio in scientific machine learning, mechanistic interpretability, sparse learning, graph foundation models, and mathematical AI.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://himanshuvnm.github.io/">
+  <meta property="og:image" content="https://himanshuvnm.github.io/preview-site.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Himanshu Singh — Research Portfolio">
+  <meta name="twitter:description" content="Research portfolio in scientific machine learning, mechanistic interpretability, sparse learning, graph foundation models, and mathematical AI.">
+  <meta name="twitter:image" content="https://himanshuvnm.github.io/preview-site.png">
+
   <style>
     :root{
       --bg:#06101b;
@@ -224,6 +242,36 @@
       margin:0;
     }
 
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    @media (max-width:980px){
+      .two-col{grid-template-columns:1fr}
+    }
+
+    .panel{
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:20px;
+      background:linear-gradient(180deg, rgba(16,28,44,.84), rgba(19,33,51,.74));
+      box-shadow:var(--shadow);
+    }
+
+    .panel h4{
+      margin:0 0 8px;
+      font-size:16px;
+      color:#f1f7ff;
+    }
+
+    .panel p{
+      margin:0;
+      color:var(--muted);
+      font-size:14.5px;
+    }
+
     .posters{
       display:grid;
       grid-template-columns:1fr;
@@ -256,13 +304,12 @@
       .poster-card{grid-template-columns:1fr}
     }
 
-    .poster-label{
+    .poster-label, .feature-label{
       display:inline-block;
       padding:6px 11px;
       border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.035);
-      color:#c8e5ff;
       font-size:12px;
       letter-spacing:.08em;
       text-transform:uppercase;
@@ -270,13 +317,16 @@
       margin-bottom:12px;
     }
 
-    .poster-card h2{
+    .poster-label{ color:#c8e5ff; }
+    .feature-label{ color:#f2ddb0; }
+
+    .poster-card h2, .feature-paper h2{
       margin:0 0 8px;
       font-size:30px;
       line-height:1.12;
     }
 
-    .poster-card p{
+    .poster-card p, .feature-paper p{
       margin:0 0 12px;
       color:var(--muted);
       font-size:15px;
@@ -326,32 +376,6 @@
       gap:18px;
     }
 
-    .feature-label{
-      display:inline-block;
-      padding:6px 11px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.035);
-      color:#f2ddb0;
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-weight:800;
-      margin-bottom:12px;
-    }
-
-    .feature-paper h2{
-      margin:0 0 8px;
-      font-size:30px;
-      line-height:1.14;
-    }
-
-    .feature-paper p{
-      margin:0 0 12px;
-      color:var(--muted);
-      font-size:15px;
-    }
-
     .research-gallery{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -360,9 +384,7 @@
     }
 
     @media (max-width: 980px){
-      .research-gallery{
-        grid-template-columns:1fr;
-      }
+      .research-gallery{grid-template-columns:1fr}
     }
 
     .gallery-item{
@@ -466,36 +488,7 @@
       color:#beddff;
       font-weight:700;
       font-size:13.5px;
-    }
-
-    .two-col{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-
-    @media (max-width:980px){
-      .two-col{grid-template-columns:1fr}
-    }
-
-    .panel{
-      border:1px solid var(--border);
-      border-radius:20px;
-      padding:20px;
-      background:linear-gradient(180deg, rgba(16,28,44,.84), rgba(19,33,51,.74));
-      box-shadow:var(--shadow);
-    }
-
-    .panel h4{
-      margin:0 0 8px;
-      font-size:16px;
-      color:#f1f7ff;
-    }
-
-    .panel p{
-      margin:0;
-      color:var(--muted);
-      font-size:14.5px;
+      transition:opacity .18s ease;
     }
 
     .kbd{
@@ -532,8 +525,8 @@
         </p>
         <p class="lead">
           I work on mechanistic interpretability, sparse and efficient learning,
-          neural operators, graph foundation models, and mathematically grounded
-          AI systems for scientific and structured domains.
+          neural operators, graph foundation models, kernel methods, and mathematically
+          grounded AI systems for scientific and structured domains.
         </p>
 
         <div class="badges">
@@ -541,7 +534,7 @@
           <span class="badge">Sparse Learning (ℓ₀/ℓ₁)</span>
           <span class="badge">Neural Operators (FNO)</span>
           <span class="badge">Graph Foundation Models</span>
-          <span class="badge">Mathematical ML</span>
+          <span class="badge">Kernel Methods</span>
           <span class="badge">Scientific AI</span>
         </div>
 
@@ -566,6 +559,35 @@
         </ul>
       </div>
     </header>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Research Themes</h3>
+          <p class="section-copy">
+            My work sits at the intersection of mathematical structure, scientific machine learning,
+            and modern AI systems.
+          </p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h4>Scientific Machine Learning</h4>
+          <p>
+            Operator learning, kernel methods, graph-based representations, and data-driven modeling
+            of dynamical systems, with an emphasis on mathematically grounded structure.
+          </p>
+        </div>
+        <div class="panel">
+          <h4>Mechanistic & Efficient AI</h4>
+          <p>
+            Mechanistic interpretability, sparse and efficient neural computation, and research-grade
+            experimentation for modern learning systems.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <section id="posters">
       <div class="section-head">
@@ -609,7 +631,7 @@
 
           <div class="poster-preview">
             <a href="https://github.com/himanshuvnm/POSTER_SIAM_MDS_2024/blob/main/SIAM_MDS_POSTER.pdf" target="_blank" rel="noreferrer">
-              <img src="https://raw.githubusercontent.com/himanshuvnm/POSTER_SIAM_MDS_2024/main/preview_SIAM_MDS_POSTER.png" alt="SIAM MDS 2024 Poster Preview">
+              <img src="https://raw.githubusercontent.com/himanshuvnm/POSTER_SIAM_MDS_2024/main/preview.png" alt="SIAM MDS 2024 Poster Preview">
             </a>
           </div>
         </div>
@@ -648,6 +670,49 @@
             </a>
           </div>
         </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Publications & Preprints</h3>
+          <p class="section-copy">
+            Selected papers, preprints, and public research artifacts spanning kernel methods,
+            operator learning, and scientific machine learning.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid">
+
+        <article class="card">
+          <h2>Machine Learning Application of Generalized Gaussian Radial Basis Function and Its Reproducing Kernel Theory</h2>
+          <p class="meta">Mathematics (MDPI), 2024 · Feature Paper</p>
+          <ul class="bullets">
+            <li>Introduces the Generalized Gaussian Radial Basis Function (GGRBF) kernel.</li>
+            <li>Studies the induced RKHS and orthonormal basis structure.</li>
+            <li>Connects theory with practical machine learning applications.</li>
+          </ul>
+          <div class="links">
+            <a class="link" href="https://www.mdpi.com/2227-7390/12/6/829" target="_blank" rel="noreferrer">Paper →</a>
+            <a class="link" href="https://github.com/himanshuvnm/Generalized-Gaussian-Radial-Basis-Function-in-Artificial-Intelligence-MATLAB" target="_blank" rel="noreferrer">Code →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Kernel Dynamic Mode Decomposition for Sparse Reconstruction of Closable Koopman Operators</h2>
+          <p class="meta">arXiv preprint · Collaborative research</p>
+          <ul class="bullets">
+            <li>Studies RKHS-based Koopman analysis and closability of Koopman operators.</li>
+            <li>Investigates Laplacian kernels in data-driven dynamical systems.</li>
+            <li>Applies kernel dynamic mode decomposition to spatiotemporal reconstruction.</li>
+          </ul>
+          <div class="links">
+            <a class="link" href="https://arxiv.org/abs/2505.06806" target="_blank" rel="noreferrer">arXiv →</a>
+          </div>
+        </article>
 
       </div>
     </section>
@@ -871,8 +936,38 @@
       </div>
     </section>
 
+    <section>
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Collaboration & Contact</h3>
+          <p class="section-copy">
+            Open to research collaborations, research engineering roles, and conversations
+            around scientific machine learning, interpretability, and mathematically grounded AI.
+          </p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h4>Current Interests</h4>
+          <p>
+            I am particularly interested in collaborations involving scientific machine learning,
+            operator learning, kernel methods, sparse representations, graph learning, and mechanistic interpretability.
+          </p>
+        </div>
+        <div class="panel">
+          <h4>Links</h4>
+          <p>
+            <a href="https://github.com/himanshuvnm" target="_blank" rel="noreferrer">GitHub</a><br/>
+            <a href="https://linkedin.com/in/himanshuvnm" target="_blank" rel="noreferrer">LinkedIn</a><br/>
+            <a href="cv.pdf" target="_blank" rel="noreferrer">Download CV</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      © <span id="y"></span> Himanshu Singh · Research Portfolio · Mechanistic Interpretability · Scientific ML · Efficient AI
+      © <span id="y"></span> Himanshu Singh · Research Portfolio · Scientific ML · Mechanistic Interpretability · Efficient AI
     </footer>
   </div>
 
