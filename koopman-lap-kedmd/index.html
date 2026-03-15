@@ -555,9 +555,8 @@
     <h2>Spatial–temporal structures recovered from sparse observations.</h2>
 
     <p class="lead">
-      Using the Laplacian kernel RKHS and Kernel EDMD, dominant Koopman modes
-      reconstruct coherent spatial–temporal dynamics from sparse and irregular
-      observations.
+      We reconstruct spatial fields from sparse irregular observations using Kernel EDMD. When the Laplacian kernel is used, the dominant Koopman mode accurately recovers the coherent spatial structure of the system. In contrast, reconstruction using a Gaussian radial basis function (GRBF) kernel introduces spurious oscillatory artifacts and fails to capture the true spatial field. This experiment highlights the importance of the underlying RKHS: the Laplacian kernel induces a function space where the Koopman operator admits favorable operator-theoretic properties, enabling stable Koopman spectral reconstruction.
+      For all figures, the horizontal axis represents the spatial coordinate, the color represents the field intensity and the field exhibits a localized coherent structure (the bright region).
     </p>
 
     <div class="result-grid">
@@ -593,6 +592,9 @@
     </div>
 
   </div>
+    <p>
+      Despite irregular and sparse sampling, the dominant Koopman mode successfully reconstructs the coherent spatial structure of the Burger's Equation. This highlights the robustness of the Laplacian kernel RKHS for Koopman spectral reconstruction.
+    </p>
 </section>
 
   <section id="comparison">
