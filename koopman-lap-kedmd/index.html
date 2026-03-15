@@ -326,6 +326,7 @@
         <a href="#idea">Core Idea</a>
         <a href="#overview">Method Overview</a>
         <a href="#closability">Closability</a>
+        <a href="#reconstruction">Reconstruction</a>
         <a href="#results">Main Results</a>
         <a href="#comparison">Comparison</a>
         <a href="#paper">Paper</a>
@@ -402,6 +403,52 @@
       </div>
     </div>
   </section>
+
+  <section id="reconstruction">
+  <div class="container">
+    <div class="section-title">From data to modes</div>
+    <h2>From irregular snapshots to Koopman-guided reconstruction.</h2>
+    <p class="lead">
+      The reconstruction pipeline begins with sparse or irregularly sampled observations of a dynamical system. 
+      These snapshots are lifted into an implicit dictionary of observables determined by the Laplacian kernel, 
+      which defines the associated reproducing kernel Hilbert space.
+    </p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>1. Sparse and irregular observations</h3>
+        <p>
+          Real dynamical systems are often observed through incomplete, irregular, or sparsely sampled data. 
+          The starting point of the framework is therefore not a clean time series, but a partial collection of snapshots.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>2. Kernel-defined observables</h3>
+        <p>
+          The Laplacian kernel determines the observable dictionary implicitly. 
+          This avoids hand-crafted basis selection while placing the dynamics inside a structured RKHS.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>3. Koopman approximation in RKHS</h3>
+        <p>
+          Kernel Extended Dynamic Mode Decomposition approximates the Koopman operator on this space, 
+          allowing spectral information to be extracted directly from data.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>4. Reconstruction of dominant modes</h3>
+        <p>
+          Koopman eigenvalues and associated modes reveal the dominant spatial–temporal structures, 
+          enabling reconstruction of coherent dynamics from sparse measurements.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <section id="closability" class="band">
   <div class="container">
