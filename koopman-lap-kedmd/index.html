@@ -1,1 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kernel Dynamic Mode Decomposition for Sparse Reconstruction of Closable Koopman Operators</title>
+  <meta name="description" content="A project website for Kernel Dynamic Mode Decomposition for Sparse Reconstruction of Closable Koopman Operators." />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --dark: #020617;
+      --max: 1100px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 250, 252, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.15rem;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      padding: 4.5rem 0 3.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--accent-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 4vw, 3.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin-top: 1rem;
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 850px;
+    }
+
+    .authors {
+      margin-top: 1rem;
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 1.6rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 1.15rem;
+      border-radius: 14px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    .btn.primary {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+    }
+
+    .hero-card {
+      background: var(--dark);
+      color: white;
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 30px 60px rgba(2, 6, 23, 0.18);
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      color: #bfdbfe;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 0.98rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      margin: 0 0 1rem 0;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      max-width: 850px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 1.3rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.7rem;
+      font-size: 1.08rem;
+    }
+
+    .band {
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .figure-wrap {
+      margin-top: 2rem;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 1rem;
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.06);
+    }
+
+    .figure-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+    }
+
+    .caption {
+      margin-top: 0.9rem;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .dark-band {
+      background: var(--dark);
+      color: white;
+    }
+
+    .dark-band .section-title,
+    .dark-band .lead,
+    .dark-band p,
+    .dark-band li {
+      color: #cbd5e1;
+    }
+
+    .dark-band .card {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.1);
+      box-shadow: none;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .compare-table th {
+      background: #f8fafc;
+      font-size: 0.94rem;
+    }
+
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 16px;
+      overflow-x: auto;
+      font-size: 0.88rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .two-col,
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Koopman Lap-KeDMD Project Page</div>
+      <div class="nav-links">
+        <a href="#motivation">Motivation</a>
+        <a href="#idea">Core Idea</a>
+        <a href="#overview">Method Overview</a>
+        <a href="#results">Main Results</a>
+        <a href="#comparison">Comparison</a>
+        <a href="#paper">Paper</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Dedicated Project Website</div>
+        <h1>Kernel Dynamic Mode Decomposition for Sparse Reconstruction of Closable Koopman Operators</h1>
+        <p class="subtitle">
+          A new reproducing kernel Hilbert space construction for studying the closability of Koopman operators and enabling principled kernel dynamic mode decomposition for spatial–temporal reconstruction.
+        </p>
+        <p class="authors">Project page for arXiv:2505.06806</p>
+        <div class="button-row">
+          <a class="btn primary" href="https://arxiv.org/pdf/2505.06806" target="_blank" rel="noreferrer">Read Paper</a>
+          <a class="btn" href="#paper">BibTeX</a>
+          <a class="btn" href="../index.html">Back to Homepage</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>At a glance</h3>
+        <p>
+          This paper develops a new RKHS from the Laplacian kernel, studies the closability of Koopman operators on that space, and connects the theory directly to sparse spatial–temporal reconstruction through Kernel EDMD.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section id="motivation">
+    <div class="container">
+      <div class="section-title">Why this problem matters</div>
+      <h2>Kernel Koopman analysis needs more than a good kernel — it needs a well-behaved operator.</h2>
+      <p class="lead">
+        Data-driven Koopman analysis approximates nonlinear dynamics through a linear operator acting on observables. In kernel-based methods, those observables are determined implicitly by a reproducing kernel Hilbert space. But this raises a deep operator-theoretic question: is the Koopman operator actually closable on the chosen RKHS? Without closability, spectral analysis and mode decomposition lose mathematical footing. This paper addresses that issue directly by constructing a Laplacian-kernel-induced RKHS where closability can be studied rigorously.
+      </p>
+    </div>
+  </section>
+
+  <section id="idea" class="band">
+    <div class="container two-col">
+      <div>
+        <div class="section-title">Core idea</div>
+        <h2>Build the function space first, then study the operator inside it.</h2>
+        <p class="lead">
+          The central move in this work is not just to apply a kernel method, but to construct an RKHS rich enough for Koopman operators to admit a closable realization. The Laplacian kernel becomes more than a similarity measure: it defines the ambient function space in which Kernel EDMD, Koopman eigen-analysis, and mode reconstruction can be justified from both operator theory and data-driven science.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Website reading guide</h3>
+        <p>
+          Read this page as a guided explanation of the paper: first the motivation, then the pipeline, then the main mathematical contributions. The aim is to make the core idea legible before you open the full PDF.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="overview">
+    <div class="container">
+      <div class="section-title">Method overview</div>
+      <h2>A single workflow figure captures the paper’s full logic.</h2>
+      <p class="lead">
+        Starting from irregularly sampled data, the Laplacian kernel determines the dictionary of observables, Kernel EDMD approximates the Koopman operator in the induced RKHS, Koopman eigenvalues describe temporal behavior, and dominant modes reconstruct spatial–temporal structure.
+      </p>
+
+      <div class="figure-wrap">
+        <img src="figures/pipeline.png" alt="Pipeline for Laplacian Kernel EDMD and Koopman mode reconstruction" />
+        <div class="caption">
+          Pipeline of the proposed framework: irregular time sampling, Laplacian-kernel dictionary construction, data matrix formation for Lap-KeDMD, Koopman eigen-analysis, and reconstruction of spatial–temporal modes.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" class="dark-band">
+    <div class="container">
+      <div class="section-title">Main results</div>
+      <h2>Mathematical contributions with direct reconstruction consequences.</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>New RKHS construction</h3>
+          <p>A measure-theoretic embedding of the Laplacian kernel gives rise to a new reproducing kernel Hilbert space tailored to this operator-theoretic setting.</p>
+        </div>
+        <div class="card">
+          <h3>Closability of Koopman operators</h3>
+          <p>The paper studies the closability of Koopman operators on the constructed RKHS, addressing a central issue in kernel-based Koopman analysis.</p>
+        </div>
+        <div class="card">
+          <h3>Kernel DMD reconstruction</h3>
+          <p>Kernel EDMD with the Laplacian kernel reconstructs dominant spatial–temporal modes across diverse dynamical systems.</p>
+        </div>
+        <div class="card">
+          <h3>Theory meets data</h3>
+          <p>The work links operator theory, Koopman spectral measure, and practical data-driven mode decomposition in one coherent framework.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparison">
+    <div class="container">
+      <div class="section-title">Comparison to prior work</div>
+      <h2>The point is not just to use a kernel — it is to justify the operator in the kernel space.</h2>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Framework</th>
+            <th>What it provides</th>
+            <th>Limitation / new advantage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Classical DMD</td>
+            <td>Mode decomposition in linear observable settings</td>
+            <td>Limited expressive power for nonlinear dynamics</td>
+          </tr>
+          <tr>
+            <td>Kernel EDMD</td>
+            <td>Nonlinear feature lifting through an implicit dictionary</td>
+            <td>Operator-theoretic behavior on the RKHS is often left unclear</td>
+          </tr>
+          <tr>
+            <td>This work</td>
+            <td>Laplacian-kernel RKHS with Koopman analysis and reconstruction</td>
+            <td>Studies closability directly and provides theoretical grounding for kernel mode decomposition</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="paper" class="band">
+    <div class="container two-col">
+      <div>
+        <div class="section-title">Paper and citation</div>
+        <h2>Read the full paper and cite it.</h2>
+        <p class="lead">
+          This page is a visual and conceptual companion to the paper. For proofs, full statements, and technical details, please read the arXiv manuscript.
+        </p>
+        <div class="button-row">
+          <a class="btn primary" href="https://arxiv.org/pdf/2505.06806" target="_blank" rel="noreferrer">Open arXiv PDF</a>
+        </div>
+      </div>
+      <div>
+        <pre>@article{yourpaper2025,
+  title   = {Kernel Dynamic Mode Decomposition for Sparse Reconstruction of Closable Koopman Operators},
+  author  = {Himanshu Singh, Nishant Panda, J. Nathan Kutz},
+  journal = {arXiv preprint arXiv:2505.06806},
+  year    = {2025}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      Dedicated project website for arXiv:2505.06806 · Built as a standalone page separate from the main homepage.
+    </div>
+  </footer>
+</body>
+</html>
