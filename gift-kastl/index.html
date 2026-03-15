@@ -352,7 +352,114 @@
     grid-template-columns: 1fr;
   }
 }
-    
+
+.code-block-wrap {
+  margin-top: 2rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #0b1120;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  background: linear-gradient(90deg, #111827, #0f172a);
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.code-dots {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.code-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.code-dots span:nth-child(1) { background: #fb7185; }
+.code-dots span:nth-child(2) { background: #fbbf24; }
+.code-dots span:nth-child(3) { background: #34d399; }
+
+.code-block-wrap pre {
+  margin: 0;
+  padding: 1.25rem 1.35rem;
+  overflow-x: auto;
+  background: #0b1120;
+  color: #dbeafe;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  border-radius: 0;
+}
+
+.code-block-wrap code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.results-panel {
+  margin-top: 2.2rem;
+  padding: 1.6rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(37,99,235,0.05), rgba(16,185,129,0.05));
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.05);
+}
+
+.results-panel p {
+  margin: 0;
+  color: #334155;
+  line-height: 1.9;
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.4rem;
+}
+
+.link-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.link-chip:hover {
+  text-decoration: none;
+  border-color: #cbd5e1;
+}
+
+.poster-panel {
+  margin-top: 2rem;
+  padding: 1.6rem;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.05);
+}
+
+.poster-panel p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.9;
+}
+   
   </style>
 
 <script>
@@ -560,6 +667,84 @@
         through a structured summation-and-adjustment stage to refine the final output of the
         graph transformer backbone.
       </p>
+    </div>
+
+  </div>
+</section>
+
+  <section id="results">
+  <div class="container">
+
+    <div class="section-title">Results</div>
+    <h2>A clean research system with room for stronger empirical additions.</h2>
+
+    <div class="results-panel">
+      <p>
+        GIFT-KASTL is designed as a two-stage scientific graph learning pipeline.
+        A graph transformer backbone first learns graph-wide representations from
+        discrete fracture network data, and the KASTL layer then refines the final
+        prediction through a structured nonlinear composition inspired by the
+        Kolmogorov-Arnold Superposition Theorem. The current project page focuses
+        on the architectural and mathematical identity of the system, while broader
+        experiment panels and ablations can be layered in as the project evolves.
+      </p>
+    </div>
+
+    <div class="code-block-wrap">
+      <div class="code-block-header">
+        <div>Core implementation · KASTL layer</div>
+        <div class="code-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <pre><code>import torch
+import torch.nn as nn
+
+class KASTLLayer(nn.Module):
+    """
+    Kolmogorov-Arnold Superposition Theorem Layer
+    used as a structured refinement stage after the graph transformer.
+    """
+
+    def __init__(self, scale: float = 1.0):
+        super().__init__()
+        self.scale = scale
+
+    def inner_function(self, x: torch.Tensor) -> torch.Tensor:
+        return torch.atan(torch.sinh(x))
+
+    def outer_function(self, x: torch.Tensor) -> torch.Tensor:
+        # Truncated outer expansion inspired by the theorem-driven construction
+        return (
+            x
+            + x**3 / 6
+            + x**5 / 24
+            + 61 * x**7 / 5040
+            + 277 * x**9 / 72576
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        z = self.inner_function(x)
+        y = self.outer_function(z)
+        return self.scale * y
+</code></pre>
+    </div>
+
+    <div class="poster-panel" id="poster">
+      <div class="section-title">Poster and project assets</div>
+      <h2>Use the poster as the deeper technical companion.</h2>
+      <p>
+        The poster provides a broader view of the system design, mathematical
+        formulation, and current experimental material for GIFT-KASTL. The project
+        page acts as the polished entry point; the poster can carry the denser
+        technical details until additional experiments and benchmarks are added here.
+      </p>
+
+      <div class="link-row">
+        <a class="link-chip" href="https://github.com/himanshuvnm/GIFT_KASTL_POSTER/blob/main/GIFT-KASTL_SciFM_POSTER.pdf" target="_blank">Open Poster</a>
+        #<a class="link-chip" href="#" target="_blank">Project Repository</a>
+        #<a class="link-chip" href="#" target="_blank">Notebook / Technical Assets</a>
+      </div>
     </div>
 
   </div>
