@@ -408,6 +408,22 @@
   overflow: hidden;
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
 }
+
+  .experiment-heading {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.experiment-subtitle {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
   </style>
 </head>
 <body>
@@ -692,6 +708,8 @@
     <div class="section-title">Main results</div>
   
     <h2>Spatial–temporal structures recovered from sparse observations.</h2>
+    <div class="experiment-subtitle">Experiment 1</div>
+    <h3 class="experiment-heading">Burgers' Equation – Sparse Spatial Reconstruction</h3>
 
     <p class="lead">
       We reconstruct spatial fields from sparse irregular observations using Kernel EDMD. When the Laplacian kernel is used, the dominant Koopman mode accurately recovers the coherent spatial structure of the system. In contrast, reconstruction using a Gaussian radial basis function (GRBF) kernel introduces spurious oscillatory artifacts and fails to capture the true spatial field. This experiment highlights the importance of the underlying RKHS: the Laplacian kernel induces a function space where the Koopman operator admits favorable operator-theoretic properties, enabling stable Koopman spectral reconstruction.
@@ -732,6 +750,32 @@
     <p>
       Despite irregular and sparse sampling, the dominant Koopman mode successfully reconstructs the coherent spatial structure of the Burger's Equation. This highlights the robustness of the Laplacian kernel RKHS for Koopman spectral reconstruction.
     </p>
+    <div class="experiment-subtitle">Experiment 2</div>
+<h3 class="experiment-heading">NOAA Sea Surface Temperature Anomaly</h3>
+
+<p>
+We evaluate Laplacian Kernel EDMD on real-world spatio-temporal data
+from the NOAA sea surface temperature anomaly dataset. The experiment
+tests the ability of Koopman spectral reconstruction to recover dominant
+spatial patterns in climate dynamics.
+</p>
+    <div class="result-grid">
+
+<figure>
+<img src="figures/fig5.png">
+<figcaption>
+NOAA SST anomaly snapshot.
+</figcaption>
+</figure>
+
+<figure>
+<img src="figures/fig6.png">
+<figcaption>
+Reconstruction of SST anomaly using Laplacian Kernel EDMD.
+</figcaption>
+</figure>
+
+</div>
 
   </div>
     
