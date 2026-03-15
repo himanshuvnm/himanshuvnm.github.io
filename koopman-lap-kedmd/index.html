@@ -754,10 +754,13 @@
 <h3 class="experiment-heading">NOAA Sea Surface Temperature Anomaly</h3>
 
 <p>
-We evaluate Laplacian Kernel EDMD on real-world spatio-temporal data
-from the NOAA sea surface temperature anomaly dataset. The experiment
-tests the ability of Koopman spectral reconstruction to recover dominant
-spatial patterns in climate dynamics.
+This experiment evaluates Laplacian Kernel EDMD on real-world sea surface temperature anomaly data. Unlike synthetic benchmark systems, the NOAA dataset is non-deterministic and contains more complex variability, making reconstruction substantially more challenging.
+
+The left panel compares the ground-truth signal with reconstructions obtained from Laplacian-Kernel and GRBF-based Kernel EDMD. The Laplacian kernel tracks the dominant trend of the anomaly much more faithfully, while the GRBF reconstruction exhibits pronounced instability and large spurious deviations.
+
+The right panel shows the corresponding reconstruction error. The Laplacian-kernel error remains consistently small across most of the domain, whereas the GRBF kernel produces repeated sharp error spikes. This indicates that the Laplacian-kernel RKHS provides a more stable functional setting for Koopman spectral reconstruction on real-world spatio-temporal data.
+
+Taken together, these results suggest that the advantage of the Laplacian kernel is not limited to idealized systems: it extends to non-deterministic climate data, where robustness and stability are essential.
 </p>
     <div class="result-grid">
 
