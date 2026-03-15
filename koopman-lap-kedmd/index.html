@@ -315,6 +315,30 @@
         display: none;
       }
     }
+
+  .result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.result-grid img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.result-grid figure {
+  text-align: center;
+}
+
+.result-grid figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: #555;
+}
   </style>
 </head>
 <body>
@@ -536,7 +560,7 @@
       observations.
     </p>
 
-    <div class="figure-grid">
+    <div class="result-grid">
 
       <figure style="text-align:center;">
         <img src="figures/fig1.png" style="width:75%; max-width:900px;">
