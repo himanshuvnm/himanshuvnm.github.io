@@ -360,6 +360,79 @@
     </div>
   </section>
 
+  <section id="kastl">
+  <div class="container">
+
+    <div class="section-title">KASTL Layer</div>
+
+    <h2>
+      Kolmogorov-Arnold Superposition inspired refinement layer
+    </h2>
+
+    <p class="lead">
+      The final stage of GIFT-KASTL introduces a structured refinement layer
+      inspired by the Kolmogorov-Arnold Superposition Theorem. Instead of relying
+      solely on the transformer output, the model performs an additional
+      nonlinear composition step that decomposes complex mappings into
+      structured inner and outer functions.
+    </p>
+
+    <div style="margin-top:40px;">
+      <img src="kastl-architecture.png" style="width:100%; border-radius:20px;">
+    </div>
+
+    <p class="lead" style="margin-top:25px;">
+      The KASTL module applies a composition of learned inner functions and an
+      outer aggregation function. This structure provides a disciplined way to
+      model nonlinear interactions in graph-derived scientific data while
+      preserving interpretability of the functional structure.
+    </p>
+
+
+    <div class="card-grid" style="margin-top:50px;">
+
+      <div class="card">
+        <h3>Inner Function</h3>
+
+        <img src="inner-function.png" style="width:100%; margin-top:10px; border-radius:14px;">
+
+        <p style="margin-top:10px;">
+        The inner function transforms latent transformer features into
+        intermediate nonlinear representations that capture structured
+        interactions across graph nodes.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <h3>Outer Function</h3>
+
+        <img src="outer-function.png" style="width:100%; margin-top:10px; border-radius:14px;">
+
+        <p style="margin-top:10px;">
+        The outer function aggregates the transformed features into the final
+        prediction space, completing the Kolmogorov-Arnold style functional
+        composition.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <h3>Heatmap Representation</h3>
+
+        <img src="InnerFunction_heatmap.png" style="width:100%; margin-top:10px; border-radius:14px;">
+
+        <p style="margin-top:10px;">
+        Visualization of learned functional structure illustrating how nonlinear
+        feature interactions evolve within the KASTL layer.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
   <footer>
     <div class="container">
       GIFT-KASTL · Project website in progress.
