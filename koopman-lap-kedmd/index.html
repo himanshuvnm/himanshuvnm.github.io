@@ -754,6 +754,16 @@
 <h3 class="experiment-heading">NOAA Sea Surface Temperature Anomaly</h3>
 
 <p>
+In NOAA-SST data, we have total counts of 'lat=36' and 'lon=72' and we collected last ten years of SST data. Therefore total corresponding data points across lat and lon are '36*72=2592'. In the following figure, horizontal axis represents these spatial sensor counts and 
+vertical axis shows the mean anamoly SST in 'deg C'. 
+    <p>
+The NOAA SST anomaly dataset and the reconstruction scripts used in this experiment
+can be accessed in the 
+<a href="https://github.com/himanshuvnm/himanshuvnm.github.io/tree/main/koopman-lap-kedmd/NOAA" target="_blank">
+NOAA experiment folder
+</a>.
+</p>
+  
 This experiment evaluates Laplacian Kernel EDMD on real-world sea surface temperature anomaly data. Unlike synthetic benchmark systems, the NOAA dataset is non-deterministic and contains more complex variability, making reconstruction substantially more challenging.
 
 The left panel compares the ground-truth signal with reconstructions obtained from Laplacian-Kernel and GRBF-based Kernel EDMD. The Laplacian kernel tracks the dominant trend of the anomaly much more faithfully, while the GRBF reconstruction exhibits pronounced instability and large spurious deviations.
@@ -779,6 +789,7 @@ Reconstruction of SST anomaly using Laplacian Kernel EDMD.
 </figure>
 
 </div>
+    <p><strong>Takeaway:</strong> On real-world climate data, the Laplacian kernel yields markedly more stable reconstruction than GRBF, with smaller error and fewer spurious oscillations.</p>
 
   </div>
     
