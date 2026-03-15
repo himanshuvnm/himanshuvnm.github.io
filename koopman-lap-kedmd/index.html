@@ -325,6 +325,7 @@
         <a href="#motivation">Motivation</a>
         <a href="#idea">Core Idea</a>
         <a href="#overview">Method Overview</a>
+        <a href="#closability">Closability</a>
         <a href="#results">Main Results</a>
         <a href="#comparison">Comparison</a>
         <a href="#paper">Paper</a>
@@ -338,7 +339,7 @@
         <div class="eyebrow">Dedicated Project Website</div>
         <h1>Kernel Dynamic Mode Decomposition for Sparse Reconstruction of Closable Koopman Operators</h1>
         <p class="subtitle">
-          A new reproducing kernel Hilbert space construction for studying the closability of Koopman operators and enabling principled kernel dynamic mode decomposition for spatial–temporal reconstruction.
+          This paper develops a new reproducing kernel Hilbert space from the Laplacian kernel and studies the closability of Koopman operators on that space, providing a principled foundation for kernel dynamic mode decomposition and spatial–temporal reconstruction.
         </p>
         <p class="authors">Project page for arXiv:2505.06806</p>
         <div class="button-row">
@@ -377,9 +378,9 @@
         </p>
       </div>
       <div class="card">
-        <h3>Website reading guide</h3>
+        <h3>What is new here?</h3>
         <p>
-          Read this page as a guided explanation of the paper: first the motivation, then the pipeline, then the main mathematical contributions. The aim is to make the core idea legible before you open the full PDF.
+          The novelty is not simply the use of a Laplacian kernel. The key advance is the construction of an RKHS in which the Koopman operator admits a closable realization, allowing kernel EDMD, Koopman eigen-analysis, and mode reconstruction to be justified within one coherent framework.
         </p>
       </div>
     </div>
@@ -401,6 +402,19 @@
       </div>
     </div>
   </section>
+
+  <section id="closability" class="band">
+  <div class="container">
+    <div class="section-title">Why closability matters</div>
+    <h2>Closability is what turns a kernel construction into a meaningful Koopman framework.</h2>
+    <p class="lead">
+      In kernel-based Koopman analysis, the key issue is not only whether an RKHS can be defined, but whether the Koopman operator behaves as a mathematically meaningful operator on that space. Closability is the property that makes this possible. It ensures that limits of observables remain compatible with the operator action, giving a rigorous foundation for spectral analysis, mode decomposition, and reconstruction.
+    </p>
+    <p class="lead">
+      The main contribution of this paper is to show that the Laplacian-kernel-induced RKHS is rich enough to support this structure, allowing kernel dynamic mode decomposition to be interpreted not merely as a numerical trick, but as an operator-theoretically grounded reconstruction method.
+    </p>
+  </div>
+</section>
 
   <section id="results" class="dark-band">
     <div class="container">
