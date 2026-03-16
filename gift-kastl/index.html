@@ -637,7 +637,11 @@
         <img src="outer-function.png" alt="Outer function used in the KASTL layer" />
         <p class="kastl-caption">
           <strong>Outer function.</strong> The outer function composes the transformed representation
-          and governs the final output geometry of the refinement stage.
+          and governs the final output geometry of the refinement stage. 
+
+          We apply the KAST for a single variable input so that the tuning on all predicted values can happen effectively and easily, thus avoiding any mathematical function complexities.
+          The relation with the choice of inner functions and outer functions in our application is unique. This means that an inappropriate choice of such functions can lead to a bad tuning of the forecast values, leading to huge and unpleasant errors. 
+
         </p>
       </div>
     </div>
