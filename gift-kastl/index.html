@@ -621,6 +621,10 @@
       <p class="math-note">
         Here \(E_k\) denotes the Euler secant numbers. These choices define the nonlinear
         composition mechanism used in the KASTL refinement stage.
+
+        We apply the KAST for a single variable input so that the tuning on all predicted values can happen effectively and easily, thus avoiding any mathematical function complexities.
+        The relation with the choice of inner functions and outer functions in our application is unique. This means that an inappropriate choice of such functions can lead to a bad tuning of the forecast values, leading to huge and unpleasant errors. 
+
       </p>
     </div>
 
@@ -638,9 +642,6 @@
         <p class="kastl-caption">
           <strong>Outer function.</strong> The outer function composes the transformed representation
           and governs the final output geometry of the refinement stage. 
-
-          We apply the KAST for a single variable input so that the tuning on all predicted values can happen effectively and easily, thus avoiding any mathematical function complexities.
-          The relation with the choice of inner functions and outer functions in our application is unique. This means that an inappropriate choice of such functions can lead to a bad tuning of the forecast values, leading to huge and unpleasant errors. 
 
         </p>
       </div>
@@ -754,7 +755,7 @@ class KASTLLayer(nn.Module):
 
   <footer>
     <div class="container">
-      GIFT-KASTL · Project website in progress.
+      GIFT-KASTL · Project website. This project was made possible by the successful collaboration with Nishant Panda, Diane Oyen and Ayan Biswas at Los Alamos National Laboratory.
     </div>
   </footer>
 </body>
