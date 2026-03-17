@@ -478,6 +478,69 @@
 .reveal-delay-1 { transition-delay: 0.12s; }
 .reveal-delay-2 { transition-delay: 0.24s; }
 .reveal-delay-3 { transition-delay: 0.36s; }
+
+
+ .why-kastl-hero {
+  margin-top: 2.2rem;
+  padding: 1.2rem;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(2,6,23,0.98), rgba(15,23,42,0.96));
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.18);
+}
+
+.why-kastl-hero img {
+  width: 100%;
+  display: block;
+  border-radius: 22px;
+}
+
+.why-kastl-note {
+  margin-top: 1.25rem;
+  max-width: 900px;
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.glow-reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  filter: blur(6px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease,
+    filter 0.9s ease;
+}
+
+.glow-reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.why-kastl-list {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.why-kastl-pill {
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+@media (max-width: 920px) {
+  .why-kastl-list {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 
 <script>
@@ -498,6 +561,7 @@
         <a href="#why">Why It Matters</a>
         <a href="#architecture">Architecture</a>
         <a href="#kastl">KASTL</a>
+        <a href="#why-kastl">Why KASTL</a>
         <a href="#results">Results</a>
         <a href="#poster">Poster</a>
       </div>
@@ -755,6 +819,44 @@
 </p>
       </div>
 
+    </div>
+
+  </div>
+</section>
+
+  <section id="why-kastl" class="reveal">
+  <div class="container">
+
+    <div class="section-title">Why KASTL</div>
+    <h2>Why use KASTL instead of a generic nonlinear refinement layer?</h2>
+
+    <p class="lead reveal reveal-delay-1">
+      KASTL is not introduced as a decorative add-on. It is a structured
+      refinement stage designed to bring theorem-inspired nonlinear composition
+      into the output of the graph transformer. In this project, the layer is
+      motivated by both mathematical form and practical modeling needs in
+      scientific graph data.
+    </p>
+
+    <div class="why-kastl-hero glow-reveal reveal-delay-2">
+      <img src="why_kastl.png" alt="Why KASTL figure showing adaptability, ease-of-use, high-end accuracies, stability, probabilistic analysis, and finite approximations" />
+    </div>
+
+    <p class="why-kastl-note reveal reveal-delay-3">
+      The figure highlights six reasons for adopting the KASTL layer:
+      adaptability, ease of use, high predictive accuracy, stability,
+      probabilistic interpretability, and finite approximation structure.
+      Together, these properties make KASTL a compelling downstream refinement
+      mechanism for graph-based scientific machine learning.
+    </p>
+
+    <div class="why-kastl-list">
+      <div class="why-kastl-pill reveal reveal-delay-1">1. Adaptability</div>
+      <div class="why-kastl-pill reveal reveal-delay-1">2. Easy-to-use</div>
+      <div class="why-kastl-pill reveal reveal-delay-2">3. High-end accuracies</div>
+      <div class="why-kastl-pill reveal reveal-delay-2">4. Stable</div>
+      <div class="why-kastl-pill reveal reveal-delay-3">5. Probabilistic analysis</div>
+      <div class="why-kastl-pill reveal reveal-delay-3">6. Finite approximations</div>
     </div>
 
   </div>
