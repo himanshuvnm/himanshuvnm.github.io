@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://himanshuvnm.github.io/sitemap.xml
