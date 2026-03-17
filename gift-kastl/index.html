@@ -997,6 +997,70 @@ class KASTLLayer(nn.Module):
   </div>
 </section>
 
+  <section id="data-scaling" class="reveal">
+  <div class="container">
+    <div class="section-title">Data and scaling</div>
+    <h2>Interactive views of graph size, wall time, and prediction behavior.</h2>
+
+    <p class="lead">
+      These interactive plots summarize the footprint of the fracture-network datasets
+      and the scaling behavior of the pipeline with graph size and connectivity.
+    </p>
+
+    <div class="kastl-grid">
+      <div>
+        <iframe
+          src="interactive/nodes_edges_walltime.html"
+          width="100%"
+          height="520"
+          style="border:none; border-radius:18px; background:white;">
+        </iframe>
+        <p class="kastl-caption">
+          <strong>Nodes vs edges.</strong> Each point is a graph instance, colored by wall time.
+        </p>
+      </div>
+
+      <div>
+        <iframe
+          src="interactive/walltime_vs_nodes.html"
+          width="100%"
+          height="520"
+          style="border:none; border-radius:18px; background:white;">
+        </iframe>
+        <p class="kastl-caption">
+          <strong>Wall time vs nodes.</strong> Interactive scaling with graph size.
+        </p>
+      </div>
+    </div>
+
+    <div class="kastl-grid">
+      <div>
+        <iframe
+          src="interactive/walltime_vs_edges.html"
+          width="100%"
+          height="520"
+          style="border:none; border-radius:18px; background:white;">
+        </iframe>
+        <p class="kastl-caption">
+          <strong>Wall time vs edges.</strong> Scaling with graph connectivity.
+        </p>
+      </div>
+
+      <div>
+        <iframe
+          src="interactive/prediction_error_by_horizon.html"
+          width="100%"
+          height="520"
+          style="border:none; border-radius:18px; background:white;">
+        </iframe>
+        <p class="kastl-caption">
+          <strong>Prediction error by horizon.</strong> Distribution of prediction error across targets.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="citation" class="reveal">
   <div class="container">
     <div class="section-title">Reference</div>
