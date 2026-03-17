@@ -569,6 +569,10 @@
   transform: scale(1.01);
   filter: drop-shadow(0 0 16px rgba(125, 211, 252, 0.12));
 }
+
+.kastl-grid > div {
+  padding: 10px;
+}    
   </style>
 
 <script>
@@ -1013,7 +1017,7 @@ class KASTLLayer(nn.Module):
           src="interactive2/nodes_edges_walltime.html"
           width="100%"
           height="520"
-          style="border:none; border-radius:18px; background:white;">
+          style="border:none; border-radius:18px; background:#ffffff; box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);">
         </iframe>
         <p class="kastl-caption">
           <strong>Nodes vs edges.</strong> Each point is a graph instance, colored by wall time.
@@ -1025,7 +1029,7 @@ class KASTLLayer(nn.Module):
           src="interactive2/walltime_vs_nodes.html"
           width="100%"
           height="520"
-          style="border:none; border-radius:18px; background:white;">
+          style="border:none; border-radius:18px; background:#ffffff; box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);">
         </iframe>
         <p class="kastl-caption">
           <strong>Wall time vs nodes.</strong> Interactive scaling with graph size.
@@ -1039,7 +1043,7 @@ class KASTLLayer(nn.Module):
           src="interactive2/walltime_vs_edges.html"
           width="100%"
           height="520"
-          style="border:none; border-radius:18px; background:white;">
+          style="border:none; border-radius:18px; background:#ffffff; box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);">
         </iframe>
         <p class="kastl-caption">
           <strong>Wall time vs edges.</strong> Scaling with graph connectivity.
@@ -1051,7 +1055,7 @@ class KASTLLayer(nn.Module):
           src="interactive2/prediction_error_by_horizon.html"
           width="100%"
           height="520"
-          style="border:none; border-radius:18px; background:white;">
+          style="border:none; border-radius:18px; background:#ffffff; box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);">
         </iframe>
         <p class="kastl-caption">
           <strong>Prediction error by horizon.</strong> Distribution of prediction error across targets.
