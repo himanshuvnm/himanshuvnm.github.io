@@ -1,1 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Epistemological Asymmetry</title>
+  <meta
+    name="description"
+    content="Epistemological asymmetry between empirical science and mathematics in the age of AI."
+  />
+  <style>
+    :root {
+      --bg: #f3eddc;
+      --surface: #fbf7ec;
+      --ink: #111827;
+      --muted: #4b5563;
+      --line: #d8d1bc;
+      --navy: #061325;
+      --navy-soft: #0d2039;
+      --gold: #d4a72c;
+      --blue: #1d4ed8;
+      --max: 1180px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(243, 237, 220, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.95rem 0;
+    }
+
+    .brand {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(212,167,44,0.10), transparent 26%),
+        linear-gradient(180deg, var(--navy) 0%, var(--navy-soft) 100%);
+      color: #f9fafb;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 5.5rem 0 4rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: #d1d5db;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(2.8rem, 6vw, 5.7rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      margin-top: 1rem;
+      max-width: 820px;
+      font-size: 1.35rem;
+      line-height: 1.7;
+      color: #dbe3ef;
+    }
+
+    .hero-thesis {
+      margin-top: 1.5rem;
+      max-width: 860px;
+      font-size: 1.05rem;
+      color: #cbd5e1;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.15rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-weight: 600;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .btn.primary {
+      background: #f8fafc;
+      color: #0f172a;
+      border-color: #f8fafc;
+    }
+
+    section {
+      padding: 4.6rem 0;
+    }
+
+    .section-title {
+      margin-bottom: 0.65rem;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h2 {
+      margin: 0 0 1rem 0;
+      max-width: 900px;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+
+    .lead {
+      max-width: 860px;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .thesis-panel {
+      margin-top: 1.8rem;
+      padding: 1.6rem;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.50);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(17, 24, 39, 0.04);
+    }
+
+    .thesis-panel p {
+      margin: 0;
+      font-size: 1.04rem;
+      color: #1f2937;
+    }
+
+    .figure-frame-dark {
+      margin-top: 2rem;
+      padding: 1rem;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #071224, #0b1d37);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 24px 60px rgba(3, 10, 24, 0.22);
+    }
+
+    .figure-frame-dark img,
+    .figure-frame-light img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+    }
+
+    .figure-frame-light {
+      margin-top: 2rem;
+      padding: 1rem;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.52);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 34px rgba(17, 24, 39, 0.05);
+    }
+
+    .caption {
+      margin-top: 0.9rem;
+      max-width: 900px;
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+
+    .essay-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .essay-card {
+      padding: 1.5rem;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 26px rgba(17, 24, 39, 0.04);
+    }
+
+    .essay-card h3 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+
+    .essay-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .paper-box {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border-radius: 22px;
+      background: #fffdf7;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(17, 24, 39, 0.04);
+    }
+
+    .paper-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .paper-link {
+      display: inline-block;
+      padding: 0.8rem 1rem;
+      border-radius: 14px;
+      background: white;
+      border: 1px solid var(--line);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .paper-link:hover {
+      text-decoration: none;
+      border-color: #bfb7a0;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.34s; }
+
+    @media (max-width: 920px) {
+      .essay-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Epistemological Asymmetry</div>
+      <div class="nav-links">
+        <a href="#thesis">Thesis</a>
+        <a href="#contrast">Contrast</a>
+        <a href="#proof-search">Proof Search</a>
+        <a href="#verification">Verification</a>
+        <a href="#paper">Paper</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Essay Project · AI, Mathematics, and Empirical Science</div>
+        <h1>Epistemological asymmetry between empirical science and mathematics</h1>
+        <p class="hero-subtitle">
+          On the tension between graded empirical feedback, exact deductive validity,
+          and the place of AI systems between them.
+        </p>
+        <p class="hero-thesis">
+          Mathematics and empirical science do not reward discovery in the same way.
+          In empirical science, models can improve through dense graded feedback and
+          approximate success. In mathematics, validity is sparse and exact: a proof
+          is either correct or it is not. This asymmetry helps explain why AI systems
+          often advance rapidly in scientific modeling while facing a qualitatively
+          different barrier in formal mathematical reasoning.
+        </p>
+
+        <div class="button-row">
+          <a class="btn primary" href="#contrast">Read the argument</a>
+          <a class="btn" href="#paper">Open PDF</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="thesis" class="reveal">
+    <div class="container">
+      <div class="section-title">Core thesis</div>
+      <h2>In science, discovery can precede proof. In mathematics, proof is discovery.</h2>
+
+      <div class="thesis-panel">
+        <p>
+          Empirical science admits partial success, approximation, and graded evaluation.
+          Mathematics demands exact validity under formal deduction. AI systems therefore
+          enter the two domains under different epistemic conditions: in one, useful progress
+          can accumulate before complete justification; in the other, the bottleneck is the
+          discovery of a valid proof itself. The resulting asymmetry is not just practical.
+          It is structural.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contrast" class="reveal">
+    <div class="container">
+      <div class="section-title">Conceptual contrast</div>
+      <h2>Empirical discovery offers dense feedback; formal proof search offers sparse exact validity.</h2>
+      <p class="lead">
+        The figure below contrasts two knowledge regimes. On the left, empirical tasks admit
+        many locally useful regions and continuous performance gradients. On the right, valid
+        proofs become combinatorially sparse as reasoning depth increases, even when verification
+        itself remains efficient.
+      </p>
+
+      <div class="figure-frame-dark reveal reveal-delay-1">
+        <img src="conceptual-contrast.png" alt="Conceptual contrast between empirical discovery and formal proof search" />
+      </div>
+
+      <p class="caption reveal reveal-delay-2">
+        <strong>Conceptual contrast.</strong> Empirical science can reward approximate progress
+        through graded evaluation, whereas formal mathematics requires exact logical validity.
+        This difference changes the search landscape confronted by AI systems.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-search" class="reveal">
+    <div class="container">
+      <div class="section-title">Proof-search regimes</div>
+      <h2>Not all mathematical search spaces are equally severe.</h2>
+      <p class="lead">
+        Even within mathematics, the difficulty of proof search is not uniform. Short-horizon,
+        olympiad-style reasoning and open-ended, research-style reasoning generate different
+        growth rates in candidate derivations, even when both remain exact symbolic tasks.
+      </p>
+
+      <div class="figure-frame-light reveal reveal-delay-1">
+        <img src="proof-search-regimes.png" alt="Stylized proof-search regimes: olympiad-style versus research-style mathematics" />
+      </div>
+
+      <p class="caption reveal reveal-delay-2">
+        <strong>Stylized proof-search regimes.</strong> As reasoning depth grows, research-style
+        mathematical search can induce a far larger candidate space than olympiad-style settings,
+        intensifying the difficulty of finding a valid derivation.
+      </p>
+    </div>
+  </section>
+
+  <section id="verification" class="reveal">
+    <div class="container">
+      <div class="section-title">Verification–search asymmetry</div>
+      <h2>Verification can be efficient even when search is combinatorial.</h2>
+
+      <div class="essay-grid">
+        <div class="essay-card reveal reveal-delay-1">
+          <h3>Verification is cheap</h3>
+          <p>
+            Once a candidate proof is proposed, checking correctness can be comparatively efficient.
+            This makes formal systems attractive as verifiable endpoints, but it does not solve the
+            harder problem: how to discover the proof in the first place.
+          </p>
+        </div>
+
+        <div class="essay-card reveal reveal-delay-2">
+          <h3>Search remains the bottleneck</h3>
+          <p>
+            The space of candidate symbolic sequences grows rapidly, while the fraction that
+            correspond to valid proofs collapses. AI systems can therefore face a search problem
+            whose difficulty is qualitatively different from ordinary empirical optimization.
+          </p>
+        </div>
+      </div>
+
+      <div class="figure-frame-light reveal reveal-delay-3">
+        <img src="verification-search-asymmetry.png" alt="Verification-search asymmetry in formal proof systems" />
+      </div>
+
+      <p class="caption">
+        <strong>Verification–search asymmetry.</strong> The cost of checking a proof can remain small
+        even as the discovery process becomes combinatorial. This explains why verifier-guided systems
+        may help, but do not erase the underlying sparsity of exact validity.
+      </p>
+    </div>
+  </section>
+
+  <section id="paper" class="reveal">
+    <div class="container">
+      <div class="section-title">Paper</div>
+      <h2>Technical note and essay materials</h2>
+
+      <div class="paper-box">
+        <p>
+          This project page is a visual companion to the underlying note. The full PDF carries
+          the broader argument, supporting discussion, and additional framing around AI, scientific
+          discovery, and mathematical reasoning.
+        </p>
+
+        <div class="paper-links">
+          <a class="paper-link" href="paper.pdf" target="_blank">Open PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      Epistemological Asymmetry · Essay project on AI, empirical science, and mathematics.
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
