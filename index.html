@@ -10,7 +10,6 @@
     content="Research portfolio of Himanshu Singh: mechanistic interpretability, sparse learning, neural operators, graph foundation models, scientific machine learning, and mathematical AI."
   />
 
-  <!-- Search / social metadata -->
   <meta name="keywords" content="Himanshu Singh, scientific machine learning, mechanistic interpretability, sparse learning, kernel methods, RKHS, neural operators, Fourier neural operator, Koopman operator, graph foundation models, mathematical machine learning, AI researcher, scientific AI">
   <meta name="author" content="Himanshu Singh">
   <meta name="robots" content="index, follow">
@@ -51,7 +50,7 @@
 
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background:
         radial-gradient(1100px 640px at 10% -10%, rgba(123,188,255,.16), transparent 55%),
         radial-gradient(800px 500px at 100% 0%, rgba(113,226,195,.10), transparent 55%),
@@ -91,7 +90,7 @@
       header{grid-template-columns:1fr}
     }
 
-    .hero, .side, .poster-card, .card, .panel, .feature-paper{
+    .hero, .side, .poster-card, .card, .panel, .feature-paper, .feature-card, .idea-card{
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
@@ -485,11 +484,13 @@
       margin-top:14px;
     }
 
-    .mini-link, .link{
+    .mini-link, .link, .feature-link, .idea-link{
       color:#beddff;
       font-weight:700;
       font-size:13.5px;
       transition:opacity .18s ease;
+      display:inline-flex;
+      margin-top:14px;
     }
 
     .kbd{
@@ -512,35 +513,60 @@
 
     .gold{color:var(--accent3)}
 
-    section h2 {
-  font-size: 2rem;
-  font-weight: 600;
-}
+    .feature-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
 
-section h3 {
-  margin-bottom: 0.5rem;
-}
+    .idea-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
 
-section a {
-  display: inline-block;
-  margin-top: 0.75rem;
-  font-weight: 500;
-}
+    @media (max-width:980px){
+      .idea-grid{grid-template-columns:1fr}
+    }
 
-    .featured-card {
-  padding: 2rem;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: linear-gradient(145deg, #071a2e, #0b223d);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-}
+    .feature-card,
+    .idea-card{
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px 20px 18px;
+      background:linear-gradient(180deg, rgba(16,28,44,.88), rgba(19,33,51,.76));
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
 
-    .project-card {
-  padding: 1.4rem;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(10, 25, 45, 0.6);
-}
+    .feature-card:before,
+    .idea-card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:radial-gradient(500px 140px at 8% -10%, rgba(123,188,255,.10), transparent 52%);
+      pointer-events:none;
+    }
+
+    .idea-card:nth-child(2):before{
+      background:radial-gradient(500px 140px at 8% -10%, rgba(113,226,195,.10), transparent 52%);
+    }
+
+    .feature-card h2,
+    .idea-card h2{
+      margin:0 0 8px;
+      font-size:22px;
+      line-height:1.2;
+    }
+
+    .feature-card p,
+    .idea-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14.5px;
+      max-width:900px;
+    }
   </style>
 </head>
 
@@ -591,63 +617,60 @@ section a {
       </div>
     </header>
 
-    <section id="featured" style="padding: 4rem 0;">
-  <div class="container">
-
-    <h2 style="margin-bottom: 2rem;">Featured Work</h2>
-
-    <p style="max-width:600px; color:#94a3b8;">
-  Selected systems and research contributions at the intersection of machine learning, mathematics, and scientific modeling.
-</p>
-
-    <div style="display: grid; gap: 2rem;">
-
-      <!-- GIFT-KASTL -->
-      <div style="padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 16px;">
-        <h3>GIFT-KASTL</h3>
-        <p>
-          A graph foundation model for scientific fracture networks, combining
-          transformer architectures with structured nonlinear refinement.
-        </p>
-        <a href="/gift-kastl/">View Project →</a>
+    <section id="featured">
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Featured Work</h3>
+          <p class="section-copy">
+            Selected systems and research contributions at the intersection of machine learning,
+            mathematics, and scientific modeling.
+          </p>
+        </div>
       </div>
 
-    </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h2>GIFT-KASTL</h2>
+          <p>
+            A graph foundation model for scientific fracture networks, combining transformer
+            architectures with structured nonlinear refinement.
+          </p>
+          <a class="feature-link" href="/gift-kastl/">View Project →</a>
+        </article>
+      </div>
+    </section>
 
-  </div>
-</section>
-
-    <section id="research" style="padding: 4rem 0;">
-  <div class="container">
-
-    <h2 style="margin-bottom: 2rem;">Research & Ideas</h2>
-
-    <div style="display: grid; gap: 2rem; grid-template-columns: 1fr 1fr;">
-
-      <!-- Epistemological Asymmetry -->
-      <div style="padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 16px;">
-        <h3>Epistemological Asymmetry</h3>
-        <p>
-          Why AI systems succeed differently in empirical science and formal mathematics,
-          and what this reveals about learning and proof.
-        </p>
-        <a href="/epistemological-asymmetry/">Read Essay →</a>
+    <section id="research">
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Research & Ideas</h3>
+          <p class="section-copy">
+            Ongoing mathematical and conceptual work across scientific machine learning,
+            operator learning, and AI.
+          </p>
+        </div>
       </div>
 
-      <!-- Koopman -->
-      <div style="padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 16px;">
-        <h3>Koopman Lap-KeDMD</h3>
-        <p>
-          A kernel-based framework for sparse reconstruction and operator-theoretic
-          analysis of dynamical systems.
-        </p>
-        <a href="/koopman-lap-kedmd/">View Project →</a>
+      <div class="idea-grid">
+        <article class="idea-card">
+          <h2>Epistemological Asymmetry</h2>
+          <p>
+            Why AI systems succeed differently in empirical science and formal mathematics,
+            and what this reveals about learning and proof.
+          </p>
+          <a class="idea-link" href="/epistemological-asymmetry/">Read Essay →</a>
+        </article>
+
+        <article class="idea-card">
+          <h2>Koopman Lap-KeDMD</h2>
+          <p>
+            A kernel-based framework for sparse reconstruction and operator-theoretic
+            analysis of dynamical systems.
+          </p>
+          <a class="idea-link" href="/koopman-lap-kedmd/">View Project →</a>
+        </article>
       </div>
-
-    </div>
-
-  </div>
-</section>
+    </section>
 
     <section>
       <div class="section-head">
