@@ -587,6 +587,99 @@
   color: #94a3b8;
   max-width: 700px;
 }
+
+    .gt-block {
+  margin-top: 2rem;
+  padding: 1.8rem;
+  border-radius: 26px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.92),
+    rgba(248,250,252,0.88)
+  );
+  border: 1px solid rgba(123, 44, 94, 0.16);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.07);
+}
+
+.gt-label {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 0.38rem 0.78rem;
+  border-radius: 999px;
+  background: rgba(102, 2, 60, 0.08);
+  color: #66023c; /* Tyrian purple */
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.gt-block h3 {
+  margin: 0 0 0.9rem 0;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.gt-block p {
+  margin: 0.9rem 0;
+  color: #334155;
+  line-height: 1.9;
+}
+
+.gt-math {
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 18px;
+  background: rgba(102, 2, 60, 0.035);
+  border: 1px solid rgba(102, 2, 60, 0.10);
+  color: #1e293b;
+  overflow-x: auto;
+}
+
+.gt-note {
+  margin-top: 1rem;
+  padding-left: 0.95rem;
+  border-left: 3px solid rgba(102, 2, 60, 0.28);
+  color: #475569;
+  font-size: 0.98rem;
+}
+
+.gt-ref-box {
+  margin-top: 1.4rem;
+  padding: 1.2rem 1.25rem;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.gt-ref-box h4 {
+  margin: 0 0 0.7rem 0;
+  font-size: 1rem;
+  color: #66023c;
+  letter-spacing: 0.01em;
+}
+
+.gt-ref-list {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.gt-ref-list li {
+  margin: 0.4rem 0;
+  color: #475569;
+  line-height: 1.75;
+}
+
+.gt-ref-list a {
+  color: #66023c;
+  text-decoration: none;
+}
+
+.gt-ref-list a:hover {
+  text-decoration: underline;
+}
   </style>
 
 <script>
@@ -744,6 +837,62 @@
 
   </div>
 </section>
+
+  <div class="gt-block reveal reveal-delay-1">
+  <div class="gt-label">Graph Transformer Backbone</div>
+  <h3>Attention-based graph-wide representation learning before KASTL refinement (Graph Transformer as the first-stage global representation learner)</h3>
+
+  <p>
+    GIFT-KASTL uses a graph transformer as its first-stage representation learner.
+    Starting from node-feature matrix \(X^{(\ell)}\), each layer computes
+    attention-weighted interactions through projected query, key, and value maps,
+    following the standard transformer mechanism introduced by Vaswani et al.
+  </p>
+
+  <div class="gt-math">
+    \[
+    \mathrm{Attention}\!\left(X^{(\ell)}\right)
+    :=
+    \mathrm{softmax}\!\left(d_K^{-1/2} QK^{\top}\right)V,
+    \]
+    \[
+    Q := X^{(\ell)}W_Q,\qquad
+    K := X^{(\ell)}W_K,\qquad
+    V := X^{(\ell)}W_V.
+    \]
+  </div>
+
+  <p>
+    For graph-structured data, this attention mechanism is adapted so that feature
+    propagation reflects graph connectivity and structural information rather than
+    treating the input as an unstructured sequence. In this way, the graph transformer
+    aggregates global relational structure across the fracture network before the
+    downstream KASTL layer performs structured nonlinear refinement.
+  </p>
+
+  <div class="gt-note">
+    In GIFT-KASTL, the graph transformer serves as the global representation learner,
+    while KASTL acts afterward as a theorem-inspired output-stage refinement mechanism.
+  </div>
+
+  <div class="gt-ref-box">
+    <h4>Selected references</h4>
+    <ul class="gt-ref-list">
+      <li>
+        Vaswani et al., <em>Attention Is All You Need</em>, 2017.
+        <a href="https://arxiv.org/abs/1706.03762" target="_blank">arXiv</a>
+      </li>
+      <li>
+        Dwivedi and Bresson, <em>A Generalization of Transformer Networks to Graphs</em>, 2020.
+        <a href="https://arxiv.org/abs/2012.09699" target="_blank">arXiv</a>
+      </li>
+      <li>
+        Ying et al., <em>Do Transformers Really Perform Bad for Graph Representation?</em>, 2021.
+        <a href="https://arxiv.org/abs/2106.05234" target="_blank">arXiv</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
   <section id="kastl" class="reveal">
   <div class="container">
