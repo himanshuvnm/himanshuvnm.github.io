@@ -1010,7 +1010,11 @@ class KASTLLayer(nn.Module):
       These interactive plots summarize the footprint of the fracture-network datasets
       and the scaling behavior of the pipeline with graph size and connectivity.
     </p>
-
+<p>
+These figures collectively illustrate a central principle: the complexity of learning on fracture networks is governed not only by graph size, but by 
+  structural and dynamical properties of the graph itself. While graph transformers provide expressive global representations, their computational and predictive behavior is shaped by topology, 
+  sparsity, and horizon-dependent error propagation. The KASTL refinement layer is designed precisely to stabilize these effects.
+</p>
     <div class="kastl-grid">
       <div>
         <iframe
@@ -1020,9 +1024,23 @@ class KASTLLayer(nn.Module):
           style="border:none; border-radius:18px; background:#ffffff; box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);">
         </iframe>
         <p class="kastl-caption">
-          <strong>Nodes vs edges.</strong> Each point is a graph instance, colored by wall time.
+          <strong>Nodes vs edges.</strong> Each point is a graph instance, colored by wall time. 
         </p>
       </div>
+
+      <div class="figure-block">
+
+  <div id="plot-nodes-edges"></div>
+
+  <h3>Structural scaling of fracture networks</h3>
+
+  <p>
+  The near-linear growth between nodes and edges indicates that DFN graphs preserve a stable connectivity regime as system size increases. This suggests that the underlying physical generation process induces structured, non-random graph topology rather than arbitrary densification.
+
+  Importantly, wall-time variation across similar graph sizes reveals that topology—not just size—controls computational cost, highlighting the role of connectivity patterns in downstream learning complexity.
+  </p>
+
+</div>
 
       <div>
         <iframe
