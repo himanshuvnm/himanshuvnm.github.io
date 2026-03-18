@@ -680,6 +680,104 @@
 .gt-ref-list a:hover {
   text-decoration: underline;
 }
+
+.kastl-block {
+  margin-top: 2rem;
+  padding: 1.8rem;
+  border-radius: 26px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(15, 30, 55, 0.92),
+    rgba(10, 22, 40, 0.90)
+  );
+
+  border: 1px solid rgba(102, 2, 60, 0.22); /* Tyrian purple */
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+}
+
+.kastl-label {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 0.38rem 0.78rem;
+  border-radius: 999px;
+
+  background: rgba(102, 2, 60, 0.15);
+  color: #d8b4c8;
+
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.kastl-block h3 {
+  margin: 0 0 0.9rem 0;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+}
+
+.kastl-block p {
+  margin: 0.9rem 0;
+  color: #cbd5e1;
+  line-height: 1.9;
+}
+
+.kastl-math {
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 18px;
+
+  background: rgba(102, 2, 60, 0.08);
+  border: 1px solid rgba(102, 2, 60, 0.22);
+
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+
+.kastl-note {
+  margin-top: 1rem;
+  padding-left: 0.95rem;
+  border-left: 3px solid rgba(102, 2, 60, 0.45);
+  color: #94a3b8;
+}
+
+.kastl-ref-box {
+  margin-top: 1.4rem;
+  padding: 1.2rem 1.25rem;
+  border-radius: 18px;
+
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.kastl-ref-box h4 {
+  margin: 0 0 0.7rem 0;
+  font-size: 1rem;
+  color: #e9d5ff;
+}
+
+.kastl-ref-list {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.kastl-ref-list li {
+  margin: 0.4rem 0;
+  color: #cbd5e1;
+  line-height: 1.75;
+}
+
+.kastl-ref-list a {
+  color: #d8b4c8;
+  text-decoration: none;
+}
+
+.kastl-ref-list a:hover {
+  text-decoration: underline;
+}    
   </style>
 
 <script>
@@ -1002,6 +1100,65 @@
       </p>
     </div>
 
+
+<div class="kastl-block reveal reveal-delay-2">
+  <div class="kastl-label">KASTL Refinement Layer</div>
+
+  <h3>Kolmogorov–Arnold structured transformation as a post-attention refinement</h3>
+
+  <p>
+    Following the global aggregation performed by the graph transformer, GIFT-KASTL
+    applies a structured nonlinear refinement inspired by the Kolmogorov–Arnold
+    superposition theorem. Instead of relying purely on learned multilayer
+    compositions, KASTL decomposes transformations into structured inner and outer
+    functions, introducing an explicit functional prior into the learning process.
+  </p>
+
+  <div class="kastl-math">
+    \[
+    f(x_1,\ldots,x_n)
+    =
+    \sum_{j=0}^{2n}
+    \mathcal{O}_j\!\left(
+    \sum_{i=1}^{n} \mathcal{I}_{ij}(x_i)
+    \right)
+    \]
+  </div>
+
+  <p>
+    This formulation allows KASTL to act as a refinement operator over learned
+    representations, enabling structured nonlinear interactions while maintaining
+    interpretability and functional control. In contrast to generic feedforward
+    layers, this approach introduces mathematically grounded inductive bias into
+    the output stage of the model.
+  </p>
+
+  <div class="kastl-note">
+    Conceptually, GIFT-KASTL separates representation learning and functional
+    refinement: the transformer learns global structure, while KASTL imposes
+    structured nonlinear composition.
+  </div>
+
+  <div class="kastl-ref-box">
+    <h4>Conceptual references</h4>
+    <ul class="kastl-ref-list">
+      <li>
+        Kolmogorov, A. N., <em>On the representation of continuous functions</em>, 1957.
+      </li>
+      <li>
+        Arnold, V. I., <em>On functions of three variables</em>, 1957.
+      </li>
+      <li>
+        Sprecher, D., <em>On the structure of continuous functions</em>, 1965.
+      </li>
+      <li>
+        Recent neural interpretations of Kolmogorov–Arnold representations in
+        function approximation and neural networks.
+      </li>
+    </ul>
+  </div>
+</div>
+    
   </div>
 </section>
 
