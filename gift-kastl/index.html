@@ -777,7 +777,95 @@
 
 .kastl-ref-list a:hover {
   text-decoration: underline;
-}    
+}
+
+.svd-section {
+  padding: 5rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  background: linear-gradient(180deg, rgba(248,250,252,0.96), rgba(241,245,249,0.92));
+}
+
+.svd-intro {
+  max-width: 860px;
+  color: #475569;
+  font-size: 1.04rem;
+  line-height: 1.9;
+}
+
+.svd-hero {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.svd-hero iframe {
+  width: 100%;
+  height: 650px;
+  border: none;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.svd-caption {
+  margin-top: 0.9rem;
+  color: #475569;
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+.svd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.svd-card {
+  padding: 1rem;
+  border-radius: 22px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.05);
+}
+
+.svd-card img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+}
+
+.svd-card p {
+  margin: 0.8rem 0 0 0;
+  color: #475569;
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.svd-takeaway {
+  margin-top: 2rem;
+  padding: 1.35rem 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(102,2,60,0.06), rgba(4,55,242,0.05));
+  border: 1px solid rgba(102,2,60,0.10);
+  color: #334155;
+  line-height: 1.9;
+}
+
+@media (max-width: 920px) {
+  .svd-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .svd-hero iframe {
+    height: 520px;
+  }
+}
+
+    
   </style>
 
 <script>
@@ -800,6 +888,7 @@
         <a href="#foundation-architecture">Foundation Architecture</a>
         <a href="#kastl">KASTL</a>
         <a href="#why-kastl">Why KASTL</a>
+        <a href="#svd-structure">Spectral Structure</a>
         <a href="#results">Results</a>
         <a href="#poster">Poster</a>
       </div>
@@ -1243,6 +1332,91 @@
       <div class="why-kastl-pill reveal reveal-delay-2">4. Stable</div>
       <div class="why-kastl-pill reveal reveal-delay-3">5. Probabilistic analysis</div>
       <div class="why-kastl-pill reveal reveal-delay-3">6. Finite approximations</div>
+    </div>
+
+  </div>
+</section>
+
+  <section id="svd-structure" class="svd-section reveal">
+  <div class="container">
+
+    <div class="section-title">Spectral structure</div>
+    <h2>Singular-value structure of DFN node features</h2>
+
+    <p class="svd-intro reveal reveal-delay-1">
+      To understand the intrinsic structure of fracture-network data, we analyze the
+      singular value decomposition of node feature matrices across the DFN dataset.
+      This provides a direct view of how spatial and geometric attributes contribute
+      to the learned representation space.
+    </p>
+
+    <p class="svd-intro reveal reveal-delay-1">
+      Across the dataset, the singular spectrum remains balanced rather than collapsing
+      into a dominant low-rank mode. This indicates that DFN node features do not admit
+      trivial dimensional reduction: the geometry is distributed across multiple active
+      feature directions rather than being dominated by a single coordinate or attribute.
+    </p>
+
+    <div class="svd-hero glow-reveal reveal-delay-2">
+      <iframe
+        src="interactive/interactive_vt_annotated.html"
+        title="Interactive right-singular-vector structure of DFN node features">
+      </iframe>
+      <p class="svd-caption">
+        <strong>Interactive singular-vector structure.</strong>
+        High-weight regions indicate strong feature–mode alignment, while low-weight regions
+        indicate weak or orthogonal contribution. Mixed-sign regions show that dominant modes
+        are formed by coupled combinations of features rather than axis-aligned coordinates.
+      </p>
+    </div>
+
+    <div class="svd-grid">
+
+      <div class="svd-card reveal reveal-delay-1">
+        <img src="figures/mean_singular_spectrum.png" alt="Mean singular spectrum across DFN graphs" />
+        <p>
+          <strong>Mean singular spectrum.</strong>
+          The gradual decay of normalized singular values shows that no single mode dominates
+          the feature geometry. Instead, spectral mass is distributed across all principal directions.
+        </p>
+      </div>
+
+      <div class="svd-card reveal reveal-delay-2">
+        <img src="figures/cumulative_energy.png" alt="Cumulative spectral energy across DFN graphs" />
+        <p>
+          <strong>Cumulative energy.</strong>
+          The cumulative spectrum requires all components to capture most of the variance,
+          reinforcing that DFN node features are consistently full-rank rather than strongly compressible.
+        </p>
+      </div>
+
+      <div class="svd-card reveal reveal-delay-2">
+        <img src="figures/effective_rank_histogram.png" alt="Effective rank distribution across DFN graphs" />
+        <p>
+          <strong>Effective rank distribution.</strong>
+          Across the dataset, effective rank remains concentrated at the full feature dimension,
+          indicating a stable, dataset-wide pattern rather than an isolated example.
+        </p>
+      </div>
+
+      <div class="svd-card reveal reveal-delay-3">
+        <img src="figures/representative_spectrum.png" alt="Representative singular spectrum of one DFN graph" />
+        <p>
+          <strong>Representative example.</strong>
+          A typical graph exhibits the same balanced spectral profile seen in the aggregate statistics,
+          confirming that the dataset-level behavior is reflected at the level of individual realizations.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="svd-takeaway reveal reveal-delay-3">
+      <strong>Why this matters for GIFT-KASTL.</strong>
+      These observations suggest that DFN node features are intrinsically coupled and cannot
+      be reduced to independent low-dimensional coordinates. This supports the use of
+      graph transformers for expressive global representation learning and motivates KASTL
+      as a structured refinement stage that models nonlinear interactions across all active
+      feature dimensions, rather than relying on simplified or low-rank assumptions.
     </div>
 
   </div>
