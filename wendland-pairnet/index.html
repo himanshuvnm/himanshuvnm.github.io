@@ -249,7 +249,19 @@ html {
   transform: scale(1.6);
 }
 
+.highlight {
+  color: #ffb703;
+  text-shadow: 0 0 8px rgba(255,183,3,0.3);
+}
 
+.card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}  
   
 </style>
 </head>
@@ -433,6 +445,15 @@ html {
     </p>
   </div>
 
+<section class="card reveal">
+  <h2>Resources</h2>
+
+  <div class="buttons">
+    <a href="#" class="btn">Paper (coming soon)</a>
+    <a href="#" class="btn">Code (coming soon)</a>
+  </div>
+</section>
+  
 </div>
 <script>
   const observer = new IntersectionObserver((entries) => {
