@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
@@ -611,6 +618,49 @@ html {
     grid-template-columns: 1fr;
   }
 }  
+
+.theorem-card {
+  margin-top: 1.2rem;
+  padding: 1.15rem 1.2rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.theorem-label {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255,183,3,0.10);
+  border: 1px solid rgba(255,183,3,0.22);
+  color: #ffb703;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.theorem-text {
+  color: #d1d5db;
+  line-height: 1.8;
+  margin: 0.4rem 0 0.7rem 0;
+}
+
+.display-math {
+  margin: 0.7rem 0 1rem 0;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(102,2,60,0.10);
+  border: 1px solid rgba(102,2,60,0.24);
+  color: #f8fafc;
+  text-align: center;
+  font-size: 1.05rem;
+  overflow-x: auto;
+}
+
+.math {
+  font-style: italic;
+  color: #ffb703;
+}
   
 </style>
 </head>
@@ -736,6 +786,54 @@ html {
 </section>
   </div>
 
+<section id="radius-theory" class="card reveal">
+  <h2>Why radius is a structural control parameter</h2>
+
+  <p>
+    The support radius is not just a tuning parameter. It directly controls how many
+    interactions can remain active and therefore determines both sparsity and effective
+    operator size.
+  </p>
+
+  <div class="theorem-card">
+    <div class="theorem-label">Proposition (light form)</div>
+
+    <p class="theorem-text">
+      For each node <span class="math">i</span>, the number of nonzero entries in the
+      <span class="math">i</span>-th interaction row is bounded by the size of its
+      radius-support neighborhood:
+    </p>
+
+    <div class="display-math">
+      <span class="math">‖A<sup>(r)</sup><sub>i,:</sub>‖<sub>0</sub> ≤ |𝓑<sub>r</sub>(i)|</span>
+    </div>
+
+    <p class="theorem-text">
+      When graph degree is bounded by <span class="math">Δ</span>, this neighborhood size
+      grows at most like the <span class="math">r</span>-hop ball:
+    </p>
+
+    <div class="display-math">
+      <span class="math">|𝓑<sub>r</sub>(i)| ≤ 1 + Δ \sum<sub>ℓ=1</sub><sup>r</sup>(Δ − 1)<sup>ℓ−1</sup></span>
+    </div>
+  </div>
+
+  <p>
+    This gives a direct theoretical explanation for the observed frontier behavior:
+    increasing <span class="math">r</span> expands interaction support, while smaller
+    radii induce structured sparsity. In this sense, radius acts as an interpretable
+    capacity parameter controlling both interaction complexity and stability.
+  </p>
+
+  <div class="theory-note">
+    <strong>Interpretation.</strong>
+    The frontier figure is not just an empirical tradeoff plot. It reflects a structural
+    fact: the support radius limits the number of admissible interactions through graph geometry.
+  </div>
+</section>
+
+  
+
 <div class="container">
 
   <!-- SECTION 1 -->
@@ -783,6 +881,13 @@ principled allocation of interaction strength. Instead of selecting neighbors
 combinatorially, WendlandPairNet distributes influence continuously according to
 distance, producing sparsity as a consequence of kernel structure rather than heuristic pruning.
 </p>
+
+ <p class="frontier-deep-note">
+  The empirical frontier is backed by a structural control mechanism: the support radius
+  bounds the number of active interactions through the size of the graph ball \( \mathcal{B}_r(i) \).
+  This is why the accuracy–runtime–sparsity tradeoff is interpretable rather than ad hoc.
+</p>
+    
     <div class="figure reveal reveal-delay-1">
       <img src="assets/fig2.png">
       <div class="caption">
