@@ -563,6 +563,54 @@ html {
   line-height: 1.8;
 }  
 
+.questions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.question-card {
+  padding: 1.1rem;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.question-card h3 {
+  color: #ffb703;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.question {
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.answer {
+  margin-top: 0.5rem;
+  color: #d1d5db;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.questions-summary {
+  margin-top: 1.5rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(102,2,60,0.10);
+  border: 1px solid rgba(102,2,60,0.25);
+  color: #f3f4f6;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .questions-grid {
+    grid-template-columns: 1fr;
+  }
+}  
   
 </style>
 </head>
@@ -617,6 +665,75 @@ html {
     <span class="highlight">geometry-aware compact-support kernels</span>
   </p>
 </div>
+  
+<p class="section-bridge">
+  This work is driven by four precise questions about interaction structure,
+  sparsity, and learning dynamics.
+</p>
+  <section id="questions" class="card reveal">
+  <h2>Design Questions and Empirical Resolution</h2>
+
+  <p>
+    WendlandPairNet is not introduced as a heuristic. It is built to answer a set of
+    concrete design questions about graph interaction. These questions connect theory,
+    architecture, and empirical behavior.
+  </p>
+
+  <div class="questions-grid">
+
+    <div class="question-card reveal reveal-delay-1">
+      <h3>Accuracy parity</h3>
+      <p class="question">
+        Can compact-support interaction match dense all-pair mixing?
+      </p>
+      <p class="answer">
+        <strong>Answer:</strong> Yes — comparable or superior accuracy across PROTEINS,
+        MUTAG, and IMDB-BINARY.
+      </p>
+    </div>
+
+    <div class="question-card reveal reveal-delay-2">
+      <h3>Geometry-aligned sparsity</h3>
+      <p class="question">
+        Does sparsity emerge without heuristic truncation?
+      </p>
+      <p class="answer">
+        <strong>Answer:</strong> Yes — interaction structure arises directly from kernel
+        geometry, producing interpretable sparsity patterns.
+      </p>
+    </div>
+
+    <div class="question-card reveal reveal-delay-3">
+      <h3>Radius as capacity control</h3>
+      <p class="question">
+        Can a single parameter control the accuracy–sparsity trade-off?
+      </p>
+      <p class="answer">
+        <strong>Answer:</strong> Yes — radius induces a smooth and continuous trade-off,
+        acting as a structural capacity parameter.
+      </p>
+    </div>
+
+    <div class="question-card reveal reveal-delay-4">
+      <h3>Training stability</h3>
+      <p class="question">
+        Does kernel-induced sparsity preserve optimization stability?
+      </p>
+      <p class="answer">
+        <strong>Answer:</strong> Yes — convergence remains stable and comparable to dense
+        interaction, often improving over heuristic sparsification.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="questions-summary">
+    <strong>Summary.</strong>
+    Across benchmarks and evaluation metrics, WendlandPairNet satisfies all four design
+    objectives: preserving accuracy, inducing structured sparsity, enabling interpretable
+    capacity control via radius, and maintaining stable training dynamics.
+  </div>
+</section>
 
 <div class="container">
 
