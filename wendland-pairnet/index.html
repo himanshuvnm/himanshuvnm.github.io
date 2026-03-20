@@ -377,6 +377,78 @@ html {
 .ref-item em {
   color: #f3f4f6;
 }  
+
+.hero {
+  text-align: center;
+  margin: 80px auto 50px auto;
+  max-width: 900px;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+  margin-bottom: 1rem;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  color: #d1d5db;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.hero-subtext {
+  font-size: 1.05rem;
+  color: #9ca3af;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.highlight {
+  color: #ffb703;
+  text-shadow: 0 0 10px rgba(255,183,3,0.25);
+}
+
+/* pills */
+.hero-points {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.hero-pill {
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255,183,3,0.08);
+  border: 1px solid rgba(255,183,3,0.18);
+  color: #f3f4f6;
+  font-size: 0.9rem;
+}
+
+.hero-actions {
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.hero-btn {
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+  text-decoration: none;
+  color: #eaeaf0;
+  transition: all 0.2s ease;
+}
+
+.hero-btn:hover {
+  border-color: #ffb703;
+  color: #ffb703;
+}
   
 </style>
 </head>
@@ -398,33 +470,30 @@ html {
 </nav>
 
   <section id="overview" class="hero">
+
+    <div class="hero-actions">
+  <a href="#" class="hero-btn">Paper</a>
+  <a href="#" class="hero-btn">Code</a>
+</div>
+
   <h1>WendlandPairNet</h1>
 
   <p class="hero-tagline">
-    Learning <span class="highlight">continuous, compactly supported interactions</span>
-    for structured and efficient graph representation.
+    Replacing <span class="highlight">discrete neighbor selection</span> with
+    <span class="highlight">continuous, compact-support interaction fields</span>.
   </p>
 
   <p class="hero-subtext">
-    A kernel-driven alternative to discrete neighbor selection, enabling
-    smooth control over locality, sparsity, and interaction geometry.
+    WendlandPairNet models graph interactions through kernel-induced locality,
+    enabling smooth control over sparsity, geometry, and interaction complexity.
   </p>
 
-<section class="card reveal">
-  <h2>Key Idea</h2>
-
-  <p>
-    Replace discrete edge selection (TopK) with a continuous interaction field
-    defined by compactly supported kernels.
-  </p>
-
-  <div class="idea-points">
-    <div class="idea-pill">Radius controls locality continuously</div>
-    <div class="idea-pill">Interactions decay smoothly</div>
-    <div class="idea-pill">Geometry emerges from kernel structure</div>
+  <div class="hero-points">
+    <div class="hero-pill">Smooth locality control</div>
+    <div class="hero-pill">Compact-support sparsity</div>
+    <div class="hero-pill">Geometry-aware interactions</div>
   </div>
-</section>
-    
+
 </section>
 
 <div class="hero">
