@@ -205,6 +205,68 @@ html {
 .reveal-delay-1 { transition-delay: 0.08s; }
 .reveal-delay-2 { transition-delay: 0.18s; }
 .reveal-delay-3 { transition-delay: 0.28s; }
+
+.radius-demo-wrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* initial state */
+.reveal-radius iframe {
+  opacity: 0;
+  transform: scale(0.96);
+  filter: blur(6px);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* radial glow layer */
+.reveal-radius::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 183, 3, 0.25) 0%,
+    rgba(255, 183, 3, 0.12) 20%,
+    transparent 60%
+  );
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 1.4s ease;
+  pointer-events: none;
+}
+
+/* when visible */
+.reveal-radius.visible iframe {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.reveal-radius.visible::before {
+  opacity: 1;
+  transform: scale(1.6);
+}
+
+.reveal-radius::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px dashed rgba(255, 0, 150, 0.5);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+  transition: all 1.2s ease;
+}
+
+.reveal-radius.visible::after {
+  transform: translate(-50%, -50%) scale(1.2);
+  opacity: 1;
+}
   
 </style>
 </head>
@@ -319,13 +381,17 @@ html {
       As the radius increases, interactions expand smoothly rather than appearing abruptly.
     </p>
 
-    <div class="radius-demo-frame">
-      <iframe
-        src="assets/interactive/wendland_radius_demo.html"
-        title="Interactive Wendland radius demo"
-        loading="lazy">
-      </iframe>
-    </div>
+    <div class="radius-demo-wrapper reveal-radius">
+  
+  <div class="radius-demo-frame">
+    <iframe
+      src="assets/interactive/wendland_radius_demo.html"
+      title="Interactive Wendland radius demo"
+      loading="lazy">
+    </iframe>
+  </div>
+
+</div>
 
     <div class="caption">
       Increasing the radius expands the interaction support while preserving smooth decay,
@@ -362,9 +428,10 @@ html {
         entry.target.classList.add("visible");
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.15 });
 
-  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  document.querySelectorAll(".reveal, .reveal-radius")
+    .forEach((el) => observer.observe(el));
 </script>
 </body>
 </html>
