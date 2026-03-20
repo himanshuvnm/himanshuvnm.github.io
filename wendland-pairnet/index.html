@@ -249,24 +249,7 @@ html {
   transform: scale(1.6);
 }
 
-.reveal-radius::after {
-  content: "";
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 2px dashed rgba(255, 0, 150, 0.5);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.5);
-  opacity: 0;
-  transition: all 1.2s ease;
-}
 
-.reveal-radius.visible::after {
-  transform: translate(-50%, -50%) scale(1.2);
-  opacity: 1;
-}
   
 </style>
 </head>
