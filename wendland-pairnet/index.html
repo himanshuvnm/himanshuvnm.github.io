@@ -354,7 +354,29 @@ html {
   border-radius: 16px;
   display: block;
 }
-  
+
+.ref-block {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.ref-item {
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #d1d5db;
+  line-height: 1.8;
+}
+
+.ref-item strong {
+  color: #ffb703;
+}
+
+.ref-item em {
+  color: #f3f4f6;
+}  
   
 </style>
 </head>
@@ -546,6 +568,43 @@ html {
   </div>
 
 </section>
+
+ <section id="references" class="card reveal">
+  <h2>Selected References on Compact-Support Kernels</h2>
+
+  <p>
+    WendlandPairNet is grounded in the theory of compactly supported radial basis
+    functions and scattered data approximation. The following references provide
+    the mathematical foundation for positive definiteness, compact support, and
+    approximation behavior of Wendland-type kernels.
+  </p>
+
+  <div class="ref-block">
+    <div class="ref-item">
+      <strong>H. Wendland.</strong>
+      <em>Piecewise polynomial, positive definite and compactly supported radial functions of minimal degree.</em>
+      Advances in Computational Mathematics, 4 (1995), 389–396.
+    </div>
+
+    <div class="ref-item">
+      <strong>H. Wendland.</strong>
+      <em>Scattered Data Approximation.</em>
+      Cambridge Monographs on Applied and Computational Mathematics, Cambridge University Press, 2004.
+    </div>
+
+    <div class="ref-item">
+      <strong>M. D. Buhmann.</strong>
+      <em>Radial Basis Functions: Theory and Implementations.</em>
+      Cambridge Monographs on Applied and Computational Mathematics, Cambridge University Press, 2003.
+    </div>
+
+    <div class="ref-item">
+      <strong>M. D. Buhmann.</strong>
+      <em>Radial Basis Functions.</em>
+      Acta Numerica, 9 (2000), 1–38.
+    </div>
+  </div>
+</section> 
 
   <!-- FINAL -->
   <div class="card reveal">
