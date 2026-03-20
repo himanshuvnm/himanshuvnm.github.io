@@ -449,6 +449,24 @@ html {
   border-color: #ffb703;
   color: #ffb703;
 }
+
+.theory-note {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid rgba(255,183,3,0.7);
+  background: rgba(255,255,255,0.03);
+  color: #d1d5db;
+  border-radius: 10px;
+}
+
+.proteins-takeaway {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(102,2,60,0.10);
+  border: 1px solid rgba(102,2,60,0.25);
+  color: #f3f4f6;
+}  
   
 </style>
 </head>
@@ -581,6 +599,29 @@ html {
 
     
   </div>
+
+<section id="theory" class="card reveal">
+  <h2>Theoretical Perspective</h2>
+
+  <p>
+    WendlandPairNet is built on compactly supported radial basis functions.
+    Unlike dense all-pair interaction or hard TopK truncation, the Wendland kernel
+    induces a smooth interaction field whose support is finite and whose strength
+    decays continuously with distance.
+  </p>
+
+  <p>
+    This gives the model a structured notion of locality: interactions are neither
+    globally unrestricted nor discretely pruned, but controlled by a radius parameter
+    that governs support, sparsity, and smoothness simultaneously.
+  </p>
+
+  <div class="theory-note">
+    <strong>Key idea.</strong>
+    Compact support turns sparsity from a heuristic into a geometric property of the kernel itself.
+  </div>
+</section>
+  
   <section id="radius-demo" class="radius-demo-section reveal">
 
   <div class="radius-demo-card">
@@ -638,6 +679,25 @@ html {
 
 </section>
 
+  <section id="interpretation" class="card reveal">
+  <h2>Interpretation</h2>
+
+  <p>
+    The central distinction between TopKPairNet and WendlandPairNet is not merely
+    sparsity level, but the way sparsity is produced. TopK imposes a hard
+    combinatorial boundary: a node is either selected or excluded. WendlandPairNet
+    instead induces a continuous interaction geometry in which influence decays
+    smoothly and vanishes only beyond a finite radius.
+  </p>
+
+  <p>
+    This changes the character of graph mixing. Rather than selecting a fixed number
+    of neighbors, the model allocates interaction strength according to geometric
+    proximity. The result is a structured balance between global expressivity and
+    local control.
+  </p>
+</section>
+
  <section id="references" class="card reveal">
   <h2>Selected References on Compact-Support Kernels</h2>
 
@@ -674,6 +734,27 @@ html {
     </div>
   </div>
 </section> 
+
+  <section id="proteins" class="card reveal">
+  <h2>PROTEINS: A Concrete Empirical Story</h2>
+
+  <p>
+    On the PROTEINS benchmark, WendlandPairNet demonstrates the practical value of
+    kernel-induced sparsity. The model retains competitive predictive accuracy while
+    reducing interaction density relative to dense global mixing.
+  </p>
+
+  <p>
+    This result is important because it shows that all-pair interaction is not
+    always necessary. A geometry-aware compact-support mechanism can preserve useful
+    graph information while allocating computational budget more selectively.
+  </p>
+
+  <div class="proteins-takeaway">
+    <strong>PROTEINS takeaway.</strong>
+    Structured sparsity is not only cheaper — it can remain fully competitive.
+  </div>
+</section>
 
   <!-- FINAL -->
   <div class="card reveal">
