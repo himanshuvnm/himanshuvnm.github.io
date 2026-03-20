@@ -786,52 +786,6 @@ html {
 </section>
   </div>
 
-<section id="radius-theory" class="card reveal">
-  <h2>Why radius is a structural control parameter</h2>
-
-  <p>
-    The support radius is not just a tuning parameter. It directly controls how many
-    interactions can remain active and therefore determines both sparsity and effective
-    operator size.
-  </p>
-
-  <div class="theorem-card">
-    <div class="theorem-label">Proposition (light form)</div>
-
-    <p class="theorem-text">
-      For each node <span class="math">i</span>, the number of nonzero entries in the
-      <span class="math">i</span>-th interaction row is bounded by the size of its
-      radius-support neighborhood:
-    </p>
-
-    <div class="display-math">
-      <span class="math">‖A<sup>(r)</sup><sub>i,:</sub>‖<sub>0</sub> ≤ |𝓑<sub>r</sub>(i)|</span>
-    </div>
-
-    <p class="theorem-text">
-      When graph degree is bounded by <span class="math">Δ</span>, this neighborhood size
-      grows at most like the <span class="math">r</span>-hop ball:
-    </p>
-
-    <div class="display-math">
-      <span class="math">|𝓑<sub>r</sub>(i)| ≤ 1 + Δ \sum<sub>ℓ=1</sub><sup>r</sup>(Δ − 1)<sup>ℓ−1</sup></span>
-    </div>
-  </div>
-
-  <p>
-    This gives a direct theoretical explanation for the observed frontier behavior:
-    increasing <span class="math">r</span> expands interaction support, while smaller
-    radii induce structured sparsity. In this sense, radius acts as an interpretable
-    capacity parameter controlling both interaction complexity and stability.
-  </p>
-
-  <div class="theory-note">
-    <strong>Interpretation.</strong>
-    The frontier figure is not just an empirical tradeoff plot. It reflects a structural
-    fact: the support radius limits the number of admissible interactions through graph geometry.
-  </div>
-</section>
-
   
 
 <div class="container">
@@ -947,6 +901,53 @@ distance, producing sparsity as a consequence of kernel structure rather than he
   </p>
 
   <div class="theory-note">
+
+<section id="radius-theory" class="card reveal">
+  <h2>Why radius is a structural control parameter</h2>
+
+  <p>
+    The support radius is not just a tuning parameter. It directly controls how many
+    interactions can remain active and therefore determines both sparsity and effective
+    operator size.
+  </p>
+
+  <div class="theorem-card">
+    <div class="theorem-label">Proposition (light form)</div>
+
+    <p class="theorem-text">
+      For each node <span class="math">i</span>, the number of nonzero entries in the
+      <span class="math">i</span>-th interaction row is bounded by the size of its
+      radius-support neighborhood:
+    </p>
+
+    <div class="display-math">
+      <span class="math">‖A<sup>(r)</sup><sub>i,:</sub>‖<sub>0</sub> ≤ |𝓑<sub>r</sub>(i)|</span>
+    </div>
+
+    <p class="theorem-text">
+      When graph degree is bounded by <span class="math">Δ</span>, this neighborhood size
+      grows at most like the <span class="math">r</span>-hop ball:
+    </p>
+
+    <div class="display-math">
+      <span class="math">|𝓑<sub>r</sub>(i)| ≤ 1 + Δ \sum<sub>ℓ=1</sub><sup>r</sup>(Δ − 1)<sup>ℓ−1</sup></span>
+    </div>
+  </div>
+
+  <p>
+    This gives a direct theoretical explanation for the observed frontier behavior:
+    increasing <span class="math">r</span> expands interaction support, while smaller
+    radii induce structured sparsity. In this sense, radius acts as an interpretable
+    capacity parameter controlling both interaction complexity and stability.
+  </p>
+
+  <div class="theory-note">
+    <strong>Interpretation.</strong>
+    The frontier figure is not just an empirical tradeoff plot. It reflects a structural
+    fact: the support radius limits the number of admissible interactions through graph geometry.
+  </div>
+</section>
+    
     <strong>Key idea.</strong>
     Compact support turns sparsity from a heuristic into a geometric property of the kernel itself.
   </div>
