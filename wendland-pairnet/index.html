@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>WendlandPairNet — Structured Sparse Global Mixing</title>
+
+<style>
+:root {
+  --purple: #66023c;
+  --blue: #0437F2;
+  --gold: #ffb703;
+  --bg: #0b0b0f;
+  --card: #12121a;
+  --text: #eaeaf0;
+  --muted: #b5b5c0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  margin-top: 60px;
+  font-size: 28px;
+  color: var(--gold);
+}
+
+p {
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  background: linear-gradient(90deg, var(--purple), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 30px;
+  margin-top: 40px;
+  box-shadow: 0 0 40px rgba(102,2,60,0.2);
+}
+
+.figure {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.figure img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.highlight {
+  color: var(--gold);
+  font-weight: 500;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <h1>Structured Sparse Global Mixing</h1>
+  <p>
+    Replacing dense all-pair interactions with 
+    <span class="highlight">geometry-aware compact-support kernels</span>
+  </p>
+</div>
+
+<div class="container">
+
+  <!-- SECTION 1 -->
+  <div class="card">
+    <h2>Interaction Mechanisms</h2>
+    <p>
+      Traditional graph models rely on either 
+      <span class="highlight">dense global mixing</span> or 
+      <span class="highlight">discrete sparsification</span>.
+      These approaches either incur quadratic cost or impose hard, non-smooth truncations.
+    </p>
+
+    <p>
+      WendlandPairNet introduces a fundamentally different paradigm:
+      <span class="highlight">continuous, geometry-aware sparsity</span> 
+      induced by compact-support kernels.
+    </p>
+
+    <div class="figure">
+      <img src="assets/fig1.png">
+      <div class="caption">
+        DensePairNet mixes all nodes, TopKPairNet selects discrete neighbors, 
+        while WendlandPairNet induces smooth, radius-controlled sparsity.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="card">
+    <h2>Accuracy–Runtime–Sparsity Tradeoff</h2>
+
+    <p>
+      Across multiple datasets, WendlandPairNet achieves a 
+      <span class="highlight">balanced operating regime</span>:
+      maintaining competitive accuracy while significantly reducing interaction density.
+    </p>
+
+    <p>
+      Unlike TopK selection, sparsity emerges from 
+      <span class="highlight">geometric attenuation</span> rather than discrete pruning,
+      leading to smoother and more stable behavior.
+    </p>
+
+    <div class="figure">
+      <img src="assets/fig2.png">
+      <div class="caption">
+        WendlandPairNet occupies a favorable region in the accuracy–runtime–sparsity space
+        across PROTEINS, IMDB-BINARY, and MUTAG datasets.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="card">
+    <h2>Kernel-Induced Structure</h2>
+
+    <p>
+      The Wendland kernel introduces an interpretable control parameter: 
+      the <span class="highlight">interaction radius</span>.
+    </p>
+
+    <p>
+      This radius governs the transition between local and global behavior,
+      acting as a continuous knob for 
+      <span class="highlight">model capacity, sparsity, and stability</span>.
+    </p>
+
+    <div class="figure">
+      <img src="assets/fig3.png">
+      <div class="caption">
+        The Wendland kernel profile illustrates how interaction strength decays smoothly
+        and vanishes beyond a finite radius.
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL -->
+  <div class="card">
+    <h2>Takeaway</h2>
+
+    <p>
+      Dense global interaction is not necessary.
+    </p>
+
+    <p>
+      What matters is learning 
+      <span class="highlight">geometrically meaningful interactions</span>.
+    </p>
+
+    <p>
+      WendlandPairNet provides a principled path toward 
+      <span class="highlight">structured efficiency in graph learning</span>.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
