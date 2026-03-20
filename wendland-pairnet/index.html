@@ -262,6 +262,43 @@ html {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }  
+
+.key-idea-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem auto 0 auto;
+  max-width: 520px;
+  text-align: center;
+}
+
+.key-idea-list li {
+  margin: 0.45rem 0;
+  color: #eaeaf0;
+  position: relative;
+}
+
+.key-idea-list li::before {
+  content: "•";
+  color: #ffb703;
+  margin-right: 0.55rem;
+}
+
+.idea-points {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.idea-pill {
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 183, 3, 0.08);
+  border: 1px solid rgba(255, 183, 3, 0.18);
+  color: #f3f4f6;
+  font-size: 0.96rem;
+}  
   
 </style>
 </head>
@@ -303,11 +340,11 @@ html {
     defined by compactly supported kernels.
   </p>
 
-  <ul>
-    <li>Radius controls locality continuously</li>
-    <li>Interactions decay smoothly (no hard cutoff)</li>
-    <li>Geometry emerges from kernel structure</li>
-  </ul>
+  <div class="idea-points">
+    <div class="idea-pill">Radius controls locality continuously</div>
+    <div class="idea-pill">Interactions decay smoothly</div>
+    <div class="idea-pill">Geometry emerges from kernel structure</div>
+  </div>
 </section>
     
 </section>
