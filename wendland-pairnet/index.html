@@ -661,6 +661,10 @@ html {
   font-style: italic;
   color: #ffb703;
 }
+
+section[id] {
+  scroll-margin-top: 90px;
+}
   
 </style>
 </head>
@@ -791,7 +795,7 @@ html {
 <div class="container">
 
   <!-- SECTION 1 -->
-  <div class="card reveal">
+  <section id="mechanisms" class="card reveal">
     <h2>Interaction Mechanisms</h2>
     <p>
       Traditional graph models rely on either 
@@ -813,7 +817,7 @@ html {
         while WendlandPairNet induces smooth, radius-controlled sparsity.
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- SECTION 2 -->
   <div class="card reveal">
