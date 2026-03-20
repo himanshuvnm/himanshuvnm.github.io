@@ -467,6 +467,87 @@ html {
   border: 1px solid rgba(102,2,60,0.25);
   color: #f3f4f6;
 }  
+.proteins-note {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid rgba(255,183,3,0.75);
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  color: #d1d5db;
+}
+
+.proteins-subtitle {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #ffb703;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.proteins-grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.proteins-grid-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+
+.proteins-figure-card {
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.proteins-figure-card img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+.proteins-figure-card p {
+  margin: 0.85rem 0 0 0;
+  color: #d1d5db;
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+
+.proteins-takeaway {
+  margin-top: 1.5rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(102,2,60,0.10);
+  border: 1px solid rgba(102,2,60,0.24);
+  color: #f3f4f6;
+  line-height: 1.8;
+}
+
+@media (max-width: 980px) {
+  .proteins-grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .proteins-grid-three {
+    grid-template-columns: 1fr;
+  }
+}
+
+.frontier-deep-note {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid rgba(255,183,3,0.7);
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  color: #d1d5db;
+  line-height: 1.8;
+}
   
 </style>
 </head>
@@ -576,6 +657,13 @@ distance, producing sparsity as a consequence of kernel structure rather than he
         across PROTEINS, IMDB-BINARY, and MUTAG datasets.
       </div>
     </div>
+    <p class="frontier-deep-note">
+  This figure is the empirical center of the project. It shows that graph interaction
+  should be treated as a budget-allocation problem rather than a binary choice between
+  dense mixing and sparsification. DensePairNet provides maximal interaction capacity,
+  TopKPairNet enforces hard truncation, and WendlandPairNet occupies a more disciplined
+  region of the tradeoff by allocating interaction continuously according to geometry.
+</p>
   </div>
 
   <!-- SECTION 3 -->
@@ -757,6 +845,89 @@ distance, producing sparsity as a consequence of kernel structure rather than he
   <div class="proteins-takeaway">
     <strong>PROTEINS takeaway.</strong>
     Structured sparsity is not only cheaper — it can remain fully competitive.
+  </div>
+</section>
+
+  <section id="proteins" class="card reveal">
+  <h2>PROTEINS as a Case Study</h2>
+
+  <p>
+    The PROTEINS benchmark gives a concrete view of how kernel-induced sparsity
+    behaves in practice. Beyond final test accuracy, it reveals how WendlandPairNet
+    trains, how its interaction structure differs from dense mixing and TopK selection,
+    and why compact-support control can remain competitive without using all-pair interactions.
+  </p>
+
+  <div class="proteins-note">
+    <strong>Why PROTEINS matters.</strong>
+    This dataset makes the central claim visible at two levels: optimization dynamics
+    and interaction geometry.
+  </div>
+
+  <div class="proteins-subtitle">Learning dynamics at radius \(r=3\)</div>
+
+  <div class="proteins-grid-two">
+    <div class="proteins-figure-card reveal reveal-delay-1">
+      <img src="assets/figures/proteins_loss_curve_r3.png" alt="PROTEINS loss curve at r=3" />
+      <p>
+        <strong>Loss curve.</strong>
+        The training loss profile shows that structured compact-support interactions
+        do not destabilize optimization. WendlandPairNet remains trainable under an
+        explicitly localized interaction regime.
+      </p>
+    </div>
+
+    <div class="proteins-figure-card reveal reveal-delay-2">
+      <img src="assets/figures/proteins_accuracy_curve_r3.png" alt="PROTEINS accuracy curve at r=3" />
+      <p>
+        <strong>Accuracy curve.</strong>
+        Predictive performance remains competitive throughout training, showing that
+        smooth kernel-induced sparsity can preserve useful graph information without
+        relying on dense global mixing.
+      </p>
+    </div>
+  </div>
+
+  <div class="proteins-subtitle">Interaction distributions across mechanisms</div>
+
+  <p>
+    The three mechanisms differ not only in how many interactions they use, but in how
+    interaction mass is distributed. DensePairNet allocates interaction broadly, TopKPairNet
+    imposes a hard combinatorial cutoff, and WendlandPairNet induces a structured decay
+    controlled by support geometry.
+  </p>
+
+  <div class="proteins-grid-three">
+    <div class="proteins-figure-card reveal reveal-delay-1">
+      <img src="assets/figures/proteins_interaction_histogram_dense.png" alt="Dense interaction histogram on PROTEINS" />
+      <p>
+        <strong>DensePairNet.</strong>
+        Interaction mass is distributed globally, reflecting unrestricted all-pair mixing.
+      </p>
+    </div>
+
+    <div class="proteins-figure-card reveal reveal-delay-2">
+      <img src="assets/figures/proteins_interaction_histogram_topk.png" alt="TopK interaction histogram on PROTEINS" />
+      <p>
+        <strong>TopKPairNet.</strong>
+        Interactions are sharply truncated by a discrete neighbor rule, producing a rigid sparsity pattern.
+      </p>
+    </div>
+
+    <div class="proteins-figure-card reveal reveal-delay-3">
+      <img src="assets/figures/proteins_interaction_histogram_wendland.png" alt="Wendland interaction histogram on PROTEINS" />
+      <p>
+        <strong>WendlandPairNet.</strong>
+        The distribution reflects smooth geometric attenuation rather than hard inclusion or exclusion.
+      </p>
+    </div>
+  </div>
+
+  <div class="proteins-takeaway">
+    <strong>PROTEINS takeaway.</strong>
+    The point is not merely that WendlandPairNet is sparse. It is that sparsity is
+    produced by kernel structure, leading to a more disciplined allocation of interaction
+    strength than either dense global mixing or discrete TopK truncation.
   </div>
 </section>
 
