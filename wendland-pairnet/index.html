@@ -316,6 +316,45 @@ html {
   color: #f3f4f6;
   font-size: 0.96rem;
 }
+
+.demo-toggle {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1rem 0 1.2rem 0;
+}
+
+.demo-tab {
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: #eaeaf0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.demo-tab.active {
+  background: rgba(255,183,3,0.12);
+  border-color: rgba(255,183,3,0.35);
+  color: #ffb703;
+}
+
+.demo-panel {
+  display: none;
+}
+
+.demo-panel.active {
+  display: block;
+}
+
+.demo-panel iframe {
+  width: 100%;
+  height: 720px;
+  border: none;
+  border-radius: 16px;
+  display: block;
+}
+  
   
 </style>
 </head>
@@ -451,33 +490,61 @@ html {
 
     
   </div>
-  <section class="radius-demo-section" class="radius-demo-section reveal">
+  <section id="radius-demo" class="radius-demo-section reveal">
+
   <div class="radius-demo-card">
-    <h2>Interactive Radius Control</h2>
+
+    <h2>Interactive Comparison</h2>
 
     <p>
-      The interaction radius acts as a continuous control over locality and sparsity.
-      As the radius increases, interactions expand smoothly rather than appearing abruptly.
+      Compare discrete neighbor selection (TopK) with continuous compact-support interactions (Wendland).
+      The radius provides smooth control over locality, unlike hard k-neighbor selection.
     </p>
 
-    <div class="radius-demo-wrapper reveal-radius">
-  
-  <div class="radius-demo-frame">
-    <iframe
-      src="assets/interactive/wendland_radius_demo.html"
-      title="Interactive Wendland radius demo"
-      loading="lazy">
-    </iframe>
-  </div>
+    <!-- Tabs -->
+    <div class="demo-toggle">
+      <button class="demo-tab active" data-demo="wendland">Wendland</button>
+      <button class="demo-tab" data-demo="topk">TopK</button>
+    </div>
 
-</div>
+    <!-- Panels -->
+    <div class="radius-demo-wrapper reveal-radius">
+
+      <div class="demo-panels">
+
+        <!-- Wendland -->
+        <div id="demo-wendland" class="demo-panel active">
+          <div class="radius-demo-frame">
+            <iframe
+              src="assets/interactive/wendland_radius_demo.html"
+              title="Wendland radius demo"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- TopK -->
+        <div id="demo-topk" class="demo-panel">
+          <div class="radius-demo-frame">
+            <iframe
+              src="assets/interactive/topk_demo.html"
+              title="TopK demo"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
 
     <div class="caption">
-      Increasing the radius expands the interaction support while preserving smooth decay,
-      illustrating the difference between continuous kernel-based sparsity and discrete
-      neighbor selection.
+      TopK imposes a hard combinatorial cutoff, while Wendland kernels induce a smooth
+      interaction field with continuous support control.
     </div>
+
   </div>
+
 </section>
 
   <!-- FINAL -->
@@ -521,5 +588,26 @@ html {
   document.querySelectorAll(".reveal, .reveal-radius")
     .forEach((el) => observer.observe(el));
 </script>
+
+<script>
+  const tabs = document.querySelectorAll(".demo-tab");
+  const panels = document.querySelectorAll(".demo-panel");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+
+      // remove active from all
+      tabs.forEach(t => t.classList.remove("active"));
+      panels.forEach(p => p.classList.remove("active"));
+
+      // activate selected
+      tab.classList.add("active");
+
+      const target = tab.getAttribute("data-demo");
+      document.getElementById("demo-" + target).classList.add("active");
+    });
+  });
+</script>
+  
 </body>
 </html>
