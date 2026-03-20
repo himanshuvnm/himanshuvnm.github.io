@@ -646,15 +646,18 @@ html {
 }
 
 .display-math {
-  margin: 0.7rem 0 1rem 0;
-  padding: 0.85rem 1rem;
+  margin: 0.9rem 0 1.1rem 0;
+  padding: 0.9rem 1rem;
   border-radius: 12px;
-  background: rgba(102,2,60,0.10);
-  border: 1px solid rgba(102,2,60,0.24);
+  background: rgba(102, 2, 60, 0.10);
+  border: 1px solid rgba(102, 2, 60, 0.24);
   color: #f8fafc;
   text-align: center;
-  font-size: 1.05rem;
   overflow-x: auto;
+}
+
+.display-math mjx-container {
+  font-size: 115% !important;
 }
 
 .math {
@@ -919,30 +922,35 @@ distance, producing sparsity as a consequence of kernel structure rather than he
     <div class="theorem-label">Proposition (light form)</div>
 
     <p class="theorem-text">
-      For each node <span class="math">i</span>, the number of nonzero entries in the
-      <span class="math">i</span>-th interaction row is bounded by the size of its
-      radius-support neighborhood:
+      For each node \( i \), the number of nonzero entries in the \( i \)-th interaction
+      row is bounded by the size of its radius-support neighborhood:
     </p>
 
     <div class="display-math">
-      <span class="math">‖A<sup>(r)</sup><sub>i,:</sub>‖<sub>0</sub> ≤ |𝓑<sub>r</sub>(i)|</span>
+      \[
+      \left\|A^{(r)}_{i,:}\right\|_0 \leq \left|\mathcal{B}_r(i)\right|
+      \]
     </div>
 
     <p class="theorem-text">
-      When graph degree is bounded by <span class="math">Δ</span>, this neighborhood size
-      grows at most like the <span class="math">r</span>-hop ball:
+      When graph degree is bounded by \( \Delta \), this neighborhood size grows at most
+      like the \( r \)-hop ball:
     </p>
 
     <div class="display-math">
-      <span class="math">|𝓑<sub>r</sub>(i)| ≤ 1 + Δ \sum<sub>ℓ=1</sub><sup>r</sup>(Δ − 1)<sup>ℓ−1</sup></span>
+      \[
+      \left|\mathcal{B}_r(i)\right|
+      \leq
+      1 + \Delta \sum_{\ell=1}^{r} (\Delta - 1)^{\ell-1}
+      \]
     </div>
   </div>
 
   <p>
     This gives a direct theoretical explanation for the observed frontier behavior:
-    increasing <span class="math">r</span> expands interaction support, while smaller
-    radii induce structured sparsity. In this sense, radius acts as an interpretable
-    capacity parameter controlling both interaction complexity and stability.
+    increasing \( r \) expands interaction support, while smaller radii induce structured
+    sparsity. In this sense, radius acts as an interpretable capacity parameter controlling
+    both interaction complexity and stability.
   </p>
 
   <div class="theory-note">
