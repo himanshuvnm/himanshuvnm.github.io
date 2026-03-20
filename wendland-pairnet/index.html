@@ -554,17 +554,21 @@ html {
     <h2>Accuracy–Runtime–Sparsity Tradeoff</h2>
 
     <p>
-      Across multiple datasets, WendlandPairNet achieves a 
-      <span class="highlight">balanced operating regime</span>:
-      maintaining competitive accuracy while significantly reducing interaction density.
-    </p>
+The frontier figure is the central empirical summary of the project. It shows that
+graph interaction should be understood as a budget allocation problem rather than
+a binary choice between dense mixing and sparsification. DensePairNet provides full
+capacity but incurs heavy interaction cost, while TopKPairNet enforces sparsity through
+a hard cutoff. WendlandPairNet occupies a more disciplined region of the tradeoff:
+it preserves competitive accuracy while reducing interaction density through smooth,
+geometry-aware attenuation.
+</p>
 
-    <p>
-      Unlike TopK selection, sparsity emerges from 
-      <span class="highlight">geometric attenuation</span> rather than discrete pruning,
-      leading to smoother and more stable behavior.
-    </p>
-
+<p>
+This is the key point. The gain is not only computational efficiency, but a more
+principled allocation of interaction strength. Instead of selecting neighbors
+combinatorially, WendlandPairNet distributes influence continuously according to
+distance, producing sparsity as a consequence of kernel structure rather than heuristic pruning.
+</p>
     <div class="figure reveal reveal-delay-1">
       <img src="assets/fig2.png">
       <div class="caption">
