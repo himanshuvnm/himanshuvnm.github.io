@@ -548,6 +548,21 @@ html {
   color: #d1d5db;
   line-height: 1.8;
 }
+
+.takeaway-punch {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,183,3,0.08),
+    rgba(102,2,60,0.10)
+  );
+  border: 1px solid rgba(255,183,3,0.18);
+  color: #f3f4f6;
+  line-height: 1.8;
+}  
+
   
 </style>
 </head>
@@ -932,23 +947,32 @@ distance, producing sparsity as a consequence of kernel structure rather than he
 </section>
 
   <!-- FINAL -->
-  <div class="card reveal">
-    <h2>Takeaway</h2>
+  <section id="takeaway" class="card reveal">
+  <h2>Takeaway</h2>
 
-    <p>
-      Dense global interaction is not necessary.
-    </p>
+  <p>
+    Dense global interaction is not the objective. The objective is to allocate
+    interaction capacity where graph geometry makes it meaningful.
+  </p>
 
-    <p>
-      What matters is learning 
-      <span class="highlight">geometrically meaningful interactions</span>.
-    </p>
+  <p>
+    WendlandPairNet shows that sparsity does not need to come from heuristic pruning
+    or discrete truncation. It can emerge directly from kernel structure through
+    compact support, smooth decay, and radius-controlled locality.
+  </p>
 
-    <p>
-      WendlandPairNet provides a principled path toward 
-      <span class="highlight">structured efficiency in graph learning</span>.
-    </p>
+  <p>
+    In this view, graph interaction is not a combinatorial choice. It is a continuous
+    geometric field. WendlandPairNet turns that perspective into a practical graph
+    learning mechanism with interpretable control over sparsity, efficiency, and interaction structure.
+  </p>
+
+  <div class="takeaway-punch">
+    <strong>Final point.</strong>
+    The gain is not only fewer interactions. It is a more principled way to decide
+    which interactions should exist in the first place.
   </div>
+</section>
 
 <section class="card reveal">
   <h2>Resources</h2>
