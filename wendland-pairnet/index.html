@@ -1240,14 +1240,14 @@ distance, producing sparsity as a consequence of kernel structure rather than he
   Beyond the discrete \(r\)-hop formulation, one can control the effective support by integrating growth against a radius-dependent neighborhood measure:
   <div class="display-math">
     \[
-    \int_{\mathcal Z} |\mathcal B_r(i)|\, d\mu_r(\ell)
+    \int_{\mathcal Z} |\mathcal B_r(i)|\,\mathrm d\mu_r(\ell)
     \;\le\;
-    \int_{\mathcal Z} \Delta(\Delta-1)^{\ell-1}\, d\mu_r(\ell)
+    \int_{\mathcal Z} \Delta(\Delta-1)^{\ell-1}\,\mathrm d\mu_r(\ell)
     \;\Longrightarrow\;
     |\mathcal B_r(i)|
     \le
     \frac{\Delta}{\mu_r(\mathcal Z)}
-    \int_{\mathcal Z} (\Delta-1)^{\ell-1}\, d\mu_r(\ell).
+    \int_{\mathcal Z} (\Delta-1)^{\ell-1}\,\mathrm d\mu_r(\ell).
     \]
   </div>
 </div>
