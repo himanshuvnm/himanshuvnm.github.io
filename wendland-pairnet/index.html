@@ -840,6 +840,59 @@ section[id] {
   color: #d1d5db;
   line-height: 1.8;
 }
+
+.review-badge {
+  display: inline-block;
+  margin: 0.4rem 0 1rem 0;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255,183,3,0.08);
+  border: 1px solid rgba(255,183,3,0.18);
+  color: #ffb703;
+  font-size: 0.84rem;
+}
+
+.setup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.setup-item {
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.setup-item h3 {
+  color: #ffb703;
+  margin-bottom: 0.45rem;
+  font-size: 1rem;
+}
+
+.setup-item p {
+  color: #d1d5db;
+  line-height: 1.7;
+  font-size: 0.94rem;
+}
+
+@media (max-width: 980px) {
+  .setup-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.topnav-links {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.topnav-links a {
+  font-size: 0.9rem;
+}
   
 </style>
 </head>
@@ -855,6 +908,7 @@ section[id] {
       <a href="#frontier">Frontier</a>
       <a href="#kernel">Kernel</a>
       <a href="#radius-demo">Demo</a>
+      <a href="#hyperparameters">Setup</a>
       <a href="#takeaway">Takeaway</a>
     </div>
   </div>
@@ -1476,9 +1530,34 @@ distance, producing sparsity as a consequence of kernel structure rather than he
     Compact-support kernels achieve substantial sparsity reduction without the instability 
     or inefficiency of hard neighbor truncation.
   </div>
+
+  <div class="review-badge">PROTEINS study currently under review at AI4X</div>
 </div>
 
     
+</section>
+
+  <section id="hyperparameters" class="card reveal">
+  <h2>Model and Training Setup</h2>
+
+  <p>
+    The experiments use a controlled comparison across DensePairNet, TopKPairNet, and WendlandPairNet with matched training protocols wherever possible.
+  </p>
+
+  <div class="setup-grid">
+    <div class="setup-item">
+      <h3>Architecture</h3>
+      <p>Hidden dimension, number of layers, pooling/readout choice, and interaction mechanism.</p>
+    </div>
+    <div class="setup-item">
+      <h3>Optimization</h3>
+      <p>Optimizer, learning rate, scheduler, batch size, number of epochs, and seed averaging.</p>
+    </div>
+    <div class="setup-item">
+      <h3>Interaction controls</h3>
+      <p>TopK neighbor count, Wendland radius values, and density/sparsity evaluation metrics.</p>
+    </div>
+  </div>
 </section>
 
   <!-- FINAL -->
@@ -1516,9 +1595,9 @@ distance, producing sparsity as a consequence of kernel structure rather than he
   <div class="title-notes-body">
     <p>These titles capture earlier framings of the project before the final emphasis on compact-support interaction fields:</p>
     <ul>
-      <li>Title one here</li>
-      <li>Title two here</li>
-      <li>Title three here</li>
+      <li>Global Mixing induced by Sparse Reproducing Kernel for GNNs</li>
+      <li>Locality-Controlled Sparse Global Mixing for Graph Neural Networks</li>
+      <li>Compact support kernel interaction via Wendland reproducing kernel function to induce sparsity in Graph Neural Networks</li>
     </ul>
   </div>
 </div>
