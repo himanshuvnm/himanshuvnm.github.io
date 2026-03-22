@@ -893,6 +893,16 @@ section[id] {
 .topnav-links a {
   font-size: 0.9rem;
 }
+
+.demo-note {
+  margin-top: 1rem;
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border-left: 3px solid rgba(255,183,3,0.7);
+  color: #d1d5db;
+  line-height: 1.8;
+}
   
 </style>
 </head>
@@ -1260,6 +1270,15 @@ distance, producing sparsity as a consequence of kernel structure rather than he
 
     <h2>Interactive Comparison</h2>
 
+    <div class="demo-note">
+  <strong>Note on the radius parameter.</strong>
+  The interactive demo uses fractional values of <span class="math">r</span> to visualize support growth continuously.
+  In the discrete graph setting of the paper, the main sparsity bound is stated for integer radii corresponding
+  to graph balls. More generally, the same structural intuition extends through a continuous analogue: effective
+  interaction mass remains controlled by a radius-dependent neighborhood measure, so the demo is faithful to the
+  underlying theory rather than merely illustrative.
+</div>
+
     <p>
       Compare discrete neighbor selection (TopK) with continuous compact-support interactions (Wendland).
       The radius provides smooth control over locality, unlike hard k-neighbor selection.
@@ -1561,6 +1580,11 @@ distance, producing sparsity as a consequence of kernel structure rather than he
       <h3>Interaction controls</h3>
       <p>TopK neighbor count, Wendland radius values, and density/sparsity evaluation metrics.</p>
     </div>
+  </div>
+    <div class="setup-note">
+    <strong>Why include setup?</strong>
+    The comparison is meaningful only because sparsity, accuracy, and runtime are measured
+    under a shared experimental protocol rather than isolated hand-tuned conditions.
   </div>
 </section>
 
