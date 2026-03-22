@@ -668,6 +668,67 @@ html {
 section[id] {
   scroll-margin-top: 90px;
 }
+
+.protein-table-card {
+  margin-top: 2rem;
+  padding: 1.4rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.table-subtitle {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.styled-table thead {
+  background: rgba(255,255,255,0.04);
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.styled-table th {
+  color: #ffb703;
+  font-weight: 600;
+}
+
+.styled-table td {
+  color: #e5e7eb;
+}
+
+.highlight-row {
+  background: rgba(102, 2, 60, 0.15);
+  border-left: 3px solid #ffb703;
+}
+
+.table-note {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: rgba(102,2,60,0.10);
+  border: 1px solid rgba(102,2,60,0.25);
+  color: #f3f4f6;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
   
 </style>
 </head>
@@ -1180,6 +1241,61 @@ distance, producing sparsity as a consequence of kernel structure rather than he
     produced by kernel structure, leading to a more disciplined allocation of interaction
     strength than either dense global mixing or discrete TopK truncation.
   </div>
+
+<p class="section-bridge">
+  The following comparison isolates the core tradeoff between interaction density,
+  predictive accuracy, and computational cost.
+</p>
+    
+<div class="protein-table-card reveal">
+  <h3>Summary: Sparsity–Accuracy–Compute Tradeoff (PROTEINS)</h3>
+
+  <p class="table-subtitle">
+    WendlandPairNet reduces interaction density by nearly an order of magnitude 
+    (~9% of DensePairNet) while maintaining competitive accuracy and runtime efficiency.
+  </p>
+  
+  <div class="table-wrapper">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Interaction Density</th>
+          <th>Test Accuracy</th>
+          <th>Forward (ms / batch)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>DensePairNet</strong></td>
+          <td>1.00</td>
+          <td>76.5 ± 0.036</td>
+          <td>143.6</td>
+        </tr>
+        <tr>
+          <td><strong>TopKPairNet</strong></td>
+          <td>0.28</td>
+          <td>74.0 ± 0.036</td>
+          <td>3613.5</td>
+        </tr>
+        <tr class="highlight-row">
+          <td><strong>WendlandPairNet</strong></td>
+          <td>0.09</td>
+          <td>73.5 ± 0.063</td>
+          <td>151.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-note">
+    <strong>Key insight.</strong>
+    Compact-support kernels achieve substantial sparsity reduction without the instability 
+    or inefficiency of hard neighbor truncation.
+  </div>
+</div>
+
+    
 </section>
 
   <!-- FINAL -->
