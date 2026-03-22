@@ -913,6 +913,11 @@ section[id] {
   color: #f3f4f6;
   line-height: 1.8;
 }
+
+#positioning .figure img {
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
   
 </style>
 </head>
@@ -924,6 +929,7 @@ section[id] {
     <div class="topnav-brand">WendlandPairNet</div>
     <div class="topnav-links">
       <a href="#overview">Overview</a>
+      <a href="#positioning">Positioning</a>
       <a href="#importance">Why It Matters</a>
       <a href="#questions">Questions</a>
       <a href="#mechanisms">Mechanisms</a>
@@ -961,6 +967,21 @@ section[id] {
     <div class="hero-pill">Smooth locality control</div>
     <div class="hero-pill">Compact-support sparsity</div>
     <div class="hero-pill">Geometry-aware interactions</div>
+  </div>
+
+</section>
+
+  <section id="positioning" class="reveal">
+
+  <div class="figure reveal reveal-delay-1">
+    <img src="assets/figures/wendland_intersection_glow.png"
+         alt="Intersection of GNNs, kernel theory, and structured sparsity">
+
+    <div class="caption">
+      WendlandPairNet sits at the intersection of graph learning, kernel theory,
+      and structured sparsity, translating compact-support geometry into smooth
+      interaction fields.
+    </div>
   </div>
 
 </section>
