@@ -729,6 +729,73 @@ section[id] {
   font-size: 0.9rem;
   line-height: 1.7;
 }
+
+.highlight-row {
+  background: linear-gradient(
+    90deg,
+    rgba(102,2,60,0.18),
+    rgba(255,183,3,0.08)
+  );
+  border-left: 3px solid #ffb703;
+}
+
+.highlight-row td {
+  color: #f8fafc;
+}
+
+.styled-table tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.highlight-row:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(102,2,60,0.22),
+    rgba(255,183,3,0.12)
+  );
+}  
+
+.importance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.importance-card {
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.importance-card h3 {
+  color: #ffb703;
+  margin-bottom: 0.45rem;
+  font-size: 1rem;
+}
+
+.importance-card p {
+  color: #d1d5db;
+  line-height: 1.7;
+  font-size: 0.94rem;
+}
+
+.importance-note {
+  margin-top: 1.3rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(102,2,60,0.10);
+  border: 1px solid rgba(102,2,60,0.24);
+  color: #f3f4f6;
+  line-height: 1.8;
+}
+
+@media (max-width: 980px) {
+  .importance-grid {
+    grid-template-columns: 1fr;
+  }
+}
   
 </style>
 </head>
@@ -783,6 +850,48 @@ section[id] {
     <span class="highlight">geometry-aware compact-support kernels</span>
   </p>
 
+
+<section id="importance" class="card reveal">
+  <h2>Why This Work Matters</h2>
+
+  <p>
+    Modern graph learning often faces the same tension: dense interaction is expressive
+    but expensive, while sparse interaction is efficient but usually imposed through
+    hard, discrete heuristics. WendlandPairNet shows that this tradeoff can be reframed.
+  </p>
+
+  <div class="importance-grid">
+    <div class="importance-card">
+      <h3>For graph learning</h3>
+      <p>
+        It replaces heuristic truncation with a kernel-induced interaction field,
+        making sparsity a geometric property rather than an external rule.
+      </p>
+    </div>
+
+    <div class="importance-card">
+      <h3>For efficiency</h3>
+      <p>
+        It gives interpretable control over the number of active interactions through
+        a radius parameter, linking computational cost directly to structure.
+      </p>
+    </div>
+
+    <div class="importance-card">
+      <h3>For theory</h3>
+      <p>
+        It connects compact-support kernels, graph geometry, and operator stability
+        in a way that makes the empirical tradeoff explainable rather than ad hoc.
+      </p>
+    </div>
+  </div>
+
+  <div class="importance-note">
+    <strong>In one sentence.</strong>
+    This work matters because it turns sparsification from a heuristic engineering choice
+    into a mathematically structured interaction mechanism.
+  </div>
+</section>
   
 <p class="section-bridge">
   This work is driven by four precise questions about interaction structure,
@@ -1254,6 +1363,12 @@ distance, producing sparsity as a consequence of kernel structure rather than he
     WendlandPairNet reduces interaction density by nearly an order of magnitude 
     (~9% of DensePairNet) while maintaining competitive accuracy and runtime efficiency.
   </p>
+
+<p class="section-bridge">
+  The global frontier view becomes especially concrete on PROTEINS, where the tradeoff
+  between interaction density, predictive accuracy, and runtime can be read directly at
+  the level of a single benchmark.
+</p>
   
   <div class="table-wrapper">
     <table class="styled-table">
