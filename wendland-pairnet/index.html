@@ -1110,6 +1110,22 @@ section[id] {
   }
 }
 
+.positioning-figure img {
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.positioning-figure img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05) saturate(1.1);
+}  
+
+.subtle-lead {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
   
 </style>
 </head>
@@ -1164,6 +1180,11 @@ section[id] {
 
   <h2>Positioning</h2>
 
+
+  <p class="subtle-lead">
+  This is not just an architectural tweak — it is a shift in how interactions are parameterized.
+</p>
+
   <p>
     WendlandPairNet sits at the intersection of graph neural interaction modeling,
     compact-support kernel theory, and structured sparsity. It combines these
@@ -1183,7 +1204,9 @@ section[id] {
 
 </section>
 
-    
+    <p class="transition-line">
+  This structural view explains the empirical behavior observed in the frontier trade-offs.
+</p>
 </section>
 
   
