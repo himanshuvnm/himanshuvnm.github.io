@@ -1446,6 +1446,31 @@ a[href="#code"]:active {
     0 0 20px rgba(255,183,3,0.15),
     0 0 40px rgba(255,183,3,0.05);
 }
+
+.frontier-deep-note {
+  margin-top: 1rem;
+  margin-bottom: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid rgba(255,183,3,0.7);
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  color: #d1d5db;
+  line-height: 1.8;
+}
+
+.frontier-punchline {
+  margin-top: 0.2rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(102,2,60,0.10),
+    rgba(255,183,3,0.08)
+  );
+  border: 1px solid rgba(255,183,3,0.18);
+  color: #f3f4f6;
+  line-height: 1.8;
+}
   
 </style>
 </head>
@@ -1748,6 +1773,7 @@ distance, producing sparsity as a consequence of kernel structure rather than he
   dense mixing and sparsification. DensePairNet provides maximal interaction capacity,
   TopKPairNet enforces hard truncation, and WendlandPairNet occupies a more disciplined
   region of the tradeoff by allocating interaction continuously according to geometry.
+      </p>
 
       <div class="frontier-punchline">
   The point is not just to reduce interactions, but to allocate them where geometry makes them meaningful.
