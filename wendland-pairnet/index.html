@@ -1634,15 +1634,6 @@ distance, producing sparsity as a consequence of kernel structure rather than he
 
     <h2>Interactive Comparison</h2>
 
-    <div class="demo-note">
-  <strong>Note on the radius parameter.</strong>
-  The interactive demo uses fractional values of <span class="math">r</span> to visualize support growth continuously.
-  In the discrete graph setting of the paper, the main sparsity bound is stated for integer radii corresponding
-  to graph balls. More generally, the same structural intuition extends through a continuous analogue: effective
-  interaction mass remains controlled by a radius-dependent neighborhood measure, so the demo is faithful to the
-  underlying theory rather than merely illustrative.
-</div>
-
     <p>
       Compare discrete neighbor selection (TopK) with continuous compact-support interactions (Wendland).
       The radius provides smooth control over locality, unlike hard k-neighbor selection.
