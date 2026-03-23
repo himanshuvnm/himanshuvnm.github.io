@@ -936,6 +936,49 @@ section[id] {
     0 0 40px rgba(4,55,242,0.10);
   filter: saturate(1.05);
 }
+
+.positioning-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.positioning-figure img {
+  width: 100%;
+  max-width: 780px;   /* 🔥 key control */
+  height: auto;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+.positioning-figure img:hover {
+  transform: translateY(-4px) scale(1.01);
+
+  box-shadow:
+    0 16px 50px rgba(0,0,0,0.45),
+    0 0 18px rgba(255,183,3,0.10),
+    0 0 30px rgba(4,55,242,0.08);
+
+  filter: saturate(1.05);
+}
+
+@media (max-width: 768px) {
+  .positioning-figure img {
+    max-width: 95%;
+  }
+}
+
+#positioning h2 {
+  font-size: 1.4rem;
+  opacity: 0.85;
+}  
+
   
 </style>
 </head>
@@ -986,9 +1029,7 @@ section[id] {
     <div class="hero-pill">Geometry-aware interactions</div>
   </div>
 
-</section>
-
-  <section id="positioning" class="card reveal">
+<section id="positioning" class="card reveal">
 
   <div class="figure reveal reveal-delay-1">
     <img src="assets/figures/wendland_intersection_glow.png"
@@ -1002,6 +1043,11 @@ section[id] {
   </div>
 
 </section>
+
+    
+</section>
+
+  
 
 <div class="hero">
   <h1>Structured Sparse Global Mixing</h1>
