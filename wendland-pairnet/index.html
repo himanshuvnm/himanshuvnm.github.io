@@ -1292,6 +1292,47 @@ a[href="#code"]:active {
   color: #ffb703;
   border: 1px solid rgba(255,183,3,0.3);
 }
+
+.code-block {
+  display: none;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.code-block.active {
+  display: block;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1.2rem;
+  border-radius: 14px;
+  background: #0b0f1a;
+  overflow-x: auto;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #ddd;
+
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(255,183,3,0.15);
+  color: #ffb703;
+  border-color: rgba(255,183,3,0.3);
+}
   
 </style>
 </head>
