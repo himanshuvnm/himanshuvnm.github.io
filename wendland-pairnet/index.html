@@ -918,6 +918,24 @@ section[id] {
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
+
+#positioning .figure img {
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+#positioning .figure img:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 16px 50px rgba(0,0,0,0.45),
+    0 0 24px rgba(255,183,3,0.12),
+    0 0 40px rgba(4,55,242,0.10);
+  filter: saturate(1.05);
+}
   
 </style>
 </head>
@@ -937,6 +955,7 @@ section[id] {
       <a href="#kernel">Kernel</a>
       <a href="#radius-theory">Radius Theory</a>
       <a href="#radius-demo">Demo</a>
+      <a href="#proteins">PROTEINS</a>
       <a href="#references">References</a>
       <a href="#hyperparameters">Setup</a>
       <a href="#takeaway">Takeaway</a>
@@ -971,7 +990,7 @@ section[id] {
 
 </section>
 
-  <section id="positioning" class="reveal">
+  <section id="positioning" class="card reveal">
 
   <div class="figure reveal reveal-delay-1">
     <img src="assets/figures/wendland_intersection_glow.png"
