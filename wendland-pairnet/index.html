@@ -1373,6 +1373,31 @@ a[href="#code"]:active {
   border-color: rgba(255,183,3,0.4);
   box-shadow: 0 0 25px rgba(255,183,3,0.15);
 }
+
+.resources-intro {
+  color: #d1d5db;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  border-color: rgba(255,255,255,0.1);
+}
+
+.resources-note {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+
+  background: rgba(102,2,60,0.12);
+  border: 1px solid rgba(102,2,60,0.25);
+
+  color: #f3f4f6;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
   
 </style>
 </head>
@@ -2243,12 +2268,41 @@ def forward(x, pos, r):
   </div>
 </section>    
 
-<section class="card reveal">
+<section id="resources" class="card reveal">
   <h2>Resources</h2>
 
+  <p class="resources-intro">
+    Access the current research artifacts associated with WendlandPairNet.
+    Code and benchmark data are provided in their working form, with a curated release to follow.
+  </p>
+
   <div class="buttons">
-    <a href="#" class="btn">Paper (coming soon)</a>
-    <a href="https://github.com/himanshuvnm/himanshuvnm.github.io/tree/main/wendland-pairnet/codes" class="btn">Code</a>
+
+    <!-- Paper -->
+    <a href="#" class="btn disabled">
+      Paper (under review)
+    </a>
+
+    <!-- Code -->
+    <a href="https://github.com/himanshuvnm/himanshuvnm.github.io/tree/main/wendland-pairnet/codes"
+       class="btn"
+       target="_blank" rel="noopener noreferrer">
+      Code
+    </a>
+
+    <!-- Data -->
+    <a href="https://github.com/himanshuvnm/himanshuvnm.github.io/tree/main/wendland-pairnet/data"
+       class="btn"
+       target="_blank" rel="noopener noreferrer">
+      Data (PROTEINS, MUTAG, IMDB-BINARY)
+    </a>
+
+  </div>
+
+  <div class="resources-note">
+    <strong>Note.</strong>
+    The current repository reflects the research-stage organization used in experiments.
+    A cleaned and fully documented release will follow the peer-reviewed publication.
   </div>
 </section>
 
