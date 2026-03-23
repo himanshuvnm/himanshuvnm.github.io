@@ -1387,17 +1387,59 @@ a[href="#code"]:active {
 }
 
 .resources-note {
-  margin-top: 1.2rem;
-  padding: 0.9rem 1rem;
-  border-radius: 10px;
+  margin-top: 1.3rem;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
 
-  background: rgba(102,2,60,0.12);
-  border: 1px solid rgba(102,2,60,0.25);
+  background: rgba(255,183,3,0.08);
+  border-left: 3px solid #ffb703;
+
+  color: #e5e7eb;
+  line-height: 1.8;
+}
+
+.resource-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+.resource-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  text-decoration: none;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
 
   color: #f3f4f6;
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-weight: 500;
+
+  transition: all 0.25s ease;
 }
+
+.resource-btn .sub {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.resource-btn:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,183,3,0.4);
+  box-shadow: 0 0 20px rgba(255,183,3,0.12);
+  color: #ffb703;
+}
+
+.resource-btn.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}  
   
 </style>
 </head>
@@ -2276,28 +2318,28 @@ def forward(x, pos, r):
     Code and benchmark data are provided in their working form, with a curated release to follow.
   </p>
 
-  <div class="buttons">
+  <div class="resource-buttons">
 
-    <!-- Paper -->
-    <a href="#" class="btn disabled">
-      Paper (under review)
-    </a>
+  <a href="#" class="resource-btn disabled">
+    📄 Paper
+    <span class="sub">under review</span>
+  </a>
 
-    <!-- Code -->
-    <a href="https://github.com/himanshuvnm/himanshuvnm.github.io/tree/main/wendland-pairnet/codes"
-       class="btn"
-       target="_blank" rel="noopener noreferrer">
-      Code
-    </a>
+  <a href="https://github.com/himanshuvnm/himanshuvnm.github.io/tree/main/wendland-pairnet/codes"
+     class="resource-btn"
+     target="_blank">
+    💻 Code
+    <span class="sub">notebook</span>
+  </a>
 
-    <!-- Data -->
-    <a href="https://github.com/himanshuvnm/himanshuvnm.github.io/tree/main/wendland-pairnet/data"
-       class="btn"
-       target="_blank" rel="noopener noreferrer">
-      Data (PROTEINS, MUTAG, IMDB-BINARY)
-    </a>
+  <a href="https://github.com/himanshuvnm/himanshuvnm.github.io/tree/main/wendland-pairnet/data"
+     class="resource-btn"
+     target="_blank">
+    📊 Data
+    <span class="sub">PROTEINS · MUTAG · IMDB</span>
+  </a>
 
-  </div>
+</div>
 
   <div class="resources-note">
     <strong>Note.</strong>
