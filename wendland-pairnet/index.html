@@ -1748,11 +1748,12 @@ distance, producing sparsity as a consequence of kernel structure rather than he
   dense mixing and sparsification. DensePairNet provides maximal interaction capacity,
   TopKPairNet enforces hard truncation, and WendlandPairNet occupies a more disciplined
   region of the tradeoff by allocating interaction continuously according to geometry.
-</p>
 
-   <div class="frontier-punchline">
+      <div class="frontier-punchline">
   The point is not just to reduce interactions, but to allocate them where geometry makes them meaningful.
 </div> 
+</p>
+   
   </section>
 
   <!-- SECTION 3 -->
@@ -2113,7 +2114,9 @@ distance, producing sparsity as a consequence of kernel structure rather than he
   between interaction density, predictive accuracy, and runtime can be read directly at
   the level of a single benchmark.
 </p>
-  
+  <p class="table-highlight">
+  WendlandPairNet reduces interaction density to ~9% of dense mixing with minimal loss in accuracy and no runtime overhead.
+</p>
   <div class="table-wrapper">
     <table class="styled-table">
       <thead>
@@ -2152,6 +2155,10 @@ distance, producing sparsity as a consequence of kernel structure rather than he
     Compact-support kernels achieve substantial sparsity reduction without the instability 
     or inefficiency of hard neighbor truncation.
   </div>
+
+  <p class="hero-impact">
+  Achieves ~10× reduction in interaction density while preserving competitive accuracy and stable training.
+</p>
 
   <div class="review-badge">PROTEINS study currently under review at AI4X</div>
 </div>
@@ -2352,6 +2359,10 @@ def forward(x, pos, r):
     The current repository reflects the research-stage organization used in experiments.
     A cleaned and fully documented release will follow the peer-reviewed publication.
   </div>
+
+  <p class="update-note">
+  Last updated: March 2026 · Active development
+</p>
 </section>
 
 
