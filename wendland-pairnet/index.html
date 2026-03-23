@@ -1126,6 +1126,83 @@ section[id] {
   font-size: 0.95rem;
 }
 
+.frontier-interpretation {
+  margin-top: 1.4rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.frontier-step {
+  opacity: 0;
+  transform: translateY(18px);
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease,
+    box-shadow 0.35s ease;
+}
+
+.frontier-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.frontier-step:hover {
+  box-shadow: 0 0 24px rgba(255,255,255,0.05);
+}
+
+.frontier-label {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.frontier-label.dense {
+  color: #7dd3fc;
+  background: rgba(125,211,252,0.08);
+  border: 1px solid rgba(125,211,252,0.18);
+}
+
+.frontier-label.topk {
+  color: #fca5a5;
+  background: rgba(252,165,165,0.08);
+  border: 1px solid rgba(252,165,165,0.18);
+}
+
+.frontier-label.wendland {
+  color: #ffb703;
+  background: rgba(255,183,3,0.10);
+  border: 1px solid rgba(255,183,3,0.24);
+}  
+
+.frontier-punchline {
+  opacity: 0;
+  transform: translateY(18px);
+  margin-top: 0.4rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(102,2,60,0.10),
+    rgba(255,183,3,0.08)
+  );
+  border: 1px solid rgba(255,183,3,0.18);
+  color: #f3f4f6;
+  line-height: 1.8;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.frontier-punchline.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
   
 </style>
 </head>
@@ -1393,6 +1470,33 @@ distance, producing sparsity as a consequence of kernel structure rather than he
         WendlandPairNet occupies a favorable region in the accuracy–runtime–sparsity space
         across PROTEINS, IMDB-BINARY, and MUTAG datasets.
       </div>
+
+<div class="frontier-interpretation reveal">
+  <div class="frontier-step step-1">
+    <span class="frontier-label dense">DensePairNet</span>
+    <p>
+      Dense interaction provides full mixing capacity, but it pays for this expressivity
+      with maximal interaction density.
+    </p>
+  </div>
+
+  <div class="frontier-step step-2">
+    <span class="frontier-label topk">TopKPairNet</span>
+    <p>
+      TopK reduces interactions through a hard combinatorial cutoff, but this rigidity
+      can distort useful geometric structure and lead to inefficient runtime behavior.
+    </p>
+  </div>
+
+  <div class="frontier-step step-3">
+    <span class="frontier-label wendland">WendlandPairNet</span>
+    <p>
+      WendlandPairNet occupies the most disciplined region of the tradeoff by reallocating
+      interaction strength continuously according to geometry rather than truncating it abruptly.
+    </p>
+  </div>
+</div>
+      
     </div>
     <p class="frontier-deep-note">
   This figure is the empirical center of the project. It shows that graph interaction
@@ -1401,6 +1505,10 @@ distance, producing sparsity as a consequence of kernel structure rather than he
   TopKPairNet enforces hard truncation, and WendlandPairNet occupies a more disciplined
   region of the tradeoff by allocating interaction continuously according to geometry.
 </p>
+
+   <div class="frontier-punchline">
+  The point is not just to reduce interactions, but to allocate them where geometry makes them meaningful.
+</div> 
   </section>
 
   <!-- SECTION 3 -->
@@ -1931,6 +2039,34 @@ distance, producing sparsity as a consequence of kernel structure rather than he
     });
   });
 </script>
+
+<script>
+  const frontierObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const steps = entry.target.querySelectorAll(".frontier-step");
+        const punch = entry.target.querySelector(".frontier-punchline");
+
+        steps.forEach((step, idx) => {
+          setTimeout(() => {
+            step.classList.add("visible");
+          }, idx * 260);
+        });
+
+        if (punch) {
+          setTimeout(() => {
+            punch.classList.add("visible");
+          }, steps.length * 260 + 180);
+        }
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll(".frontier-interpretation").forEach((el) => {
+    frontierObserver.observe(el);
+  });
+</script>
+  
   
 </body>
 </html>
