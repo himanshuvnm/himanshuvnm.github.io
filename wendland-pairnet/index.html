@@ -1203,6 +1203,51 @@ section[id] {
   opacity: 1;
   transform: translateY(0);
 }
+
+.code-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.code-tab {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #ccc;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.code-tab.active {
+  background: rgba(255,183,3,0.15);
+  color: #ffb703;
+  border: 1px solid rgba(255,183,3,0.3);
+}
+
+.code-block {
+  display: none;
+}
+
+.code-block.active {
+  display: block;
+}
+
+pre {
+  background: #0b0f1a;
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.code-note {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: #aaa;
+}
   
 </style>
 </head>
@@ -1912,6 +1957,64 @@ distance, producing sparsity as a consequence of kernel structure rather than he
   <div class="review-badge">PROTEINS study currently under review at AI4X</div>
 </div>
 
+<section id="code" class="card reveal">
+
+  <p class="section-bridge">
+  The empirical behavior described above is driven by a simple structural mechanism, which can be expressed compactly in code.
+</p>
+
+  <h2>From Theory to Code (PROTEINS)</h2>
+
+  <p>
+    We provide a minimal implementation sketch highlighting the core mechanism
+    of WendlandPairNet. The full training pipeline and experimental setup will
+    be released upon journal publication.
+  </p>
+
+  <div class="code-tabs">
+
+    <button class="code-tab active" onclick="showCodeTab(0)">Kernel</button>
+    <button class="code-tab" onclick="showCodeTab(1)">Interactions</button>
+    <button class="code-tab" onclick="showCodeTab(2)">Forward</button>
+
+  </div>
+
+  <div class="code-block active">
+<pre><code>
+# Wendland C^2 kernel (compact support)
+def wendland_kernel(d, r):
+    x = d / r
+    mask = (x < 1.0).float()
+    return mask * ((1 - x)**4 * (4*x + 1))
+</code></pre>
+  </div>
+
+  <div class="code-block">
+<pre><code>
+# Construct interaction weights
+def compute_interactions(pos, r):
+    dists = pairwise_distances(pos)  # NxN
+    weights = wendland_kernel(dists, r)
+    return weights
+</code></pre>
+  </div>
+
+  <div class="code-block">
+<pre><code>
+# Message passing
+def forward(x, pos, r):
+    W = compute_interactions(pos, r)
+    return W @ x  # geometry-aware aggregation
+</code></pre>
+  </div>
+
+  <div class="code-note">
+    Full implementation (training, datasets, and evaluation protocols) will be
+    released after peer-reviewed publication.
+  </div>
+
+</section>
+    
     
 </section>
 
@@ -2057,6 +2160,19 @@ distance, producing sparsity as a consequence of kernel structure rather than he
     frontierObserver.observe(el);
   });
 </script>
+
+<script>
+function showCodeTab(idx) {
+  const tabs = document.querySelectorAll(".code-tab");
+  const blocks = document.querySelectorAll(".code-block");
+
+  tabs.forEach(t => t.classList.remove("active"));
+  blocks.forEach(b => b.classList.remove("active"));
+
+  tabs[idx].classList.add("active");
+  blocks[idx].classList.add("active");
+}
+</script>  
   
   
 </body>
