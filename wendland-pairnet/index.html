@@ -1333,6 +1333,46 @@ a[href="#code"]:active {
   color: #ffb703;
   border-color: rgba(255,183,3,0.3);
 }
+
+.related-projects {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.project-card {
+  display: block;
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-decoration: none;
+
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  transition: all 0.3s ease;
+}
+
+.project-card h3 {
+  color: #ffb703;
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,183,3,0.4);
+  box-shadow: 0 0 25px rgba(255,183,3,0.15);
+}
   
 </style>
 </head>
@@ -2176,7 +2216,29 @@ def forward(x, pos, r):
     </ul>
   </div>
 </div>
-    
+
+   <section class="related-projects reveal">
+  <h2>Research Program</h2>
+
+  <div class="project-grid">
+
+    <a href="https://himanshuvnm.github.io/wendland-pairnet/" class="project-card">
+      <h3>WendlandPairNet</h3>
+      <p>Compact-support kernels for structured sparse global mixing.</p>
+    </a>
+
+    <a href="https://himanshuvnm.github.io/koopman-lap-kedmd/" class="project-card">
+      <h3>Koopman RKHS Operators</h3>
+      <p>Laplacian Kernel Extended Dynamic Mode Decomposition on Irregular and Sparse Dynamical Systems</p>
+    </a>
+
+    <a href="https://himanshuvnm.github.io/gift-kastl/" class="project-card">
+      <h3>GIFT-KASTL</h3>
+      <p>Graph Foundation Model for Scientific Porous Media Data</p>
+    </a>
+
+  </div>
+</section> 
 </section>
 
 <section class="card reveal">
