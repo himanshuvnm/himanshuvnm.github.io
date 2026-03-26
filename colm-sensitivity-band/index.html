@@ -1,1 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Towards an Optimal Sensitivity Band for Robustness Under Distribution Shift</title>
+  <meta name="description" content="A training-dynamics view of robustness under distribution shift, with implications for transformers and LLMs." />
+  <meta name="keywords" content="COLM, robustness, distribution shift, sensitivity band, training dynamics, transformers, LLMs, CIFAR-10-C" />
+
+  <meta property="og:title" content="Towards an Optimal Sensitivity Band for Robustness Under Distribution Shift" />
+  <meta property="og:description" content="A training-dynamics view of robustness under distribution shift, with implications for transformers and LLMs." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #111935;
+      --panel: rgba(255,255,255,0.05);
+      --panel-strong: rgba(255,255,255,0.08);
+      --text: #eef2ff;
+      --muted: #c7d2fe;
+      --line: rgba(255,255,255,0.12);
+      --stable: #0437F2;
+      --unstable: #8b1e4f;
+      --band: #ffb703;
+      --shadow: 0 18px 50px rgba(0,0,0,0.32);
+      --radius: 24px;
+      --maxw: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(4,55,242,0.18), transparent 32%),
+        radial-gradient(circle at 85% 10%, rgba(255,183,3,0.12), transparent 24%),
+        linear-gradient(180deg, #0a0f1f 0%, #0b1020 40%, #0a0f1c 100%);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+      line-height: 1.08;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: clamp(2.8rem, 6vw, 5.2rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); }
+    h3 { font-size: 1.35rem; }
+
+    p { margin: 0 0 14px; color: var(--muted); font-size: 1.04rem; }
+    a { color: inherit; }
+
+    .container {
+      width: min(var(--maxw), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(10,15,31,0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      color: #dbeafe;
+      margin-bottom: 18px;
+      font-size: 0.93rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--stable), var(--band));
+      display: inline-block;
+    }
+
+    .hero p.lead {
+      font-size: 1.14rem;
+      max-width: 760px;
+      color: #d7e1ff;
+      margin-bottom: 26px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-weight: 600;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(4,55,242,0.32), rgba(255,183,3,0.18));
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .hero-card, .panel, .figure-card, .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 18px;
+    }
+
+    .hero-card img, .figure-card img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      max-width: 860px;
+      margin-bottom: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .stat-card, .panel {
+      padding: 24px;
+    }
+
+    .stat-card h3, .panel h3 {
+      margin-bottom: 10px;
+    }
+
+    .accent-stable { color: #9cb5ff; }
+    .accent-band { color: #ffd166; }
+    .accent-unstable { color: #f2a6c1; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .figure-stack {
+      display: grid;
+      gap: 20px;
+    }
+
+    .figure-card {
+      padding: 16px;
+    }
+
+    .figure-card figcaption {
+      padding: 12px 4px 4px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .quote-box {
+      padding: 22px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+    }
+
+    .takeaways {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .takeaways .panel {
+      min-height: 170px;
+    }
+
+    .footer {
+      padding: 42px 0 60px;
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .codebox {
+      margin-top: 14px;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.24);
+      border: 1px solid var(--line);
+      overflow-x: auto;
+      color: #dbeafe;
+      font-size: 0.94rem;
+    }
+
+    .small { font-size: 0.95rem; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .split, .grid-3, .takeaways {
+        grid-template-columns: 1fr;
+      }
+      .nav { display: none; }
+      .hero { padding-top: 50px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top">Optimal Sensitivity Band</a>
+      <nav class="nav">
+        <a href="#idea">Idea</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#llm">Transformers / LLMs</a>
+        <a href="#method">Method</a>
+        <a href="#paper">Paper</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">COLM project website</div>
+          <h1>Towards an Optimal Sensitivity Band for Robustness Under Distribution Shift</h1>
+          <p class="lead">
+            Robustness is not maximized by driving sensitivity as low as possible. Instead, models appear to pass through an intermediate regime where severe-shift robustness is strongest. Training that overshoots this regime becomes increasingly brittle.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#paper">Read the paper</a>
+            <a class="btn" href="#evidence">See the figures</a>
+            <a class="btn" href="#method">Method sketch</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="assets/diagrams/sensitivity_band_concept.png" alt="Conceptual view of an optimal sensitivity band for robustness" />
+        </div>
+      </div>
+    </section>
+
+    <section id="idea">
+      <div class="container">
+        <div class="section-head">
+          <h2>The central idea</h2>
+          <p>
+            The classical intuition says lower sensitivity should always improve robustness. Our view is different: robustness under distribution shift is <strong>non-monotonic</strong> in sensitivity. There is an interior regime — an optimal sensitivity band — where performance under severe corruption is strongest.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="stat-card">
+            <h3 class="accent-stable">Classical view</h3>
+            <p>Reduce sensitivity as much as possible, and robustness should improve monotonically.</p>
+          </article>
+          <article class="stat-card">
+            <h3 class="accent-band">What this project finds</h3>
+            <p>Robustness peaks at intermediate sensitivity rather than at either extreme.</p>
+          </article>
+          <article class="stat-card">
+            <h3 class="accent-unstable">Why this matters</h3>
+            <p>Training dynamics determine whether optimization enters the right regime or overshoots it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div class="panel">
+          <h2>Three regimes of training</h2>
+          <p>
+            A useful way to read the project is through three phases. In the early phase, the model is under-sensitive and has not yet built the right response geometry. In the middle phase, sensitivity enters a productive band where severe-shift robustness improves. In the late phase, optimization may overshoot that band, after which robustness degrades.
+          </p>
+          <div class="quote-box small">
+            Robustness is best in the middle regime, not at an extreme.
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="assets/diagrams/three_regimes.png" alt="Three regimes: under-sensitive, optimal band, overshoot" />
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <div class="container">
+        <div class="section-head">
+          <h2>Empirical evidence</h2>
+          <p>
+            The website is organized around three complementary views: the geometry of the sensitivity–robustness relationship, the trajectory of training through the optimal band, and the increasing penalty of overshoot as corruption severity grows.
+          </p>
+        </div>
+
+        <div class="figure-stack">
+          <figure class="figure-card">
+            <img src="assets/figures/fig1.png" alt="Sensitivity versus noisy accuracy scatter plot" />
+            <figcaption>
+              <strong>Figure 1.</strong> Sensitivity versus severe-shift performance. The key point is not monotonic decay, but a structured interior regime where robustness is strongest.
+            </figcaption>
+          </figure>
+
+          <figure class="figure-card">
+            <img src="assets/figures/fig2.png" alt="Sensitivity band and training trajectory figure" />
+            <figcaption>
+              <strong>Figure 2.</strong> Training enters the optimal band, can remain near it, and may eventually overshoot. This turns the project into a dynamical story rather than a static endpoint comparison.
+            </figcaption>
+          </figure>
+
+          <figure class="figure-card">
+            <img src="assets/figures/fig3.png" alt="Corruption robustness versus severity" />
+            <figcaption>
+              <strong>Figure 3.</strong> The cost of overshoot becomes more visible as corruption severity increases, reinforcing the interpretation that excessive sensitivity amplifies brittleness under stronger shift.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div class="hero-card">
+          <img src="assets/diagrams/training_phases.png" alt="Conceptual training phases showing band entry and overshoot" />
+        </div>
+        <div class="panel">
+          <h2>The geometry of training</h2>
+          <p>
+            Training is not merely a march toward lower sensitivity. It traces a path through dynamical regimes. The most robust models are those whose optimization trajectories spend time near the optimal band rather than rushing past it.
+          </p>
+          <p>
+            This creates a practical interpretation: sensitivity can be monitored as a training-time signal, not just analyzed retrospectively after training is complete.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="llm">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why this matters for transformers and LLMs</h2>
+          <p>
+            The project is not claiming a full large-scale transformer theory already. The point is more disciplined and more interesting: if robustness depends on traversing the right sensitivity regime during optimization, then sensitivity-like signals may become useful for monitoring transformer-scale training as models approach brittle regions.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="panel">
+            <h3>Training-time diagnostics</h3>
+            <p>Large models are trained in highly structured optimization regimes. Compact signals that warn about brittle dynamics could be valuable.</p>
+          </article>
+          <article class="panel">
+            <h3>Geometry over endpoint metrics</h3>
+            <p>The right question may not be whether a model is simply sensitive, but whether training has pushed it beyond a productive regime.</p>
+          </article>
+          <article class="panel">
+            <h3>Forward-looking implication</h3>
+            <p>This suggests a scalable monitoring lens for robustness in transformer-based systems and LLM training pipelines.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="container">
+        <div class="section-head">
+          <h2>Method sketch</h2>
+          <p>
+            We track a sensitivity proxy during training, compare stable and unstable regimes, and evaluate robustness under severe corruption. The objective is not only to identify a final predictor of robustness, but to reveal how optimization moves through the regimes that generate or destroy it.
+          </p>
+        </div>
+
+        <div class="takeaways">
+          <article class="panel">
+            <h3>Sensitivity proxy</h3>
+            <p>A compact training-time summary of responsiveness used to characterize model dynamics.</p>
+          </article>
+          <article class="panel">
+            <h3>Severe-shift robustness</h3>
+            <p>Performance is evaluated under strong corruption to expose brittleness that milder settings may hide.</p>
+          </article>
+          <article class="panel">
+            <h3>Trajectory interpretation</h3>
+            <p>Band entry, time spent near the band, and overshoot define distinct phases of optimization.</p>
+          </article>
+          <article class="panel">
+            <h3>Core conclusion</h3>
+            <p>Robustness is non-monotonic in sensitivity and is best interpreted through training geometry.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Key takeaways</h2>
+        </div>
+        <div class="takeaways">
+          <article class="panel"><h3>1</h3><p>Robustness under shift is not maximized at minimal sensitivity.</p></article>
+          <article class="panel"><h3>2</h3><p>An interior optimal sensitivity band appears during training.</p></article>
+          <article class="panel"><h3>3</h3><p>Optimization can cross and overshoot this band, degrading robustness.</p></article>
+          <article class="panel"><h3>4</h3><p>Sensitivity may serve as a useful monitoring signal for transformer-scale training.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="paper">
+      <div class="container split">
+        <div class="panel">
+          <h2>Paper</h2>
+          <p>
+            <strong>Towards an Optimal Sensitivity Band for Robustness Under Distribution Shift, with Implications for Transformers and LLMs</strong>
+          </p>
+          <p>
+            This project presents a training-dynamics view of robustness in which sensitivity is not merely minimized, but regulated. The main empirical and conceptual claim is that robust generalization under severe shift is strongest in an intermediate regime and weakens once optimization overshoots it.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="paper/colm_paper.pdf">PDF</a>
+            <a class="btn" href="citation/citation.bib">BibTeX</a>
+            <a class="btn" href="mailto:your.email@example.com">Contact</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Citation</h3>
+          <div class="codebox"><code>@article{optimal_sensitivity_band_2026,
+  title   = {Towards an Optimal Sensitivity Band for Robustness Under Distribution Shift},
+  author  = {Himanshu Singh},
+  year    = {2026},
+  journal = {COLM submission}
+}</code></div>
+          <p class="small" style="margin-top:12px;">
+            Replace the title, author list, and links with your final metadata.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="meta">
+        <span>Research project website</span>
+        <span>•</span>
+        <span>Robustness under distribution shift</span>
+        <span>•</span>
+        <span>Transformers / LLM implications</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
 
