@@ -597,6 +597,83 @@
   max-width: 850px;
 }
 ```
+```css
+.featured-news-card {
+  display: grid;
+  grid-template-columns: 0.95fr 1.25fr;
+  gap: 2rem;
+  align-items: center;
+  margin: 3rem 0;
+  padding: 2rem;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(4, 55, 242, 0.08), rgba(255, 183, 3, 0.12));
+  border: 1px solid rgba(120, 120, 120, 0.18);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.featured-news-image img {
+  width: 100%;
+  display: block;
+  border-radius: 22px;
+  border: 1px solid rgba(120, 120, 120, 0.18);
+  background: #fff;
+}
+
+.news-badge {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 183, 3, 0.18);
+  color: #8a5a00;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.featured-news-content h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.12;
+}
+
+.featured-news-content p {
+  margin-bottom: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.news-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.news-button {
+  display: inline-block;
+  padding: 0.75rem 1.05rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  color: inherit;
+}
+
+.news-button.primary {
+  background: #0437F2;
+  color: white;
+  border-color: #0437F2;
+}
+
+@media (max-width: 850px) {
+  .featured-news-card {
+    grid-template-columns: 1fr;
+    padding: 1.35rem;
+  }
+}
+```
 
     
   </style>
@@ -649,22 +726,44 @@
       </div>
     </header>
 
-    
-<section class="news-highlight">
-  <div class="news-badge">Accepted · ICML 2026 Workshop</div>
-  <h2>Anatomy-aware cardiac representation learning accepted at ICML Global South ML</h2>
-  <p>
-    My anatomy-aware cardiac MRI project has been accepted at the
-    <strong>ICML 2026 Global South ML Workshop</strong>. The work studies
-    low-compute, anatomy-aware diagnostic representation learning on the ACDC
-    cardiac MRI benchmark, showing that interpretable anatomical structure can
-    provide strong signal even in limited-data settings.
-  </p>
-  <p>
-    The project connects scientific machine learning, medical imaging, and
-    representation learning for resource-conscious AI systems.
-  </p>
+  
+<section class="featured-news-card">
+  <div class="featured-news-image">
+    <img 
+      src="Anatomy_Aware_Representation_Learning/ACDC_MRI data-4_1.png" 
+      alt="Anatomy-aware cardiac MRI representation learning figure"
+    />
+  </div>
+
+  <div class="featured-news-content">
+    <div class="news-badge">Accepted · ICML 2026 Global South ML</div>
+
+    <h2>Anatomy-aware cardiac representation learning accepted at ICML</h2>
+
+    <p>
+      My anatomy-aware cardiac MRI project has been accepted at the
+      <strong>ICML 2026 Global South ML Workshop</strong>. The work studies
+      low-compute, anatomy-aware diagnostic representation learning on the
+      ACDC cardiac MRI benchmark, showing that interpretable anatomical
+      structure can provide strong signal in limited-data settings.
+    </p>
+
+    <p>
+      The project connects medical imaging, scientific machine learning,
+      and resource-conscious AI for global-health settings.
+    </p>
+
+    <div class="news-actions">
+      <a href="Anatomy_Aware_Representation_Learning/" class="news-button primary">
+        Project page
+      </a>
+      <a href="Anatomy_Aware_Representation_Learning/43_Anatomy_Aware_Model_Learning_ICML.pdf" class="news-button">
+        Paper PDF
+      </a>
+    </div>
+  </div>
 </section>
+
 
 
 
