@@ -1192,11 +1192,218 @@
       </div>
     </header>
 
+<style>
+  /* ================= ICML CARD V2 — self-contained ================= */
 
+  .icml-card-v2 {
+    width: min(1420px, calc(100vw - 64px)) !important;
+    margin-top: 56px !important;
+    margin-bottom: 72px !important;
+    margin-left: 50% !important;
+    transform: translateX(-50%) !important;
 
-<section class="icml-acceptance-card">
-  <div class="feature-copy">
-    <div class="feature-pill">
+    padding: clamp(2rem, 4vw, 3.4rem) !important;
+
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr) !important;
+    gap: clamp(2.5rem, 5vw, 5.5rem) !important;
+    align-items: center !important;
+
+    border-radius: 38px !important;
+    border: 1px solid rgba(120, 170, 220, 0.38) !important;
+
+    background:
+      radial-gradient(circle at 8% 6%, rgba(4, 55, 242, 0.22), transparent 34%),
+      radial-gradient(circle at 92% 10%, rgba(0, 255, 204, 0.07), transparent 30%),
+      linear-gradient(135deg, rgba(22, 38, 64, 0.97), rgba(6, 20, 35, 0.98)) !important;
+
+    box-shadow:
+      0 34px 95px rgba(0, 0, 0, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .icml-card-v2 * {
+    box-sizing: border-box;
+  }
+
+  .icml-card-v2-copy {
+    min-width: 0;
+  }
+
+  .icml-card-v2-pill {
+    width: fit-content;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+
+    margin-bottom: 1.35rem;
+    padding: 0.5rem 1rem;
+
+    border-radius: 999px;
+    border: 1px solid rgba(255, 183, 3, 0.24);
+    background: rgba(255, 183, 3, 0.14);
+    color: #ffd35d;
+
+    font-size: 0.78rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .icml-card-v2 h2 {
+    max-width: 690px;
+    margin: 0 0 1.4rem;
+
+    color: #eef4ff;
+    font-size: clamp(2.2rem, 4.4vw, 4rem);
+    line-height: 1.04;
+    letter-spacing: -0.055em;
+  }
+
+  .icml-card-v2 p {
+    max-width: 680px;
+    margin: 0 0 1.05rem;
+
+    color: rgba(224, 234, 248, 0.87);
+    font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+    line-height: 1.72;
+  }
+
+  .icml-card-v2 strong {
+    color: #ffe08a;
+    font-weight: 760;
+  }
+
+  .icml-card-v2-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.55rem;
+  }
+
+  .icml-card-v2-tags span {
+    padding: 0.68rem 0.95rem;
+    border-radius: 13px;
+
+    color: rgba(235, 244, 255, 0.92);
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(150, 190, 230, 0.2);
+
+    font-size: 0.96rem;
+  }
+
+  .icml-card-v2-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.1rem;
+  }
+
+  .icml-card-v2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 3.45rem;
+    padding: 0.9rem 1.25rem;
+    border-radius: 15px;
+
+    color: #eef4ff;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 820;
+
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(170, 210, 255, 0.34);
+
+    transition:
+      transform 0.18s ease,
+      background 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .icml-card-v2-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.065);
+    border-color: rgba(190, 225, 255, 0.55);
+  }
+
+  .icml-card-v2-btn.primary {
+    color: #ffffff;
+    background: linear-gradient(135deg, #0437f2, #0d5cff);
+    border-color: rgba(120, 170, 255, 0.8);
+  }
+
+  .icml-card-v2-poster-link {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .icml-card-v2-poster-frame {
+    width: min(100%, 650px);
+    aspect-ratio: 0.72 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: clamp(0.75rem, 1.2vw, 1rem);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(180, 215, 255, 0.28);
+
+    box-shadow:
+      0 24px 70px rgba(0, 0, 0, 0.36),
+      inset 0 1px 0 rgba(255, 255, 255, 0.055);
+
+    overflow: hidden;
+  }
+
+  .icml-card-v2-poster-frame img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    padding: 0.65rem !important;
+    border-radius: 22px !important;
+
+    background: #ffffff !important;
+    border: 1px solid rgba(210, 225, 255, 0.5) !important;
+
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  @media (max-width: 860px) {
+    .icml-card-v2 {
+      width: min(100% - 28px, 760px) !important;
+      grid-template-columns: 1fr !important;
+      padding: 1.5rem !important;
+      margin-top: 40px !important;
+      margin-bottom: 52px !important;
+    }
+
+    .icml-card-v2 h2 {
+      font-size: clamp(2rem, 9vw, 3.2rem);
+    }
+
+    .icml-card-v2-poster-frame {
+      width: min(100%, 560px);
+    }
+  }
+</style>
+
+<section class="icml-card-v2">
+  <div class="icml-card-v2-copy">
+    <div class="icml-card-v2-pill">
       <span>★ Accepted</span>
       <span>ICML 2026 Global South ML</span>
     </div>
@@ -1220,24 +1427,24 @@
       <strong>resource-conscious AI</strong> for global-health settings.
     </p>
 
-    <div class="feature-tags">
+    <div class="icml-card-v2-tags">
       <span>Medical Imaging</span>
       <span>Low-Label Learning</span>
       <span>Scientific ML</span>
       <span>Global Health AI</span>
     </div>
 
-    <div class="feature-links">
+    <div class="icml-card-v2-links">
       <a
         href="Anatomy_Aware_Representation_Learning/"
-        class="feature-btn primary"
+        class="icml-card-v2-btn primary"
       >
         ↗ ICML Poster
       </a>
 
       <a
         href="Anatomy_Aware_Representation_Learning/43_Anatomy_Aware_Model_Learning_ICML.pdf"
-        class="feature-btn"
+        class="icml-card-v2-btn"
       >
         ⧉ Paper PDF
       </a>
@@ -1245,10 +1452,10 @@
   </div>
 
   <a
-    class="feature-poster-shell"
+    class="icml-card-v2-poster-link"
     href="Anatomy_Aware_Representation_Learning/"
   >
-    <div class="feature-poster-frame">
+    <div class="icml-card-v2-poster-frame">
       <img
         src="Anatomy_Aware_Representation_Learning/43_SINGH_GSML-ICML-Poster-4.png"
         alt="ICML 2026 Global South ML poster for anatomy-aware cardiac representation learning"
@@ -1256,6 +1463,8 @@
     </div>
   </a>
 </section>
+
+
 
 
 
