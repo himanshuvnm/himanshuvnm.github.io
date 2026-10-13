@@ -66,14 +66,6 @@ The tree is illustrative; consult the repository for the complete current folder
 2. Open **Visit website** for the published page, or the source-folder link to edit it.
 3. When adding a project, add one row to the directory table and optionally a featured description.
 
-## ➕ Add a new project
-
-Copy this table row and replace the placeholders:
-
-```markdown
-| **Project name** | Research area | [Visit website](https://himanshuvnm.github.io/PROJECT-SLUG/) | [`PROJECT-SLUG/`](./PROJECT-SLUG/) |
-```
-
 Check that the deployed URL works before marking a newly added project as verified. A GitHub Pages project slug generally follows the subdirectory name, but this should be checked rather than assumed.
 
 ## 🔗 Quick links
