@@ -13,9 +13,12 @@
 | **Operator-Adapted RKHS Geometries** | Representation learning · RKHS · operator theory | [Visit website](https://himanshuvnm.github.io/operator-adapted-rkhs/) | [`operator-adapted-rkhs/`](./operator-adapted-rkhs/) |
 | **Kernelized Koopman Representation Geometry** | Neural dynamics · transient amplification · kernel methods | [Visit website](https://himanshuvnm.github.io/kernelized-koopman-representation-geometry/) | [`kernelized-koopman-representation-geometry/`](./kernelized-koopman-representation-geometry/) |
 | **Koopman–Laplacian KEDMD** | Koopman operators · RKHS closability · sparse reconstruction | [Visit website](https://himanshuvnm.github.io/koopman-lap-kedmd/) | [`koopman-lap-kedmd/`](./koopman-lap-kedmd/) |
-| **WendlandPairNet** | Compact-support kernels · efficient AI | **URL to verify** | **Folder to verify** |
+| **WendlandPairNet** | Compact-support kernels · efficient AI | [Visit website](https://himanshuvnm.github.io/wendland-pairnet/) | [`wendland-pairnet/`](./wendland-pairnet/) |
+| **GIFT-KASTL** | Research project · interactive website | [Visit website](https://himanshuvnm.github.io/gift-kastl/) | [`gift-kastl/`](./gift-kastl/) |
+| **Epistemological Asymmetry** | Research concepts · epistemology | [Visit website](https://himanshuvnm.github.io/epistemological-asymmetry/) | [`epistemological-asymmetry/`](./epistemological-asymmetry/) |
+| **COLM Sensitivity Band** | Research project · sensitivity analysis | [Visit website](https://himanshuvnm.github.io/colm-sensitivity-band/) | [`colm-sensitivity-band/`](./colm-sensitivity-band/) |
 
-**Note:** The entries above are a starting inventory, not a complete audit of every directory in the repository. In particular, the WendlandPairNet website path has not yet been confirmed.
+**Note:** The directory includes the project URLs supplied by the repository owner. It is not yet a complete audit of every directory in the repository; live availability and source-folder paths have not been independently verified.
 
 ## ✨ Featured research websites
 
@@ -48,6 +51,10 @@ himanshuvnm.github.io/
 ├── operator-adapted-rkhs/                      # Operator-adapted RKHS website
 ├── kernelized-koopman-representation-geometry/ # Koopman geometry website
 ├── koopman-lap-kedmd/                          # Koopman–Laplacian KEDMD website
+├── wendland-pairnet/                           # WendlandPairNet website
+├── gift-kastl/                                # GIFT-KASTL website
+├── epistemological-asymmetry/                 # Epistemological Asymmetry website
+├── colm-sensitivity-band/                     # COLM Sensitivity Band website
 └── ...                                         # Other project folders
 ```
 
@@ -67,7 +74,7 @@ Copy this table row and replace the placeholders:
 | **Project name** | Research area | [Visit website](https://himanshuvnm.github.io/PROJECT-SLUG/) | [`PROJECT-SLUG/`](./PROJECT-SLUG/) |
 ```
 
-Only add the live website link after confirming that the deployed URL works. A GitHub Pages project slug generally follows the subdirectory name, but this should be checked rather than assumed.
+Check that the deployed URL works before marking a newly added project as verified. A GitHub Pages project slug generally follows the subdirectory name, but this should be checked rather than assumed.
 
 ## 🔗 Quick links
 
