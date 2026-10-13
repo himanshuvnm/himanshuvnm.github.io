@@ -60,14 +60,6 @@ himanshuvnm.github.io/
 
 The tree is illustrative; consult the repository for the complete current folder list.
 
-## 🧭 Finding a website quickly
-
-1. Search this README using **Ctrl+F** (or **⌘+F** on macOS) for the project name.
-2. Open **Visit website** for the published page, or the source-folder link to edit it.
-3. When adding a project, add one row to the directory table and optionally a featured description.
-
-Check that the deployed URL works before marking a newly added project as verified. A GitHub Pages project slug generally follows the subdirectory name, but this should be checked rather than assumed.
-
 ## 🔗 Quick links
 
 [Main portfolio](https://himanshuvnm.github.io/) · [All website files](https://github.com/himanshuvnm/himanshuvnm.github.io) · [GitHub profile](https://github.com/himanshuvnm)
